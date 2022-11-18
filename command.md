@@ -2,6 +2,17 @@
 
 
 
+1. Containerize your application 
+
+**Warning**
+- Following command requires *docker-compose.yaml* file.
+
+```shell
+docker compose down
+docker compose up
+```
+
+
 1. Configure your AWS Setting
 ```shell
 aws configure
