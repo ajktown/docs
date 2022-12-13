@@ -39,6 +39,8 @@ Components must start with its prefix from the following
 - molecule
 - atom
 
+Every component has its inside function with useCallback and useMemo for any memorization. 
+
 ## Components Naming Rule
 
 | Type  | Suffix | Explanation                                        | Example       |
