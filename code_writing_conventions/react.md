@@ -5,6 +5,7 @@
 - [Write a proper react style using atomic approach](#write-a-proper-react-style-using-atomic-approach)
   - [Overview](#overview)
   - [Atomic folders, Molecule folders, Organism folders](#atomic-folders-molecule-folders-organism-folders)
+  - [Callback functions](#callback-functions)
   - [Handlers](#handlers)
   - [Components](#components)
   - [Components Naming Rule](#components-naming-rule)
@@ -21,6 +22,16 @@ Learn how to write a proper React code using atomic approach
 - They are ideally must be done in library, if shared by different services.
 - They should have their theme set up
   - The theme has to be managed by one source.
+
+
+## Callback functions
+- Every React Node's component
+  - Either business logic implemented component
+  - Styled component
+- Must have its function useCallback as default, so any re-rendering should not cause 
+  - infinite loop
+  - Unnecessary writing coding
+
 
 ## Handlers
 
