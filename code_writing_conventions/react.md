@@ -8,6 +8,7 @@
   - [Callback functions](#callback-functions)
   - [Handlers](#handlers)
   - [Components](#components)
+  - [Component's functions](#components-functions)
   - [Components Naming Rule](#components-naming-rule)
 
 <!-- /TOC -->
@@ -49,6 +50,14 @@ Components must start with its prefix from the following
 - organism
 - molecule
 - atom
+
+
+## Component's functions
+
+Every component's props given function must start with on~ (i.e onClick)
+
+Every component's internal function must start with handle~ (i.e handleClick)
+- By this rule, we can know that it is an internal function, when it starts with handle, and vice versa.
 
 Every component has its inside function with useCallback and useMemo for any memorization. 
 
