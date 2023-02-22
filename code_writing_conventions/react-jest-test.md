@@ -7,7 +7,6 @@
     - [Must start with Exposure Test](#must-start-with-exposure-test)
     - [Sample Test File Prefix](#sample-test-file-prefix)
     - [For loop must be `forEach`](#for-loop-must-be-foreach)
-    - [Expect string must be following this for its neatness](#expect-string-must-be-following-this-for-its-neatness)
 
 <!-- /TOC -->
 
@@ -36,16 +35,8 @@ interface Test { // Interface => Test
 ```ts
 tests.forEach((test) => {
   const gotDaysAgo = timeHandler.getDaysAgo(test.sampleDate)
-  it(`should return the expected output "${test.wantDaysAgo}" from ""${test.sampleDate}""`, () => {
+  it(`should return "${test.wantDaysAgo}" with arg(s) "${test.sampleDate}""`, () => {
     expect(gotDaysAgo).toBe(test.wantDaysAgo)
   })
 })
-```
-
-### Expect string must be following this for its neatness
-
-```ts
-it(`expects "${test.wantDaysAgo}" from "${test.sampleDate}""`, () => {
-    expect(gotDaysAgo).toBe(test.wantDaysAgo)
-  })
 ```
