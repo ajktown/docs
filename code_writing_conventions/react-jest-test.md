@@ -4,6 +4,7 @@
 
 - [Writing Correct Jest Test For React](#writing-correct-jest-test-for-react)
   - [Overview](#overview)
+    - [Testing function must have its argument(s)](#testing-function-must-have-its-arguments)
     - [Must start with Exposure Test](#must-start-with-exposure-test)
     - [Sample Test File Prefix](#sample-test-file-prefix)
     - [For loop must be `forEach`](#for-loop-must-be-foreach)
@@ -11,6 +12,13 @@
 <!-- /TOC -->
 
 ## Overview
+
+### Testing function must have its argument(s)
+```ts
+describe(`timeHandler.getDaysAgo(date: Date)`, () => {
+  // ...
+})
+```
 
 ### Must start with Exposure Test
 
