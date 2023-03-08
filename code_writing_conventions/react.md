@@ -5,8 +5,10 @@
 - [Write a proper react style using atomic approach](#write-a-proper-react-style-using-atomic-approach)
   - [Overview](#overview)
   - [Atomic folders, Molecule folders, Organism folders](#atomic-folders-molecule-folders-organism-folders)
+  - [Callback functions](#callback-functions)
   - [Handlers](#handlers)
   - [Components](#components)
+  - [Component's functions](#components-functions)
   - [Components Naming Rule](#components-naming-rule)
 
 <!-- /TOC -->
@@ -21,6 +23,16 @@ Learn how to write a proper React code using atomic approach
 - They are ideally must be done in library, if shared by different services.
 - They should have their theme set up
   - The theme has to be managed by one source.
+
+
+## Callback functions
+- Every React Node's component
+  - Either business logic implemented component
+  - Styled component
+- Must have its function useCallback as default, so any re-rendering should not cause 
+  - infinite loop
+  - Unnecessary writing coding
+
 
 ## Handlers
 
@@ -38,6 +50,16 @@ Components must start with its prefix from the following
 - organism
 - molecule
 - atom
+
+
+## Component's functions
+
+Every component's props given function must start with on~ (i.e onClick)
+
+Every component's internal function must start with handle~ (i.e handleClick)
+- By this rule, we can know that it is an internal function, when it starts with handle, and vice versa.
+
+Every component has its inside function with useCallback and useMemo for any memorization. 
 
 ## Components Naming Rule
 
