@@ -7,7 +7,7 @@
   - [Instructions](#instructions)
     - [Get the latest image from the Docker server](#get-the-latest-image-from-the-docker-server)
     - [Set your new Mongo DB Password](#set-your-new-mongo-db-password)
-    - [Create mongo DB image with settings](#create-mongo-db-image-with-settings)
+    - [Run the new container with the downloaded image](#run-the-new-container-with-the-downloaded-image)
     - [See if container is created](#see-if-container-is-created)
     - [Install `Mongo DB Compass`](#install-mongo-db-compass)
 
@@ -22,6 +22,7 @@ Basic tutorial of setting up Mongo DB Image locally so that your AJK Town API ca
 Source: https://medium.com/@szpytfire/setting-up-mongodb-within-a-docker-container-for-local-development-327e32a2b68d
 
 ### Get the latest image from the Docker server
+You do not have to pull if you already have the mongo image, but the command below will allow you to update to the latest version of `mongo`.
 ```sh
 docker pull mongo
 ```
@@ -32,7 +33,8 @@ MDB_PASSWORD="local_root_71aae4225232353a9736957210416f22d8571c"
 echo "SAVED_MDB_PASSWORD: $MDB_PASSWORD"
 ```
 
-### Create mongo DB image with settings
+### Run the new container with the downloaded image
+
 ```sh
 docker run -d --name mongodb -p 27017 \
 -e MONGO_INITDB_ROOT_USERNAME=root \
