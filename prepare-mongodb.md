@@ -51,7 +51,7 @@ docker container ls | grep mongo
 
 ### Install `Mongo DB Compass`
 
-Mongo DB Compass is 
+Mongo DB Compass is a UI integrated application for the connections to the `prod` or `dev` DB env.
 
 Visit the website [here](https://www.mongodb.com/try/download/compass) and get the latest version
 
