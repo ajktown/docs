@@ -36,12 +36,17 @@ echo "SAVED_MDB_PASSWORD: $MDB_PASSWORD"
 ### Run the new container with the downloaded image
 
 ```sh
-docker run -d --name mongodb -p 27017 \
+docker run -d --name mongodb -p 57017:27017 \
 -e MONGO_INITDB_ROOT_USERNAME=root \
 -e MONGO_INITDB_ROOT_PASSWORD="${MDB_PASSWORD}" \
 mongo 
 
 ```
+
+- 51514:27017
+  - `27017` is the MongoDB standard port, and should not be modified unless you are super sure.
+  - `57017` is the docker connection point, and you can customized whichever you want.
+    - I simply set `57017` as it is similar number to the `27017`, so that I know that its for MongoDB.
 
 
 ### See if container is created
