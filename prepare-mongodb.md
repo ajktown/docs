@@ -15,7 +15,7 @@
 
 ## Overview
 
-Basic tutorial of setting up Mongo DB Image locally so that your AJK Town API can be connected to Local API
+Basic tutorial of setting up Mongo DB Image locally so that your AJK Town API can be connected to Local DB
 
 ## Instructions
 
