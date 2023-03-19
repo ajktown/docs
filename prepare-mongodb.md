@@ -29,7 +29,7 @@ docker pull mongo
 
 ### Set your new Mongo DB Password
 ```sh
-MDB_PASSWORD="local_root_71aae4225232353a9736957210416f22d8571c"
+MDB_PASSWORD="local_root_XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 echo "SAVED_MDB_PASSWORD: $MDB_PASSWORD"
 ```
 
