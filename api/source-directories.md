@@ -24,7 +24,8 @@ Organize source directories for consistency
 
 ## Source directory 
 
-Please organize in alphabetical order
+- Please organize in alphabetical order
+  - i.e) Controllers, Domains, DTO, ...
 
 ### Controllers
 - Exposed API to the end user.
