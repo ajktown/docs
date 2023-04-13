@@ -44,6 +44,10 @@ envoy -c ~/envoy-demo-config.yaml
 
 docker run -d -p 4000:80 ealen/echo-server
 
+
+# Test your connection for the following link
+http://localhost:4000/
+
 ```
 
 ### Modify scripts like the below:
