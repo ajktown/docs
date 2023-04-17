@@ -4,6 +4,12 @@ TODO: Put the automatic ...Mm.. for got the name
 TODO: Fix Typo, if any.
 
 
+<!-- TOC -->
+
+- [Commits Naming](#commits-naming)
+  - [Overview](#overview)
+
+<!-- /TOC -->
 ## Overview
 Every commit of applications of AJK Town must follow the commit writing rules. The fundamental rule is the following
 
