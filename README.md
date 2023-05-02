@@ -25,11 +25,12 @@ This repository contains detailed documentation of every product of AJK Town inc
 
 
 ### Sample Plantuml Code
+You can do `command + shift + v` to see the preview of the flow below:
 ```plantuml
 
 @startuml
 
-title Handshaking
+title Handshaking between FE and API
 
 participant "Frontend (FE)" as fe
 participant "API Server" as api
@@ -37,7 +38,7 @@ participant "API Server" as api
 activate fe
   fe -> api: Hi, API!
   activate api
-    fe <- api: Hello, Frontend!
+    fe <- api: Hello, FE!
   deactivate api
 deactivate fe
 
