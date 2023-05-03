@@ -18,16 +18,21 @@
 title Continue with Google
 
 participant "End User" as user
-participant "FE" as fe
-participant "API Gateway" as api
-participant "API Middleware" as mdl
-participant "API Controller" as ctl
-
+box "Next JS" #Lightblue
+  participant "FE" as fe
+box
+box "API" #Lightgreen
+  participant "API Gateway" as api
+  participant "API Middleware" as mdl
+  participant "API Controller" as ctl
+box
 activate user
   user -> fe: User does something that sends a request to API
   activate fe
     fe -> api: Sends API Request
-    api -> mdl: Passes request
+    activate api
+      api -> mdl: Passes request
+    deactivate api
     activate mdl
       mdl -> mdl: Create HttpOnlyCookieDomain from Request
       mdl -> mdl: Create AccessTokenDomain from HttpOnlyCookieDomain
@@ -36,7 +41,7 @@ activate user
         fe <[#red]-- fe : Redirects to sign in page
         user <[#red]-- fe: Asks to sign in again due to expired session
       end break
-      mdl -> ctl
+      mdl -> ctl: Passes request with AccessTokenDomain attached
     deactivate mdl
     activate ctl
       ctl -> ctl: Does something (Simplified)
