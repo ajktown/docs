@@ -44,12 +44,14 @@ activate user
         api <- google: Approves if valid (Send google response payload)
       deactivate google
       api -> api: Trusts google response payload
-      api -> db: Gets user information from mdb with google response payload
+      api -> api: AccessTokenDomain.fromPayload()
+      api -> db: AccessTokenDomain.toDocument()
       activate db
-        api <- db: Returns user info
+        api <- db: Returns UserRaw
       deactivate db
-      api -> api: Generate access token based on UserDomain
-      fe <- api: Returns http only secured token with user information
+      api -> api: UserDomain.fromMdb()
+      api -> api: UserDomain.toAccessTokenDomain()
+      fe <- api: Attaches HttpOnly AccessTokenDomain.generateToken() to Nest JS Response
     deactivate api
     user <- fe: Shows successful sign in
   deactivate fe
