@@ -11,7 +11,6 @@
 ## Sign in with Google
 
 
-TODO: Not yet done with it.
 ```plantuml
 
 @startuml
@@ -29,12 +28,14 @@ activate user
   user -> fe: Clicks button `Continue with Google`
   activate fe
     fe -> google: Redirects to Google Sign in page
-    activate google
-      user <- google: Asks Google ID and Password to continue
-      user -> google: Input Google ID and Password
-      google -> google: Authenticates (Simplified)
-      fe <- google: Redirects to FE with temporary access token
-    deactivate google
+  deactivate fe
+  activate google
+    user <- google: Asks Google ID and Password to continue
+    user -> google: Input Google ID and Password
+    google -> google: Authenticates (Simplified)
+    fe <- google: Redirects to FE with temporary access token
+  deactivate google
+  activate fe
     fe -> api: Send the temporary access token
     activate api
       api -> google: Authenticate the temporary access token
@@ -50,9 +51,9 @@ activate user
       api -> api: Generate access token based on UserDomain
       fe <- api: Returns http only secured token with user information
     deactivate api
-    fe -> fe: Redirects to the core app page
     user <- fe: Shows successful sign in
   deactivate fe
+  user -> user: Use application with signed in status
 deactivate user
 
 
