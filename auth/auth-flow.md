@@ -44,8 +44,8 @@ activate user
         api <- google: Approves if valid (Send google response payload)
       deactivate google
       api -> api: Trusts google response payload
-      api -> api: AccessTokenDomain.fromPayload()
-      api -> db: AccessTokenDomain.toDocument()
+      api -> api: OauthPayloadDomain.fromPayload()
+      api -> db: OauthPayloadDomain.toDocument()
       activate db
         api <- db: Returns UserRaw
       deactivate db
