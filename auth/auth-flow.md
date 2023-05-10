@@ -50,7 +50,7 @@ activate user
         api <- db: Returns UserRaw
       deactivate db
       api -> api: UserDomain.fromMdb()
-      api -> api: UserDomain.toAccessTokenDomain()
+      api -> api: AccessTokenDomain.fromUserDomain()
       fe <- api: Attaches HttpOnly AccessTokenDomain.generateToken() to Nest JS Response
     deactivate api
     user <- fe: Shows successful sign in
