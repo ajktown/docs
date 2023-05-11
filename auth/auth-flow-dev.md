@@ -5,6 +5,7 @@
 - [Auth Flow](#auth-flow)
   - [Get ASAT without 3rd party Oauth for developers](#get-asat-without-3rd-party-oauth-for-developers)
     - [ASAT](#asat)
+  - [Overview](#overview)
   - [Authentication and Authorization for any API calls](#authentication-and-authorization-for-any-api-calls)
 
 <!-- /TOC -->
@@ -14,6 +15,14 @@
 ### ASAT
 
 AJK Town Secured Access Token
+
+## Overview
+
+- The dev token generation does not depend on the MongoDB connection
+  - It is hard coded inside of the API Server
+
+- The dev token generation does not depend on internet.
+  - Does not require 3rd part Oauth
 
 
 ```plantuml

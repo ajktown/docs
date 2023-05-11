@@ -18,9 +18,7 @@
 title Authentication Flow
 
 participant "End User" as user
-box "Next JS" #Lightblue
-  participant "FE" as fe
-box
+participant "FE" as fe
 box "API" #Lightgreen
   participant "API Gateway" as api
   participant "API Middleware" as mdl
