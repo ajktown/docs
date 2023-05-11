@@ -6,6 +6,7 @@
   - [Overview](#overview)
   - [Title Rules](#title-rules)
     - [Require Title](#require-title)
+    - [Title must match to the markdown](#title-must-match-to-the-markdown)
   - [Participant Rules](#participant-rules)
     - [The order is always EndUser, FE, API, BE, DB, 3rd Party](#the-order-is-always-enduser-fe-api-be-db-3rd-party)
     - [Participant must be omitted, if not used.](#participant-must-be-omitted-if-not-used)
@@ -26,6 +27,11 @@ List of PlantUML rules
 ### Require Title
 
 Title must be given for every PlantUML diagram
+
+
+### Title must match to the markdown
+
+The markdown title and the diagram title must match
 
 ## Participant Rules
 
