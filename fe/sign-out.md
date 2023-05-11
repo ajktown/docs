@@ -9,6 +9,8 @@
   - [auth/prepare](#authprepare)
   - [Situations](#situations)
     - [Front Page is refreshed or newly opened](#front-page-is-refreshed-or-newly-opened)
+    - [ASAT is invalid/expired/non-exist when API is called](#asat-is-invalidexpirednon-exist-when-api-is-called)
+      - [TODO: Implement](#todo-implement)
 
 <!-- /TOC -->
 
@@ -86,4 +88,24 @@ deactivate user
 
 
 ```
+
+
+### ASAT is invalid/expired/non-exist when API is called
+
+
+#### TODO: Implement
+
+```plantuml
+
+@startuml
+
+title ASAT is invalid/expired/non-exist when API is called
+
+participant "End User" as user
+participant "FE" as fe
+participant "API" as api
+
+
+```
+
 
