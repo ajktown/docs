@@ -15,7 +15,7 @@
 
 @startuml
 
-title Continue with Google
+title Authentication Flow
 
 participant "End User" as user
 box "Next JS" #Lightblue
