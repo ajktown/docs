@@ -1,5 +1,7 @@
 # Sign out on FE
 
+TODO: This entire file is under writing.
+
 <!-- TOC -->
 
 - [Sign out on FE](#sign-out-on-fe)
