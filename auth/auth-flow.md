@@ -4,7 +4,6 @@
 
 - [Auth Flow](#auth-flow)
   - [Continue with Google](#continue-with-google)
-  - [Authentication and Authorization for any API calls](#authentication-and-authorization-for-any-api-calls)
 
 <!-- /TOC -->
 
@@ -61,5 +60,4 @@ deactivate user
 
 ```
 
-## Authentication and Authorization for any API calls
 

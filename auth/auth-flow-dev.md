@@ -6,7 +6,7 @@
   - [Get ASAT without 3rd party Oauth for developers](#get-asat-without-3rd-party-oauth-for-developers)
     - [ASAT](#asat)
   - [Overview](#overview)
-  - [Authentication and Authorization for any API calls](#authentication-and-authorization-for-any-api-calls)
+  - [Continue with Dev Token for developers](#continue-with-dev-token-for-developers)
 
 <!-- /TOC -->
 
@@ -25,18 +25,20 @@ AJK Town Secured Access Token
   - Does not require 3rd part Oauth
 
 
+## Continue with Dev Token for developers
+
 ```plantuml
 
 @startuml
 
-title Continue with Local Dev Token
+title Continue with Dev Token for developers
 
 participant "Developer User" as user
 participant "FE" as fe
-participant "API" as api
-participant "AccessTokenDomain" as atd
-database "MongoDB" as db
-participant "Google Server" as google
+box "API" #Lightgreen
+  participant "API" as api
+  participant "AccessTokenDomain" as atd
+box
 
 activate user
   user -> fe: Developer opens AJK Town App
@@ -72,6 +74,3 @@ deactivate user
 
 
 ```
-
-## Authentication and Authorization for any API calls
-

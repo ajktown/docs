@@ -48,24 +48,28 @@ This is to make the diagram much faster/easier to read.
 
 ### Shortened code of participants must be the same
 
-| Name     | Shortened Code | Remarks                         |
-|:---------|:---------------|:--------------------------------|
-| End User | user           | End User using the AJK Town App |
-| FE       | fe             | Next JS Server                  |
-| API      | api            | Nest JS Server                  |
-| BE       | be             | N/A at this point of May 2023   |
-| DB       | db (or mdb)    | MongoDB                         |
+Third party should not be shortened as they are not defined by AJK Town.
+
+| Name        | Shortened Code | Remarks                                   |
+|:------------|:---------------|:------------------------------------------|
+| End User    | user           | End User using the AJK Town App           |
+| FE          | fe             | Next JS Server                            |
+| API         | api            | Nest JS Server                            |
+| BE          | be             | N/A at this point of May 2023             |
+| DB          | db (or mdb)    | MongoDB                                   |
+| Third Party | N/A            | Google Server, OpenAI ChatGPT Server  etc |
 
 
 ### Use box, only when there are multiple participant of the same
 
-| Name     | Color           |
-|:---------|:----------------|
-| End User | Not Decided Yet |
-| FE       | Lightblue       |
-| API      | Lightgreen      |
-| BE       | Not Decided Yet |
-| DB       | Not Decided Yet |
+| Name        | Color           |
+|:------------|:----------------|
+| End User    | Not Decided Yet |
+| FE          | Lightblue       |
+| API         | Lightgreen      |
+| BE          | Not Decided Yet |
+| DB          | Not Decided Yet |
+| Third Party | Not Decided Yet |
 
 ```plantuml
 participant "FE" as fe

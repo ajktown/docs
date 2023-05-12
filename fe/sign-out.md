@@ -19,11 +19,12 @@ TODO: This entire file is under writing.
 
 ## Overview
 
-Sign out can be automatically run by the end user
+`Sign out` is defined as the following
 
 - When User clicks `Sign out` button
 - When ASAT Token is expired
 - When ASAT Token is not validated by the API Server
+- When ASAT Token does not exist
 
 ## End user knows their session has been killed when
 
@@ -93,7 +94,6 @@ deactivate user
 
 
 ### ASAT is invalid/expired/non-exist when API is called
-
 
 #### TODO: Implement
 
