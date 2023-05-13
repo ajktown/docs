@@ -3,11 +3,11 @@
 <!-- TOC -->
 
 - [Auth Flow](#auth-flow)
-  - [Sign in with Google](#sign-in-with-google)
+  - [Authentication Flow](#authentication-flow)
 
 <!-- /TOC -->
 
-## Sign in with Google
+## Authentication Flow
 
 
 ```plantuml
