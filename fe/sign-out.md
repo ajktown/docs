@@ -76,6 +76,8 @@ activate user
     activate api
       break if end user is not signed in
       fe <- api: let the FE know that the end user session is unavailable
+      fe -> api: Calls post-sign-out API
+      fe <- api: Removes ASAT HttpOnly Cookie
       fe <- fe: Redirects to welcome page
       fe <- fe: Raise snackbar for "Session Expired"
       fe <- fe: Close the Backdrop
