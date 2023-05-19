@@ -4,12 +4,12 @@
 
 - [API Errors](#api-errors)
   - [Overview](#overview)
+  - [Rules and Suggestions](#rules-and-suggestions)
   - [Allowed Nest JS Exceptions](#allowed-nest-js-exceptions)
     - [401](#401)
       - [UnauthorizedException](#unauthorizedexception)
     - [500](#500)
       - [InternalServerException](#internalserverexception)
-  - [Rules](#rules)
 
 <!-- /TOC -->
 
@@ -17,9 +17,13 @@
 
 Summarizes the errors of AJK Town and their rules.
 
-Please use the standard nest js provided exceptions as much as possible.
 
-Please follow the same responses type, if you need to make a customized exceptions.
+## Rules and Suggestions
+
+1. Please use the standard nest js provided exceptions as much as possible.
+
+1. Please follow the same responses type, if you need to make a customized exceptions.
+
 
 ## Allowed Nest JS Exceptions
 
@@ -56,7 +60,3 @@ Please write in alphabetic order
 }
 ```
 
-## Rules
-
-1. Do not use customized errors. Only use 
-1. Do not use the full name `error`. Always use `err`
