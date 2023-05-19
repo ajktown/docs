@@ -8,7 +8,7 @@ TODO: This entire file is under writing.
   - [Overview](#overview)
   - [End user knows their session has been killed when](#end-user-knows-their-session-has-been-killed-when)
   - [What FE does](#what-fe-does)
-  - [auth/prepare](#authprepare)
+  - [auth/prep](#authprep)
   - [Situations](#situations)
     - [Front Page is refreshed or newly opened](#front-page-is-refreshed-or-newly-opened)
     - [ASAT is invalid/expired/non-exist when API is called](#asat-is-invalidexpirednon-exist-when-api-is-called)
@@ -38,9 +38,9 @@ TODO: This entire file is under writing.
     - Successfully signed out
     - Your session has been expired (Maybe even if it is corrupted)
 
-## auth/prepare
+## auth/prep
 
-AuthPrepare controller of AJK Town is an endpoint that returns the valuable information for the following types of users
+AuthPrep controller of AJK Town is an endpoint that returns the valuable information for the following types of users
 - Frontend Page
 - Other 3rd party API
 
@@ -72,18 +72,20 @@ activate user
   activate fe
     fe -> fe: use-is-app-booted-hook runs
     user <- fe: Opens Backdrop
-    fe -> api: /auth/prepare
+    fe -> api: /auth/prep
     activate api
       break if end user is not signed in
       fe <- api: let the FE know that the end user session is unavailable
+      fe -> api: Calls post-sign-out API
+      fe <- api: Removes ASAT HttpOnly Cookie
       fe <- fe: Redirects to welcome page
       fe <- fe: Raise snackbar for "Session Expired"
       fe <- fe: Close the Backdrop
       user <- fe: User Knows that they must sign in
       end break
-      fe <- api: Let FE know they are signed in. Also attach the refreshed ASAT as HttpOnly Cookie
+      fe <- api: Let FE know they are signed in.
     deactivate api
-    fe -> fe: Redirects to the main application page, if needed
+    fe -> fe: Redirects to the main application page, if end user is on sign-in related pages.
     fe -> fe: Close the Backdrop
     user <- fe: User knows that their session is still valid
   deactivate fe
