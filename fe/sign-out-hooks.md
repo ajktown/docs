@@ -13,7 +13,7 @@
 
 ## Overview
 
-Summarizes each roles of hooks for sign out process of AJK Town applications.
+Summarizes each role of hooks for sign out process of AJK Town applications.
 
 
 ## Hooks
