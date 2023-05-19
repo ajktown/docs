@@ -15,7 +15,11 @@
 
 ## Overview
 
-Summarizes the errors of AJK Town and their rules
+Summarizes the errors of AJK Town and their rules.
+
+Please use the standard nest js provided exceptions as much as possible.
+
+Please follow the same responses type, if you need to make a customized exceptions.
 
 ## Allowed Nest JS Exceptions
 
