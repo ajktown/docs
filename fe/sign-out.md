@@ -83,9 +83,9 @@ activate user
       fe <- fe: Close the Backdrop
       user <- fe: User Knows that they must sign in
       end break
-      fe <- api: Let FE know they are signed in. Also attach the refreshed ASAT as HttpOnly Cookie
+      fe <- api: Let FE know they are signed in.
     deactivate api
-    fe -> fe: Redirects to the main application page, if needed
+    fe -> fe: Redirects to the main application page, if end user is on sign-in related pages.
     fe -> fe: Close the Backdrop
     user <- fe: User knows that their session is still valid
   deactivate fe

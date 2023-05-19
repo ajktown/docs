@@ -5,7 +5,7 @@
 - [Sign Out Hooks](#sign-out-hooks)
   - [Overview](#overview)
   - [Hooks](#hooks)
-    - [useOnClickSignOutApp](#useonclicksignoutapp)
+    - [useOnSignOutApp](#useonsignoutapp)
     - [useIsAppBooted](#useisappbooted)
     - [useApiErrorHook](#useapierrorhook)
 
@@ -18,11 +18,11 @@ Summarizes each roles of hooks for sign out process of AJK Town applications.
 
 ## Hooks
 
-### useOnClickSignOutApp
+### useOnSignOutApp
 
 Runs only when sign out is confirmed
 
-1. Remove HttpOnly Cookies with postSignOut API
+1. Asks API to remove HttpOnly Cookies with postSignOut API[^1]
 
 1. Reset appropriate recoil state reset
 
@@ -48,5 +48,11 @@ Runs only when sign out is confirmed
 
 Catches every error of every api call of AJK Town Frontend applications.
 
-1. If Error is related to authentication, runs [useOnClickSignOutApp](#useonclicksignoutapp). 
+1. If Error is related to authentication, runs [useOnClickSignOutApp](#useonclicksignoutapp).
 
+
+<!-- Footnote -->
+
+[^1]: Note that HttpOnly Cookie cannot be deleted by FE and must be asked by API.
+
+<!-- Footnote -->

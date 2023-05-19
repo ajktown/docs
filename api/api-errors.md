@@ -5,8 +5,10 @@
 - [API Errors](#api-errors)
   - [Overview](#overview)
   - [Allowed Nest JS Exceptions](#allowed-nest-js-exceptions)
-    - [UnauthorizedException](#unauthorizedexception)
-    - [InternalServerException](#internalserverexception)
+    - [401](#401)
+      - [UnauthorizedException](#unauthorizedexception)
+    - [500](#500)
+      - [InternalServerException](#internalserverexception)
   - [Rules](#rules)
 
 <!-- /TOC -->
@@ -19,7 +21,8 @@ Summarizes the errors of AJK Town and their rules
 
 Please write in alphabetic order
 
-### UnauthorizedException
+### 401
+#### UnauthorizedException
 ```json
 {
     "response": {
@@ -33,7 +36,8 @@ Please write in alphabetic order
 }
 ```
 
-### InternalServerException
+### 500
+#### InternalServerException
 
 ```json
 {
