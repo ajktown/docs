@@ -33,6 +33,8 @@ TODO: Link a plantuml diagram after standard doc path is set after release
 
 You may copy (POST) and delete, instead of modifying it.
 
+Even if it is modified, it will be ignored.
+
 ## Get semesters
 
 
