@@ -4,6 +4,7 @@
 
 - [Api Source Directories](#api-source-directories)
   - [Overview](#overview)
+  - [Each Job](#each-job)
   - [Source directory](#source-directory)
     - [Controllers](#controllers)
     - [Domains](#domains)
@@ -21,6 +22,15 @@
 ## Overview
 
 Organize source directories for consistency
+
+
+## Each Job
+
+| Job         | Job                                                                          |
+|:------------|:-----------------------------------------------------------------------------|
+| Controllers | Return .toResDTO() & Prepare atd                                             |
+| Service     | Prepares Model & Return Domain or void for response                          |
+| Domain      | Defines Centralized business actions. Use given model to update db if needed |
 
 ## Source directory 
 
