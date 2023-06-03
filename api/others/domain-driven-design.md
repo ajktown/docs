@@ -5,12 +5,15 @@
 - [Domain Driven Design](#domain-driven-design)
   - [Order](#order)
   - [Every domain has the following methods](#every-domain-has-the-following-methods)
+  - [Statics Method](#statics-method)
     - [fromRawDangerously()](#fromrawdangerously)
     - [fromPostDto() PRIVATE](#frompostdto-private)
     - [fromMdb()](#frommdb)
+  - [Non-Static](#non-static)
     - [post()](#post)
     - [toModel() PRIVATE](#tomodel-private)
     - [toResDTO()](#toresdto)
+    - [insert~()](#insert)
     - [updateFrom~()](#updatefrom)
     - [update() PRIVATE](#update-private)
     - [delete()](#delete)
@@ -26,6 +29,8 @@ Static Post > Static Get > Non-Static Put > Non-Static Delete
 
 
 ## Every domain has the following methods
+
+## Statics Method
 
 ### fromRawDangerously()
 
@@ -47,6 +52,7 @@ Usually takes Document type data and return domain.
 
 this can be also `fromPersistence()` but then `fromMdb()` was chosen for its short method name
 
+## Non-Static
 
 ### post()
 
@@ -67,7 +73,9 @@ Returns the properties of the domain, only the data that end user can see.
 
 Certain hidden data won't be visible to the user.
 
+### insert~()
 
+Unlike Update methods, it simply modifies the data without modifying the persistence.
 
 ### updateFrom~()
 
