@@ -6,15 +6,14 @@
   - [Order](#order)
   - [Every domain has the following methods](#every-domain-has-the-following-methods)
     - [fromRawDangerously()](#fromrawdangerously)
-    - [private fromPostDto()](#private-frompostdto)
-    - [fromRawDoc()](#fromrawdoc)
+    - [fromPostDto() PRIVATE](#frompostdto-private)
     - [fromMdb()](#frommdb)
     - [post()](#post)
-    - [private toModel()](#private-tomodel)
+    - [toModel() PRIVATE](#tomodel-private)
     - [toResDTO()](#toresdto)
     - [updateFrom~()](#updatefrom)
-    - [private update ()](#private-update-)
-    - [delete ()](#delete-)
+    - [update() PRIVATE](#update-private)
+    - [delete()](#delete)
   - [Methods](#methods)
 
 <!-- /TOC -->
@@ -35,13 +34,12 @@ Deprecated method that is usually used by the test.
 Try to delete it as much as possible.
 
 
-### private fromPostDto()
+### fromPostDto() PRIVATE
 
 Return Domain with given DTO (atd is required to write who created the domain)
 
 It is usually private because it is directly called by post() method.
 
-### fromRawDoc()
 
 ### fromMdb()
 
@@ -56,7 +54,7 @@ Returns WordDomain after saving into persistence.
 
 It uses `fromPostDto()` and `toDocument()` methods to save into persistence.
 
-### private toModel()
+### toModel() PRIVATE
 
 Returns model type data that can be saved into persistence.
 
@@ -76,14 +74,14 @@ Certain hidden data won't be visible to the user.
 Updates as the properties. Any name can be given with the tilda(~) sign.
 
 
-### private update ()
+### update() PRIVATE
 
 Updates as the properties of the domain to the persistence.
 
 It is usually private as it is called by other update functions such as `updateFrom~()`
 
 
-### delete ()
+### delete()
 
 Deletes the domain from the persistence.
 

@@ -6,7 +6,7 @@
   - [Overview](#overview)
   - [Semesters Data are modified under the following conditions](#semesters-data-are-modified-under-the-following-conditions)
     - [Word Post X Semester Update](#word-post-x-semester-update)
-    - [Word Gets returns empty string array](#word-gets-returns-empty-string-array)
+    - [Word Get X Potential Semester Delete](#word-get-x-potential-semester-delete)
   - [Semesters Data are NOT modified under the following condition](#semesters-data-are-not-modified-under-the-following-condition)
     - [Word sem is modified (word sem cannot be modified)](#word-sem-is-modified-word-sem-cannot-be-modified)
 
@@ -44,11 +44,11 @@ activate user
     activate api
       api -> db: Find Support
       activate db
-        api <- db: Return Support
+        api <- db: Return SupportRaw
       deactivate db
-      api -> api: Create SupportDomain
+      api -> api: SupportDomain.fromMdb(SupportRaw)
       note right
-        Even if there is no SupportDomain data in db,
+        Even if no SupportRaw was found in db,
         it will simply create a default SupportDomain
         that will be eventually saved in db.
       end note
@@ -56,7 +56,7 @@ activate user
       activate db
         api <- db: Returns response
       deactivate db
-      api -> api: Update SupportDomain
+      api -> api: supportDomain.updateWithWordDoc(wordDoc)
       note right
         Modifies the following attributes
           - addedWordCount
@@ -73,19 +73,44 @@ activate user
   deactivate fe
 deactivate user
 
-
 ```
 
-
-TODO: Link a plantuml diagram after standard doc path is set after release
-
-### Word Gets returns empty string array
+### Word Get X Potential Semester Delete
 
 When end user requests for words with specific semester only for query, if the result is empty
 
 Then the requested semester should be deleted.
 
-TODO: Link a plantuml diagram after standard doc path is set after release
+```plantuml
+
+@startuml
+
+title Word Post X Semester Update
+
+participant "End User" as user
+participant "FE" as fe
+participant "API" as api
+database "MongoDB" as db
+
+activate user
+  user -> fe: User asks words with specific semester
+  note right
+    The specific semester is defined as following
+    when RequestDTO has exactly one key `semester`
+    i.e)
+    {
+      semester: 233 
+    }
+  end note
+  activate fe
+    fe -> api: Sends request to get words
+    activate api
+      
+    deactivate api
+  deactivate fe
+deactivate user
+
+```
 
 ## Semesters Data are NOT modified under the following condition
 
