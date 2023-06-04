@@ -3,9 +3,8 @@
 <!-- TOC -->
 
 - [Domain Driven Design](#domain-driven-design)
-  - [Order](#order)
-  - [Every domain has the following methods](#every-domain-has-the-following-methods)
-  - [Statics Method](#statics-method)
+  - [Overview](#overview)
+  - [Static](#static)
     - [fromRawDangerously()](#fromrawdangerously)
     - [fromPostDto() PRIVATE](#frompostdto-private)
     - [fromMdb()](#frommdb)
@@ -17,20 +16,17 @@
     - [updateFrom~()](#updatefrom)
     - [update() PRIVATE](#update-private)
     - [delete()](#delete)
-  - [Methods](#methods)
 
 <!-- /TOC -->
 
-TODO: Write documentation of DDD
+## Overview
 
-## Order
+How AJK Town defines `Domain Driven Design`.
 
-Static Post > Static Get > Non-Static Put > Non-Static Delete
+Always make sure that the order of methods follow exactly the same as the order below.
 
 
-## Every domain has the following methods
-
-## Statics Method
+## Static
 
 ### fromRawDangerously()
 
@@ -94,12 +90,3 @@ It is usually private as it is called by other update functions such as `updateF
 Deletes the domain from the persistence.
 
 the method contains access control to prevent unauthorized access.
-
-
-
-## Methods
-
-| Suffix      | Method Type | Remarks                       |
-|:------------|:------------|:------------------------------|
-| from, under | static      | When you create a new domain  |
-| to          | non-static  | When you modify to other data |
