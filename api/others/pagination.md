@@ -22,13 +22,15 @@ The generalized pagination mechanism of AJK Town
 
 ```json
 {
-  "pageIndex": 0,
-  "lastPageIndex": 0,
-  "isNextPageExist": false,
-  "totalPages": 1,
-  "totalItems": 65,
-  "itemPerPage": 100,
-  "dataLength": 65,
+  "pagination": {
+    "pageIndex": 0,
+    "lastPageIndex": 0,
+    "isNextPageExist": false,
+    "totalPages": 1,
+    "totalItems": 2,
+    "itemPerPage": 100
+  },
+  "dataLength": 2,
   "data": [
     // ...
   ]
@@ -44,11 +46,11 @@ Straight copy from AJK Town API repository path: src/dto/index.root.ts
 export class PaginationReqDTORoot {
   @IsNumber()
   @IsOptional()
-  pageIndex: string
+  pageIndex: number
 
   @IsNumber()
   @IsOptional()
-  itemsPerPage: string
+  itemsPerPage: number
 }
 ```
 
