@@ -4,6 +4,10 @@
 
 - [Domain Driven Design](#domain-driven-design)
   - [Overview](#overview)
+  - [Constructor](#constructor)
+    - [build~Constructor Method](#buildconstructor-method)
+    - [Private Constructor](#private-constructor)
+    - [get functions](#get-functions)
   - [Static](#static)
     - [fromRawDangerously()](#fromrawdangerously)
     - [fromPostDto() PRIVATE](#frompostdto-private)
@@ -24,6 +28,31 @@
 How AJK Town defines `Domain Driven Design`.
 
 Always make sure that the order of methods follow exactly the same as the order below.
+
+
+## Constructor
+
+### build~Constructor Method
+
+To maintain consistency, privateConstructor may have its own methods to create the domain.
+
+i.e buildIdConstructor => builds id for the domain inside the constructor.
+
+And this method is private / non-static 
+
+### Private Constructor
+```ts
+private constructor(props: Partial<IObject>, atd: AccessTokenDomain) {
+  this.props.id = this.buildIdConstructor(props.code, atd)
+  this.props = props
+}
+```
+### get functions
+```ts
+get property() {
+  return this.props.property
+}
+```
 
 
 ## Static
