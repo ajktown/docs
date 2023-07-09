@@ -5,7 +5,7 @@
 - [API Errors](#api-errors)
   - [Overview](#overview)
   - [Rules](#rules)
-    - [Do not directly throw nest js errors](#do-not-directly-throw-nest-js-errors)
+    - [Do not directly throw nest js exceptions](#do-not-directly-throw-nest-js-exceptions)
 
 <!-- /TOC -->
 
@@ -20,11 +20,11 @@ Yet, to avoid inconsistent error messages, we have to follow some strict rules.
 ## Rules
 
 
-### Do not directly throw nest js errors
-By extending nest js errors, we can define our own errors.
-
+### Do not directly throw nest js exceptions
+By extending nest js exception, we can define our own errors.
+We name our exceptions with suffix `Error`, so we know that we only throw our own exceptions.
 ```ts
-export class DataNotPresentException extends BadRequestException {
+export class DataNotPresentError extends BadRequestException {
   constructor(dataType: string, optional?: PrivateOptional) {
     const messageSuffix = optional.isPlural
       ? 'are not present'
@@ -35,9 +35,9 @@ export class DataNotPresentException extends BadRequestException {
 ```
 
 
-Then we can throw errors 
+Then we can throw our own exceptions like this 
 ```ts
-throw new DataNotPresentException('User email')
+throw new DataNotPresentError('User email')
 ```
 
 do NOT throw errors like this[^2]
