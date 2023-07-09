@@ -4,59 +4,44 @@
 
 - [API Errors](#api-errors)
   - [Overview](#overview)
-  - [Rules and Suggestions](#rules-and-suggestions)
-  - [Allowed Nest JS Exceptions](#allowed-nest-js-exceptions)
-    - [401](#401)
-      - [UnauthorizedException](#unauthorizedexception)
-    - [500](#500)
-      - [InternalServerException](#internalserverexception)
+  - [Rules](#rules)
+    - [Do not directly throw nest js errors](#do-not-directly-throw-nest-js-errors)
 
 <!-- /TOC -->
 
 ## Overview
 
-Summarizes the errors of AJK Town and their rules.
+Nest JS offers [Nest JS managed/defined errors](https://docs.nestjs.com/exception-filters#built-in-http-exceptions) and AJK Town takes advantages of it. [^1]
+
+Yet, to avoid inconsistent error messages, we have to follow some strict rules.
+
+[^1]: Any nest js defined errors will be automatically caught by nest js. No need to define error filters for them.
+
+## Rules
 
 
-## Rules and Suggestions
+### Do not directly throw nest js errors
+By extending nest js errors, we can define our own errors.
 
-1. Please use the standard nest js provided exceptions as much as possible.
-
-1. Please follow the same responses type, if you need to make a customized exceptions.
-
-
-## Allowed Nest JS Exceptions
-
-Please write in alphabetic order
-
-### 401
-#### UnauthorizedException
-```json
-{
-    "response": {
-        "statusCode": 401,
-        "message": "Unauthorized"
-    },
-    "status": 401,
-    "options": {},
-    "message": "Unauthorized",
-    "name": "UnauthorizedException"
+```ts
+export class DataNotPresentException extends BadRequestException {
+  constructor(dataType: string, optional?: PrivateOptional) {
+    const messageSuffix = optional.isPlural
+      ? 'are not present'
+      : 'is not present'
+    super(`${dataType} ${messageSuffix}`) // i.e) User email is not present
+  }
 }
 ```
 
-### 500
-#### InternalServerException
 
-```json
-{
-    "response": {
-        "statusCode": 500,
-        "message": "Internal Server Error"
-    },
-    "status": 500,
-    "options": {},
-    "message": "Internal Server Error",
-    "name": "InternalServerErrorException"
-}
+Then we can throw errors 
+```ts
+throw new DataNotPresentException('User email')
 ```
 
+do NOT throw errors like this[^2]
+```ts
+throw new BadRequestException('User email is not present')
+```
+[^2]: This is not great, because we can't reuse the error message. If we want to change the error message, we have to change it everywhere.
