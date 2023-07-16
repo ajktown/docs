@@ -29,6 +29,13 @@ eksctl get clusters --region ap-northeast-1
 
 ## Change your region so that you do not have to specify region for every command
 
+## Requirements for instance 
+
+`t4g.mi`
+|   size    |                 remarks                 | Recommend? |
+|:---------:|:---------------------------------------:|:----------:|
+| t4g.micro |     barely handles. Very unstable.      |     No     |
+| t4g.small | handles 1 pod each for api and wordnote |    Yes     |
 
 ## Create Cluster (ARM)
 ```sh
