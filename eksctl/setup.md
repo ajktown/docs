@@ -29,12 +29,21 @@ eksctl get clusters --region ap-northeast-1
 
 ## Change your region so that you do not have to specify region for every command
 
-## Create Cluster
+
+## Create Cluster (ARM)
+```sh
+eksctl create cluster \
+  --name ajktown-cluster-arm \
+  --region ap-northeast-1 \
+  --node-type t4g.small
+```
+
+## Create Cluster  (x86)
 
 Creating a cluster takes about 10+ minutes
 ```sh
 eksctl create cluster \
-  --name test-cluster \
+  --name ajktown-cluster-x86 \
   --region ap-northeast-1 \
   --node-type t2.micro
 ```
