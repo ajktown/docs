@@ -40,7 +40,7 @@ eksctl get clusters --region ap-northeast-1
 ## Create Cluster (ARM)
 ```sh
 eksctl create cluster \
-  --name ajktown-cluster-arm \
+  --name ajktown-arm-cluster \
   --region ap-northeast-1 \
   --node-type t4g.small
 ```
@@ -50,7 +50,7 @@ eksctl create cluster \
 Creating a cluster takes about 10+ minutes
 ```sh
 eksctl create cluster \
-  --name ajktown-cluster-x86 \
+  --name ajktown-x86-cluster \
   --region ap-northeast-1 \
   --node-type t2.micro
 ```
