@@ -1,5 +1,19 @@
 # eksctl setup
 
+<!-- TOC -->
+
+- [eksctl setup](#eksctl-setup)
+  - [Overview](#overview)
+  - [Install eksctl](#install-eksctl)
+  - [Check your default region of AWS](#check-your-default-region-of-aws)
+  - [Requirements for instance](#requirements-for-instance)
+  - [Create cluster with node type](#create-cluster-with-node-type)
+    - [Create Cluster (ARM)](#create-cluster-arm)
+    - [Create Cluster  (x86)](#create-cluster--x86)
+  - [Get Cluster](#get-cluster)
+- [Delete Cluster](#delete-cluster)
+
+<!-- /TOC -->
 
 ## Overview
 
