@@ -8,6 +8,8 @@
   - [Ingress File](#ingress-file)
   - [Apply ingress](#apply-ingress)
   - [How to check ALB on AWS Web Console](#how-to-check-alb-on-aws-web-console)
+    - [Search LoadBalacner on Console Search](#search-loadbalacner-on-console-search)
+    - [Check Load Balancer](#check-load-balancer)
 
 <!-- /TOC -->
 
@@ -43,5 +45,11 @@ Once you apply ingress successfully, the `aws-load-balancer-controller` we have 
 
 ## How to check ALB on AWS Web Console
 
+### Search LoadBalacner on Console Search
+![Search LoadBalancer on Console Search](./assets/search_load_balancer_on_aws_console.png)
 
 
+### Check Load Balancer
+![created load balancer](./assets/created_load_balancer.png)
+
+You can see that the load balancer named `k8s-ajk...` is created.
