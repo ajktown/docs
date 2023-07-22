@@ -45,7 +45,7 @@ If you do not change your region, you have to specify region for every command.
 eksctl get clusters --region ap-northeast-1
 ```
 
-We highly recommend to modify the region using `vi`
+We highly recommend to modify the region using `vi`, to skip specifying your deploying region for every command.
 ```sh
 $ vi ~/.aws/config
 ```
