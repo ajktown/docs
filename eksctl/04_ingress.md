@@ -6,6 +6,8 @@
   - [Overview](#overview)
   - [TODOs](#todos)
   - [Ingress File](#ingress-file)
+  - [Apply ingress](#apply-ingress)
+  - [How to check ALB on AWS Web Console](#how-to-check-alb-on-aws-web-console)
 
 <!-- /TOC -->
 
@@ -28,5 +30,18 @@ average requests to AJK Town services.
 
 ## Ingress File
 
-Ingress is managed within the same directory with the file name [05_ingress.yaml](./05_ingress.yaml)
+Ingress is managed within the same directory with the file name [04_ingress.yaml](./04_ingress.yaml)
+
+
+## Apply ingress
+
+```sh
+kubectl apply -f 04_ingress.yaml
+```
+
+Once you apply ingress successfully, the `aws-load-balancer-controller` we have installed previously will detect and create ALB for each ingress.
+
+## How to check ALB on AWS Web Console
+
+
 
