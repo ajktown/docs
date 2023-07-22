@@ -18,7 +18,7 @@
 
 ## Overview
 
-eksctl is a simple CLI tool for creating clusters on EKS - Amazon's new managed Kubernetes service for EC2. It is written in Go, and uses CloudFormation.
+eksctl is a simple CLI tool for creating clusters on EKS. It will create separate vpc, security groups etc for your sake. 
 
 eksctl is explained in a straightforward manner in [this video](https://youtu.be/p6xDCz00TxU).
 
