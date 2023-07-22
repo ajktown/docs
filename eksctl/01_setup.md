@@ -4,6 +4,7 @@
 
 - [eksctl setup](#eksctl-setup)
   - [Overview](#overview)
+  - [Tips](#tips)
   - [Install eksctl](#install-eksctl)
   - [Check your default region of AWS](#check-your-default-region-of-aws)
   - [Requirements for instance](#requirements-for-instance)
@@ -21,6 +22,9 @@ eksctl is a simple CLI tool for creating clusters on EKS - Amazon's new managed 
 
 eksctl is explained in a straightforward manner in [this video](https://youtu.be/p6xDCz00TxU).
 
+## Tips 
+
+If something does not go well as it is supposed to, I highly recommend to [delete cluster](#delete-cluster) and [create it again](#create-cluster-with-node-type).
 
 ## Install eksctl
 
@@ -63,7 +67,7 @@ If you build your image with arm architecture, you can use `t4g family`[^3].
 
 If you build your image with x86 architecture, you can use `t2 family`[^3].
 
-[^3]: You may use similar family for the next generation of instance type.
+[^3]: You may use similar family for the next generation of instance type
 
 
 ### Create Cluster (ARM)
