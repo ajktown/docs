@@ -4,6 +4,7 @@
 
 - [aws-load-balancer-controller](#aws-load-balancer-controller)
   - [Overview](#overview)
+  - [Why](#why)
   - [How to install](#how-to-install)
 
 <!-- /TOC -->
@@ -14,6 +15,11 @@
 
 It also watches the deletion of ingress and deletes the load balancer once the ingress is deleted.
 
+## Why
+
+Instead of creating your own managed reverse proxy, you can simply use the `AWS Load Balancer Controller` to create and manage the load balancer for you.
+
+We highly recommend to install `aws-load-balancer-controller` before you deploy any applications on the EKS clsuter.
 
 ## How to install
 
