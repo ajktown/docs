@@ -24,7 +24,7 @@ eksctl is explained in a straightforward manner in [this video](https://youtu.be
 
 ## Tips 
 
-If something does not go well as it is supposed to, I highly recommend to [delete cluster](#delete-cluster) and [create it again](#create-cluster-with-node-type).
+If something does not go well as it is supposed to, I highly recommend to [delete cluster](#delete-cluster) and [create it again](#create-cluster-with-node-type). And then start from the beginning.
 
 ## Install eksctl
 
