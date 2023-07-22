@@ -10,7 +10,7 @@
 <!-- /TOC -->
 
 ## Overview
-TODO: Write
+We finally deploy our applications and their services on the EKS cluster.
 
 ## How to apply k8s resources
 
