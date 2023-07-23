@@ -7,6 +7,7 @@
   - [Purpose](#purpose)
     - [Copy .env.local.sample into .env.local](#copy-envlocalsample-into-envlocal)
     - [Prepare env value](#prepare-env-value)
+    - [Apply generated env value to .env](#apply-generated-env-value-to-env)
     - [Install packages](#install-packages)
     - [Run API Server](#run-api-server)
 
@@ -31,6 +32,12 @@ cp .env.local .env
 ```sh
 echo "MDB_LOCAL_URI=mongodb://root:${MDB_PASSWORD}@localhost:57017/?authSource=admin"
 echo "JWT_TOKEN_SECRET=$(openssl rand -base64 32)"
+```
+
+### Apply generated env value to .env
+
+```sh
+vi ~/ajktown/.env
 ```
 
 ### Install packages
