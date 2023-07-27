@@ -8,7 +8,7 @@
     - [Install docker](#install-docker)
     - [Choose your password for your mongo db server](#choose-your-password-for-your-mongo-db-server)
     - [Run the new container with the downloaded image](#run-the-new-container-with-the-downloaded-image)
-    - [Crate a directory for ajktown project](#crate-a-directory-for-ajktown-project)
+    - [Creae a directory for ajktown project](#creae-a-directory-for-ajktown-project)
     - [Clone Projects](#clone-projects)
     - [Copy .env.local.sample into .env.local](#copy-envlocalsample-into-envlocal)
     - [Install packages](#install-packages)
@@ -53,7 +53,7 @@ docker run -d --name mongodb -p 57017:27017 \
 mongo 
 ```
 
-### Crate a directory for ajktown project
+### Creae a directory for ajktown project
 
 ```sh
 mkdir ~/ajktown
