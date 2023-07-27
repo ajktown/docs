@@ -1,8 +1,8 @@
-# Env Setup
+# Api Setup
 
 <!-- TOC -->
 
-- [Env Setup](#env-setup)
+- [Api Setup](#api-setup)
   - [Overview](#overview)
   - [Purpose](#purpose)
     - [Copy .env.local.sample into .env.local](#copy-envlocalsample-into-envlocal)

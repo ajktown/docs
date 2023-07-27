@@ -1,8 +1,8 @@
-# Env Setup
+# Env Setup; Clone Projects
 
 <!-- TOC -->
 
-- [Env Setup](#env-setup)
+- [Env Setup; Clone Projects](#env-setup-clone-projects)
   - [Overview](#overview)
   - [Purpose](#purpose)
     - [Install docker](#install-docker)
@@ -10,9 +10,6 @@
     - [Run the new container with the downloaded image](#run-the-new-container-with-the-downloaded-image)
     - [Creae a directory for ajktown project](#creae-a-directory-for-ajktown-project)
     - [Clone Projects](#clone-projects)
-    - [Copy .env.local.sample into .env.local](#copy-envlocalsample-into-envlocal)
-    - [Install packages](#install-packages)
-    - [Run Frontend](#run-frontend)
 
 <!-- /TOC -->
 
@@ -67,24 +64,4 @@ cd ~/ajktown
 git clone https://github.com/ajktown/docs.git
 git clone https://github.com/ajktown/wordnote.git
 git clone https://github.com/ajktown/api.git
-```
-
-
-### Copy .env.local.sample into .env.local
-
-
-```sh
-cd ~/ajktown/wordnote
-cp .env.local.sample .env.local
-```
-
-### Install packages
-```sh
-# In yarn, $ yarn == $ yarn install
-yarn
-```
-### Run Frontend
-
-```sh
-yarn dev 
 ```
