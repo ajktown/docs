@@ -10,7 +10,7 @@
 <!-- /TOC -->
 
 ## Overview
-step by step
+You will check if ajktown applications are running on your local machine.
 
 ## Purpose
 Although every step might be possibly wrong as the time passes, it gives a general idea of how to set up the environment.

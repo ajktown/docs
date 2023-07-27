@@ -17,7 +17,8 @@
 <!-- /TOC -->
 
 ## Overview
-step by step
+This is a step by step tutorial to set up the environment for ajktown project.
+You will be cloning projects, installing packages, set environment variables, and run ajktown applications on your local machine.
 
 ## Purpose
 Although every step might be possibly wrong as the time passes, it gives a general idea of how to set up the environment.

@@ -14,7 +14,7 @@
 <!-- /TOC -->
 
 ## Overview
-step by step
+You will set up env data for api application of ajktown project.
 
 ## Purpose
 Although every step might be possibly wrong as the time passes, it gives a general idea of how to set up the environment.
@@ -49,5 +49,5 @@ yarn
 ### Run API Server
 
 ```sh
-yarn dev 
+yarn dev
 ```
