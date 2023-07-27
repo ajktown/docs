@@ -1,8 +1,8 @@
-# Env Setup; Clone Projects
+# Env Setup: Clone Projects
 
 <!-- TOC -->
 
-- [Env Setup; Clone Projects](#env-setup-clone-projects)
+- [Env Setup: Clone Projects](#env-setup-clone-projects)
   - [Overview](#overview)
   - [Purpose](#purpose)
     - [Install docker](#install-docker)

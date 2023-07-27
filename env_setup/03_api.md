@@ -6,6 +6,7 @@
   - [Overview](#overview)
   - [Purpose](#purpose)
     - [Copy .env.local.sample into .env.local](#copy-envlocalsample-into-envlocal)
+    - [Double check your MDB_PASSWORD](#double-check-your-mdb_password)
     - [Prepare env value](#prepare-env-value)
     - [Apply generated env value to .env](#apply-generated-env-value-to-env)
     - [Install packages](#install-packages)
@@ -26,6 +27,16 @@ Although every step might be possibly wrong as the time passes, it gives a gener
 cd ~/ajktown/api
 cp .env.local .env
 ```
+
+### Double check your MDB_PASSWORD
+
+```sh
+echo "MDB_PASSWORD: $MDB_PASSWORD"
+# MDB_PASSWORD: local_root_XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```
+
+if it prints nothing for MDB_PASSWORD, please set up MDB_PASSWORD [here](./01_clone-projects.md#choose-your-password-for-your-mongo-db-server).
+
 
 ### Prepare env value
 
