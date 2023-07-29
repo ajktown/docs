@@ -21,6 +21,8 @@ Unlike other k8s yaml files `deployment.yaml` or `service.yaml`, `secret.yaml` m
 
 [Here](./05_secret.yaml) is the template for `secret.yaml` file.
 
+Warning! Do not change the key for the template, as the keys are depended by the [deployment.yaml](https://github.com/ajktown/api/blob/19a3181bb1bf3206954529a314534d1099f4fea4/k8s/deployment.yaml#L20-L45) file of ajktown api.
+
 ## Create empty secret.yaml file
 
 WARNING! Make sure that the file name is `secret.yaml`  so that it can be gitignored and not become public.
