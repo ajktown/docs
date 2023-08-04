@@ -43,3 +43,4 @@ The VPC UI these days is super convinient.
 [^2]: Free up to 30Gb
 
 ![instance_created](./assets/instance_created.png)
+

@@ -21,3 +21,4 @@ TODO: The estimated price is not yet confirmed yet. Write here.
 - AWS
   - VPC
   - EC2
+- Bash
