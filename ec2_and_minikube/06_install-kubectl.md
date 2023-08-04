@@ -44,4 +44,3 @@ kubectl version --output=yaml
 ## Reference
 
 - https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
-- https://crishantha.medium.com/running-minikube-on-aws-ec2-e845337a956
