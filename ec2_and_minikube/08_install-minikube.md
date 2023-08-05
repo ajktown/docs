@@ -10,6 +10,7 @@
 
 ## Overview
 
+TODO: Will install k3s instead of minikube?
 
 ## Install
 
