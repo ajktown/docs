@@ -42,7 +42,8 @@ You need to manually base64 encode it. (Remember that base64 is not encryption a
 
 ```sh
 
-echo  "this-is-your-secret-google-client-id" | base64 
+# Always make sure to put -n, as without it, it will contain \n which then won't work as expected
+echo -n  "this-is-your-secret-google-client-id" | base64
 # result sample)
 # dGhpcy1pcy15b3VyLXNlY3JldC1nb29nbGUtY2xpZW50LWlkCg==
 ```
