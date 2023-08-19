@@ -9,7 +9,8 @@
   - [Handlers](#handlers)
   - [Components](#components)
   - [Component's functions](#components-functions)
-  - [Components Naming Rule](#components-naming-rule)
+  - [Components Naming Rule for Atom](#components-naming-rule-for-atom)
+  - [Components Naming Rule for Molecule & Organism](#components-naming-rule-for-molecule--organism)
 
 <!-- /TOC -->
 
@@ -52,6 +53,7 @@ Components must start with its prefix from the following
 - atom
 
 
+
 ## Component's functions
 
 Every component's props given function must start with on~ (i.e onClick)
@@ -61,10 +63,17 @@ Every component's internal function must start with handle~ (i.e handleClick)
 
 Every component has its inside function with useCallback and useMemo for any memorization. 
 
-## Components Naming Rule
+## Components Naming Rule for Atom
+
+| Type  | Suffix | Explanation                                        | Example                                       |
+|:------|:-------|:---------------------------------------------------|:----------------------------------------------|
+| Basic | N/A    | Any basic atom does not get suffix                 | LanguageSelector                              |
+| Part  | N/A    | Atom sized part component for molecule or organism | WordCardExamplePart, WordCardFavoriteIconPart |
+
+## Components Naming Rule for Molecule & Organism
 
 | Type  | Suffix | Explanation                                        | Example       |
 |:------|:-------|:---------------------------------------------------|:--------------|
-| Basic | N/A    | Any basic component does not get suffix            | WordCard      |
+| Basic | N/A    | Any basic Molecule or Organism does not get suffix | WordCard      |
 | Chunk | Chunk  | More than one basic components                     | WordCardChunk |
 | Frame | Frame  | Component Chunk + Helper settings and tools within | WordCardFrame |
