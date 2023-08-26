@@ -1,8 +1,8 @@
-# EC2 and Minikube
+# EC2 and K3s
 
 <!-- TOC -->
 
-- [EC2 and Minikube](#ec2-and-minikube)
+- [EC2 and K3s](#ec2-and-k3s)
   - [Overview](#overview)
   - [Create VPC](#create-vpc)
   - [Create AWS EC2 Instance on the VPC](#create-aws-ec2-instance-on-the-vpc)
@@ -11,7 +11,7 @@
 
 ## Overview
 
-Create VPC and EC2 instance to run the minikube
+Create VPC and EC2 instance to run the k3s
 
 
 ## Create VPC
@@ -27,14 +27,14 @@ The VPC UI these days is super convinient.
 
 |          Key          |                Your Input                 |
 |:---------------------:|:-----------------------------------------:|
-|         Name          |           ajktown-minikube-ec2            |
+|         Name          |              ajktown-k3s-ec2              |
 |          AMI          | Amazon Linux 2 AMI (HVM), SSD Volume Type |
 |     Architecture      |               64-bit (Arm)                |
 |     Instance Type     |                 t4g.small                 |
-|       Key pair        |         ajktown-minikube-ec2 [^1]         |
-|          VPC          |           ajktown-minikube-vpc            |
+|       Key pair        |           ajktown-k3s-ec2 [^1]            |
+|          VPC          |              ajktown-k3s-vpc              |
 | Auto Assign Public IP |                  Enable                   |
-|    Security Group     |       ajktown-minikube-ec2-sg [^1]        |
+|    Security Group     |          ajktown-k3s-ec2-sg [^1]          |
 |          EBS          |                 30Gb[^2]                  |
 
 

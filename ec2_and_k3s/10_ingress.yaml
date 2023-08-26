@@ -3,12 +3,20 @@ kind: Ingress
 metadata:
   name: ajktown-ingress
   namespace: ajktown
-  annotations:
-    kubernetes.io/ingress.class: nginx
   labels:
     app: my-app
 spec:
   rules:
+    - host: testapi.ajktown.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ajktown-wordnote-svc
+                port:
+                  number: 80
     - host: testapi.ajktown.com
       http:
         paths:

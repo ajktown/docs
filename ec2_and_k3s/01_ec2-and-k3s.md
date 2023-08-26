@@ -1,8 +1,8 @@
-# EC2 and Minikube
+# EC2 and K3s
 
 <!-- TOC -->
 
-- [EC2 and Minikube](#ec2-and-minikube)
+- [EC2 and K3s](#ec2-and-k3s)
   - [Overview](#overview)
   - [Estimated Price](#estimated-price)
   - [Prerequisite Knowledge](#prerequisite-knowledge)
@@ -11,7 +11,7 @@
 
 ## Overview
 
-Although you can simply deploy your application with eksctl like the instruction we provide [here](eksctl/01_setup.md), the price of EKS is not cheap. This instruction will let you use simple EC2 instance and minikube to deploy your application.
+Although you can simply deploy your application with eksctl like the instruction we provide [here](eksctl/01_setup.md), the price of EKS is not cheap. This instruction will let you use simple EC2 instance and k3s to deploy your application.
 
 ## Estimated Price
 
