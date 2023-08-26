@@ -13,6 +13,10 @@
     - [Create Cluster  (x86)](#create-cluster--x86)
   - [Get Cluster](#get-cluster)
 - [Delete Cluster](#delete-cluster)
+  - [Delete ingress](#delete-ingress)
+  - [Delete Services](#delete-services)
+  - [Delete Everything](#delete-everything)
+  - [Finally, delete the cluster](#finally-delete-the-cluster)
 
 <!-- /TOC -->
 
@@ -100,7 +104,20 @@ eksctl get cluster
 ```
 
 # Delete Cluster
-Deleting a cluster takes about 5+ minutes
+Deleting a cluster takes about 5+ minutes.
+
+Every service and its ingress must be deleted, before you delete the cluster itself.
+
+If you do not follow, sometimes the eksctl delete cluster command will fail and you will have to manually delete the cluster on AWS Console.
+
+## Delete ingress
+
+## Delete Services
+
+## Delete Everything
+
+## Finally, delete the cluster
+
 ```sh
 eksctl delete cluster --name <your-cluster-name>
 ```
