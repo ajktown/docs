@@ -20,12 +20,10 @@ The VPC UI these days is super convenient.
 
 ![vpc_automatic_creation_ui](./assets/vpc_automatic_creation_ui.png)
 
-| Key  |        Your Input         |
-|:----:|:-------------------------:|
-| Name | Any VPC name you want[^1] |
+| Key  |       Your Input        |
+|:----:|:-----------------------:|
+| Name | ajktown-k3s-cluster-vpc |
 
-
-[^1]: `ajktown-k3s-cluster-vpc` is recommended
 
 ## Create AWS EC2 Instance on the VPC
 
@@ -34,15 +32,15 @@ The VPC UI these days is super convenient.
 
 |          Key          |                Your Input                 |
 |:---------------------:|:-----------------------------------------:|
-|         Name          |                   [^1]                    |
+|         Name          |            ajktown-k3s-cluster            |
 |          AMI          | Amazon Linux 2 AMI (HVM), SSD Volume Type |
 |     Architecture      |               64-bit (Arm)                |
 |     Instance Type     |                 t4g.small                 |
 |       Key pair        |         ajktown-k3s-cluster [^2]          |
-|          VPC          |              ajktown-k3s-vpc              |
+|          VPC          |          ajktown-k3s-cluster-vpc          |
 | Auto Assign Public IP |                  Enable                   |
 |    Security Group     |        ajktown-k3s-cluster-sg [^2]        |
-|          EBS          |                 30Gb[^3]                  |
+|          EBS          |               30Gb[^3] gp3                |
 
 
 [^2]: Recommend to create its own for the instance
