@@ -5,6 +5,11 @@
 
 Install K9s for easier management of K8s resources
 
+## Run as sudo
+
+```sh
+sudo bash
+```
 
 
 ## Install

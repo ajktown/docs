@@ -16,7 +16,8 @@ AWS Security Group must be modified to allow HTTP and HTTPS traffic to the insta
 ## Modify Security Group
 
 
-| Type  | Port | Source        |
-|:------|:-----|:--------------|
-| HTTP  | 80   | 0.0.0.0 (All) |
-| HTTPS | 443  | 0.0.0.0 (All) |
+| Type  | Port | Source        | Description                       |
+|:------|:-----|:--------------|:----------------------------------|
+| HTTP  | 80   | 0.0.0.0 (All) | Allow HTTP traffic from anywhere  |
+| HTTPS | 443  | 0.0.0.0 (All) | Allow HTTPS traffic from anywhere |
+| SSH   | 22   | 0.0.0.0 (All) | Allow SSH traffic from anywhere   |

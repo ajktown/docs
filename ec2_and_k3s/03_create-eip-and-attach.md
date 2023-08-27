@@ -24,7 +24,7 @@ Please do google search if you do not know how to create EIP
 
 Name your EIP with `<instance_name>-eip`
 
-i.e) ajktown-k3s-ec2-eip
+i.e) ajktown-k3s-cluster-eip
 
 ## Attach the EIP to the EC2
 

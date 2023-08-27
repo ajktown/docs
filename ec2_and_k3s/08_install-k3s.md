@@ -5,6 +5,11 @@
 ## Overview
 
 
+## Run as sudo
+
+```sh
+sudo bash
+```
 
 
 ## Install & Check
@@ -31,7 +36,8 @@ echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-Check
+## Enable dok3scker service at AMI boot time & start
+
 
 ```sh
 kubectl get nodes

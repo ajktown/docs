@@ -5,6 +5,7 @@
 
 - [Install Kubectl](#install-kubectl)
   - [Overview](#overview)
+  - [Run as sudo](#run-as-sudo)
   - [Install Kubectl](#install-kubectl-1)
   - [Check installed kubectl](#check-installed-kubectl)
   - [Reference](#reference)
@@ -13,6 +14,12 @@
 
 ## Overview
 
+
+## Run as sudo
+
+```sh
+sudo bash
+```
 
 ## Install Kubectl
 
