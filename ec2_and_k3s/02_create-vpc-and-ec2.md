@@ -16,9 +16,16 @@ Create VPC and EC2 instance to run the k3s
 
 ## Create VPC
 
-The VPC UI these days is super convinient.
+The VPC UI these days is super convenient.
 
 ![vpc_automatic_creation_ui](./assets/vpc_automatic_creation_ui.png)
+
+| Key  |        Your Input         |
+|:----:|:-------------------------:|
+| Name | Any VPC name you want[^1] |
+
+
+[^1]: `ajktown-k3s-cluster-vpc` is recommended
 
 ## Create AWS EC2 Instance on the VPC
 
@@ -27,20 +34,20 @@ The VPC UI these days is super convinient.
 
 |          Key          |                Your Input                 |
 |:---------------------:|:-----------------------------------------:|
-|         Name          |              ajktown-k3s-ec2              |
+|         Name          |                   [^1]                    |
 |          AMI          | Amazon Linux 2 AMI (HVM), SSD Volume Type |
 |     Architecture      |               64-bit (Arm)                |
 |     Instance Type     |                 t4g.small                 |
-|       Key pair        |           ajktown-k3s-ec2 [^1]            |
+|       Key pair        |         ajktown-k3s-cluster [^2]          |
 |          VPC          |              ajktown-k3s-vpc              |
 | Auto Assign Public IP |                  Enable                   |
-|    Security Group     |          ajktown-k3s-ec2-sg [^1]          |
-|          EBS          |                 30Gb[^2]                  |
+|    Security Group     |        ajktown-k3s-cluster-sg [^2]        |
+|          EBS          |                 30Gb[^3]                  |
 
 
-[^1]: Recommend to create its own for the instance
+[^2]: Recommend to create its own for the instance
 
-[^2]: Free up to 30Gb
+[^3]: Free up to 30Gb
 
 ![instance_created](./assets/instance_created.png)
 
