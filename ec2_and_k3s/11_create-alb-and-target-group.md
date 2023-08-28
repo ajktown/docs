@@ -5,7 +5,7 @@
 Name: ajktown-k3s-cluster-tg
 HTTPS 443 first[^1]
 VPC: ajktown-k3s-cluster-vpc
-HTTP2
+HTTP1
 Health check: HTTP
 Healtcheck path: /
 
@@ -25,6 +25,7 @@ Mapping: all subnets
 
 Listner:
 HTTPS 443 ajktown-k3s-cluster-tg
+security group: ajktown-k3s-cluster-sg
 
 
 ACM: 
