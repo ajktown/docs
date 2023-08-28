@@ -32,6 +32,16 @@ spec:
                 name: ajktown-api-svc
                 port:
                   number: 80
+    - host: dnsapi.ajktown.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ajktown-api-svc
+                port:
+                  number: 80
     - host: testfe.ajktown.com
       http:
         paths:
