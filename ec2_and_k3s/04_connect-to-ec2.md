@@ -24,5 +24,6 @@ sudo ssh -i "k3s-ec2-ajktown.pem" ec2-user@ec2-54-238-235-29.ap-northeast-1.comp
 
 [^1]: Highly recommend to alias the command above for future use so that you can simply do the following command
   ```sh
-    ajktown-ec2
+    ajktown_connect_command="ssh -i "censored-pem-name.pem" ec2-user@ec2-censored-ip-address.ap-northeast-1.compute.amazonaws.com"
+    alias ajktown="cd /Users/ajk/to/the/path/credentials/ajktown_k3s_cluster && $ajktown_connect_command"
   ```
