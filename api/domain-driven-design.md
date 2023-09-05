@@ -11,6 +11,7 @@
   - [Static](#static)
     - [fromRawDangerously()](#fromrawdangerously)
     - [fromPostDto() PRIVATE](#frompostdto-private)
+    - [fromMdbByAtd()](#frommdbbyatd)
     - [fromMdb()](#frommdb)
   - [Non-Static](#non-static)
     - [post()](#post)
@@ -69,6 +70,19 @@ Try to delete it as much as possible.
 Return Domain with given DTO (atd is required to write who created the domain)
 
 It is usually private because it is directly called by post() method.
+
+### fromMdbByAtd()
+
+Some of the resources like `support` or `preference` are automatically created by the system.
+
+This method is used to create the domain with the given atd, acquired by successfully signed in user.
+
+Usually the system checks the following thing
+- If it does not exist => Create a new one
+- If it is more than 1 => Error => Leave the first one as the valid one and delete the rest of them
+
+Usually it depends on `fromMdb` method to finally return domain with either newly-created data or existing data.
+
 
 
 ### fromMdb()
