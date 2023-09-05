@@ -9,6 +9,7 @@
     - [Private Constructor](#private-constructor)
     - [get functions](#get-functions)
   - [Static](#static)
+    - [underDevEnv()](#underdevenv)
     - [fromRawDangerously()](#fromrawdangerously)
     - [fromPostDto() PRIVATE](#frompostdto-private)
     - [fromMdbByAtd()](#frommdbbyatd)
@@ -57,6 +58,10 @@ get property() {
 
 
 ## Static
+
+### underDevEnv()
+
+Method only used under development environment. non-dev environment will throw an error.
 
 ### fromRawDangerously()
 
