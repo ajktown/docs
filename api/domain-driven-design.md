@@ -15,10 +15,10 @@
     - [fromMdb()](#frommdb)
   - [Non-Static](#non-static)
     - [post()](#post)
-    - [toModel() PRIVATE](#tomodel-private)
+    - [toDoc() PRIVATE](#todoc-private)
     - [toResDTO()](#toresdto)
     - [insert~()](#insert)
-    - [updateFrom~()](#updatefrom)
+    - [updateWith~()](#updatewith)
     - [update() PRIVATE](#update-private)
     - [delete()](#delete)
 
@@ -99,9 +99,9 @@ Returns WordDomain after saving into persistence.
 
 It uses `fromPostDto()` and `toDocument()` methods to save into persistence.
 
-### toModel() PRIVATE
+### toDoc() PRIVATE
 
-Returns model type data that can be saved into persistence.
+Returns doc type data that can be saved into persistence.
 
 It is usually private because it is directly called by post() method.
 
@@ -116,9 +116,15 @@ Certain hidden data won't be visible to the user.
 
 Unlike Update methods, it simply modifies the data without modifying the persistence.
 
-### updateFrom~()
+### updateWith~()
 
 Updates as the properties. Any name can be given with the tilda(~) sign.
+
+
+Examples:
+- updateWithPostedWord
+- updateWithPutDto
+- updateWithDeletedWord
 
 
 ### update() PRIVATE
