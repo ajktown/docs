@@ -10,6 +10,7 @@
     - [get functions](#get-functions)
   - [Static](#static)
     - [underDevEnv()](#underdevenv)
+    - [getDefault()](#getdefault)
     - [fromRawDangerously()](#fromrawdangerously)
     - [fromPostDto() PRIVATE](#frompostdto-private)
     - [fromMdbByAtd()](#frommdbbyatd)
@@ -62,6 +63,10 @@ get property() {
 ### underDevEnv()
 
 Method only used under development environment. non-dev environment will throw an error.
+
+### getDefault()
+Returns the basic domain with default values.
+Usually used when end user has no data yet.
 
 ### fromRawDangerously()
 
