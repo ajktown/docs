@@ -9,15 +9,17 @@
     - [Private Constructor](#private-constructor)
     - [get functions](#get-functions)
   - [Static](#static)
+    - [underDevEnv()](#underdevenv)
     - [fromRawDangerously()](#fromrawdangerously)
     - [fromPostDto() PRIVATE](#frompostdto-private)
+    - [fromMdbByAtd()](#frommdbbyatd)
     - [fromMdb()](#frommdb)
   - [Non-Static](#non-static)
     - [post()](#post)
-    - [toModel() PRIVATE](#tomodel-private)
+    - [toDoc() PRIVATE](#todoc-private)
     - [toResDTO()](#toresdto)
     - [insert~()](#insert)
-    - [updateFrom~()](#updatefrom)
+    - [updateWith~()](#updatewith)
     - [update() PRIVATE](#update-private)
     - [delete()](#delete)
 
@@ -57,6 +59,10 @@ get property() {
 
 ## Static
 
+### underDevEnv()
+
+Method only used under development environment. non-dev environment will throw an error.
+
 ### fromRawDangerously()
 
 Deprecated method that is usually used by the test.
@@ -69,6 +75,19 @@ Try to delete it as much as possible.
 Return Domain with given DTO (atd is required to write who created the domain)
 
 It is usually private because it is directly called by post() method.
+
+### fromMdbByAtd()
+
+Some of the resources like `support` or `preference` are automatically created by the system.
+
+This method is used to create the domain with the given atd, acquired by successfully signed in user.
+
+Usually the system checks the following thing
+- If it does not exist => Create a new one
+- If it is more than 1 => Error => Leave the first one as the valid one and delete the rest of them
+
+Usually it depends on `fromMdb` method to finally return domain with either newly-created data or existing data.
+
 
 
 ### fromMdb()
@@ -85,9 +104,9 @@ Returns WordDomain after saving into persistence.
 
 It uses `fromPostDto()` and `toDocument()` methods to save into persistence.
 
-### toModel() PRIVATE
+### toDoc() PRIVATE
 
-Returns model type data that can be saved into persistence.
+Returns doc type data that can be saved into persistence.
 
 It is usually private because it is directly called by post() method.
 
@@ -102,9 +121,15 @@ Certain hidden data won't be visible to the user.
 
 Unlike Update methods, it simply modifies the data without modifying the persistence.
 
-### updateFrom~()
+### updateWith~()
 
 Updates as the properties. Any name can be given with the tilda(~) sign.
+
+
+Examples:
+- updateWithPostedWord
+- updateWithPutDto
+- updateWithDeletedWord
 
 
 ### update() PRIVATE
