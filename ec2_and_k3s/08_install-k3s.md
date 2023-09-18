@@ -44,5 +44,10 @@ kubectl get nodes
 
 ```
 
+## Install worker nodes and connect
+
+This documentation does not include workers but you can create workers connected to master node with the tutorials [here](https://youtu.be/zSlRUMm36n8?feature=shared).
+
+
 
 
