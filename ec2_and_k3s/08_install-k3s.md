@@ -1,9 +1,20 @@
 # Install K3s
 
+<!-- TOC -->
 
+- [Install K3s](#install-k3s)
+  - [Overview](#overview)
+  - [Run as sudo](#run-as-sudo)
+  - [Install & Check](#install--check)
+  - [Kubectl Config to the K3s generated config](#kubectl-config-to-the-k3s-generated-config)
+  - [Enable dok3scker service at AMI boot time & start](#enable-dok3scker-service-at-ami-boot-time--start)
+  - [Install worker nodes and connect](#install-worker-nodes-and-connect)
+
+<!-- /TOC -->
 
 ## Overview
 
+Install K3s on the cluster
 
 ## Run as sudo
 
