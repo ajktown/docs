@@ -19,6 +19,8 @@
 
 ## Overview
 
+Create ALB and Target Group to route the traffic to the k3s cluster.
+
 ## Create target group
 
 ### Specify group details

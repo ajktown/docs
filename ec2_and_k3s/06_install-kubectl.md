@@ -14,6 +14,7 @@
 
 ## Overview
 
+Install kubectl on your cluster to manage the cluster.
 
 ## Run as sudo
 
