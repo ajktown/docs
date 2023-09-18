@@ -22,7 +22,6 @@ vi ~/.bashrc
 
 ajktown_connect_command="ssh -i "your-key-name" ec2-user@ec2-ip-address-here.ap-northeast-1.compute.amazonaws.com"
 alias ajktown="cd /to/where/your/k3s-ec2-ajktown.pem/is && $ajktown_connect_command"
-
 ```
 
 ## Connect with the alias above

@@ -54,6 +54,7 @@ The VPC UI these days is super convenient.
 ```sh
 
 #!/bin/bash
+sudo bash
 
 # Install Docker
 sudo yum update
