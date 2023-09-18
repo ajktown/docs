@@ -5,7 +5,7 @@
 - [EC2 and K3s](#ec2-and-k3s)
   - [Overview](#overview)
   - [Create VPC](#create-vpc)
-  - [Correctly configure AWS EC2 Instance](#correctly-configure-aws-ec2-instance)
+  - [Create EC2 Instance](#create-ec2-instance)
     - [Advanced Details User Data](#advanced-details-user-data)
   - [Finally create EC2 instance](#finally-create-ec2-instance)
 
@@ -27,9 +27,7 @@ The VPC UI these days is super convenient.
 | Name | ajktown-k3s-cluster-vpc |
 
 
-## Correctly configure AWS EC2 Instance
-
-![ec2_main](./assets/ec2_main.png)
+## Create EC2 Instance
 
 
 |            Key             |                        Your Input                         |
