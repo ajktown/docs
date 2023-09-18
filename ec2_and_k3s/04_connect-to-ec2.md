@@ -4,7 +4,8 @@
 
 - [EC2 and k3s](#ec2-and-k3s)
   - [Overview](#overview)
-  - [Connect to the EC2 with EIP attached](#connect-to-the-ec2-with-eip-attached)
+  - [Set an alias](#set-an-alias)
+  - [Connect with the alias above](#connect-with-the-alias-above)
 
 <!-- /TOC -->
 
@@ -12,18 +13,20 @@
 
 Connect to the EC2 with EIP attached
 
-## Connect to the EC2 with EIP attached
+## Set an alias
+Set an alias for connecting to the cluster
+![copy_instance_address](./assets/copy_instance_address.png)
 
-Do the following command to connect to EC2 instance on Terminal[^1]
 ```sh
+vi ~/.bashrc
 
-cd /to/where/your/k3s-ec2-ajktown.pem/is/located/at
-sudo ssh -i "k3s-ec2-ajktown.pem" ec2-user@ec2-54-238-235-29.ap-northeast-1.compute.amazonaws.com
+ajktown_connect_command="ssh -i "your-key-name" ec2-user@ec2-ip-address-here.ap-northeast-1.compute.amazonaws.com"
+alias ajktown="cd /to/where/your/k3s-ec2-ajktown.pem/is && $ajktown_connect_command"
 
 ```
 
-[^1]: Highly recommend to alias the command above for future use so that you can simply do the following command
-  ```sh
-    ajktown_connect_command="ssh -i "censored-pem-name.pem" ec2-user@ec2-censored-ip-address.ap-northeast-1.compute.amazonaws.com"
-    alias ajktown="cd /Users/ajk/to/the/path/credentials/ajktown_k3s_cluster && $ajktown_connect_command"
-  ```
+## Connect with the alias above
+
+```sh
+ajktown
+```
