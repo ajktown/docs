@@ -33,7 +33,7 @@ sudo yum info docker
 
 ```sh
 
-sudo yum install docker
+sudo yum install docker -y
 
 ```
 
