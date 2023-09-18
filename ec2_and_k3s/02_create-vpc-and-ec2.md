@@ -6,7 +6,6 @@
   - [Overview](#overview)
   - [Create VPC](#create-vpc)
   - [Create EC2 Instance](#create-ec2-instance)
-    - [Advanced Details User Data](#advanced-details-user-data)
   - [Finally create EC2 instance](#finally-create-ec2-instance)
 
 <!-- /TOC -->
@@ -30,55 +29,21 @@ The VPC UI these days is super convenient.
 ## Create EC2 Instance
 
 
-|            Key             |                        Your Input                         |
-|:--------------------------:|:---------------------------------------------------------:|
-|            Name            |                    ajktown-k3s-cluster                    |
-|            AMI             |         Amazon Linux 2 AMI (HVM), SSD Volume Type         |
-|        Architecture        |                       64-bit (Arm)                        |
-|       Instance Type        |                         t4g.small                         |
-|           Subnet           |                        any public                         |
-|   Auto-assign public IP    |                          Enable                           |
-|          Key pair          |                 ajktown-k3s-cluster [^2]                  |
-|            VPC             |                  ajktown-k3s-cluster-vpc                  |
-|   Auto Assign Public IP    |                          Enable                           |
-|       Security Group       |                ajktown-k3s-cluster-sg [^2]                |
-|        Description         |     Essential security group for ajktown-k3s-cluster      |
-|     HTTPs Inbound Rule     |                          443/tcp                          |
-|            EBS             |                       30Gb[^3] gp3                        |
-| Advanced Details.User data | [Advanced Details User Data](#advanced-details-user-data) |
-
-
-### Advanced Details User Data
-```sh
-
-#!/bin/bash
-sudo bash
-
-# Install Docker
-sudo yum update
-sudo yum search docker
-sudo yum info docker
-sudo yum install docker
-
-sudo usermod -a -G docker ec2-user
-id ec2-user
-newgrp docker
-
-sudo systemctl enable docker.service
-sudo systemctl start docker.service
-sudo systemctl status docker.service
-
-# Install kubectl
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
-chmod +x ./kubectl
-mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
-echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
-
-# Install k9s
-curl -sS https://webinstall.dev/k9s | bash
-source ~/.config/envman/PATH.env
-
-```
+|          Key          |                    Your Input                    |
+|:---------------------:|:------------------------------------------------:|
+|         Name          |               ajktown-k3s-cluster                |
+|          AMI          |    Amazon Linux 2 AMI (HVM), SSD Volume Type     |
+|     Architecture      |                   64-bit (Arm)                   |
+|     Instance Type     |                    t4g.small                     |
+|        Subnet         |                    any public                    |
+| Auto-assign public IP |                      Enable                      |
+|       Key pair        |             ajktown-k3s-cluster [^2]             |
+|          VPC          |             ajktown-k3s-cluster-vpc              |
+| Auto Assign Public IP |                      Enable                      |
+|    Security Group     |           ajktown-k3s-cluster-sg [^2]            |
+|      Description      | Essential security group for ajktown-k3s-cluster |
+|  HTTPs Inbound Rule   |                     443/tcp                      |
+|          EBS          |                   30Gb[^3] gp3                   |
 
 
 
