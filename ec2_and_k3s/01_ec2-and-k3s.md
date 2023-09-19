@@ -15,7 +15,11 @@ Although you can simply deploy your application with eksctl like the instruction
 
 ## Estimated Price
 
-TODO: The estimated price is not yet confirmed yet. Write here.
+Total $16 per month
+
+Calculation
+- t4g.small = $0.0216 per hour * 24 hours * 30 days = $15.552 (or $16)
+- ALB, EBS and other services are free tier
 
 ## Prerequisite Knowledge
 - AWS
