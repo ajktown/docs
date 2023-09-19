@@ -1,8 +1,8 @@
-# EC2 and k3s
+# Create EIP and attach to the EC2
 
 <!-- TOC -->
 
-- [EC2 and k3s](#ec2-and-k3s)
+- [Create EIP and attach to the EC2](#create-eip-and-attach-to-the-ec2)
   - [Overview](#overview)
   - [Create EIP](#create-eip)
   - [Rename your EIP](#rename-your-eip)

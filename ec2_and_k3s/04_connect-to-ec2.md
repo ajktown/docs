@@ -1,8 +1,8 @@
-# EC2 and k3s
+# Connect to EC2
 
 <!-- TOC -->
 
-- [EC2 and k3s](#ec2-and-k3s)
+- [Connect to EC2](#connect-to-ec2)
   - [Overview](#overview)
   - [Set an alias](#set-an-alias)
   - [Connect with the alias above](#connect-with-the-alias-above)

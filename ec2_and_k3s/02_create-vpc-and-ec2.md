@@ -1,12 +1,11 @@
-# EC2 and K3s
+# Create AWS VPC and EC2
 
 <!-- TOC -->
 
-- [EC2 and K3s](#ec2-and-k3s)
+- [Create AWS VPC and EC2](#create-aws-vpc-and-ec2)
   - [Overview](#overview)
   - [Create VPC](#create-vpc)
   - [Create EC2 Instance](#create-ec2-instance)
-  - [Finally create EC2 instance](#finally-create-ec2-instance)
 
 <!-- /TOC -->
 
@@ -46,8 +45,6 @@ The VPC UI these days is super convenient.
 |          EBS          |                   30Gb[^3] gp3                   |
 
 
-
-## Finally create EC2 instance
 ![instance_created](./assets/instance_created.png)
 
 
