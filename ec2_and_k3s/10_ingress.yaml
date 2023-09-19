@@ -1,0 +1,45 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ajktown-ingress
+  namespace: ajktown
+  labels:
+    app: my-app
+spec:
+  defaultBackend:
+    service:
+      name: ajktown-api-svc
+      port:
+        number: 80
+  rules:
+    - host: www.ajktown.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ajktown-api-svc
+                port:
+                  number: 80
+    - host: api.ajktown.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ajktown-api-svc
+                port:
+                  number: 80
+    - host: wordnote.ajktown.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ajktown-wordnote-svc
+                port:
+                  number: 80
+

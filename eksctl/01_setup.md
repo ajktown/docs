@@ -13,6 +13,10 @@
     - [Create Cluster  (x86)](#create-cluster--x86)
   - [Get Cluster](#get-cluster)
 - [Delete Cluster](#delete-cluster)
+  - [Delete ingress](#delete-ingress)
+  - [Delete Services](#delete-services)
+  - [Delete Everything](#delete-everything)
+  - [Finally, delete the cluster](#finally-delete-the-cluster)
 
 <!-- /TOC -->
 
@@ -23,7 +27,7 @@ eksctl is a simple CLI tool for creating clusters on EKS. It will create separat
 eksctl is explained in a straightforward manner in [this video](https://youtu.be/p6xDCz00TxU).
 Undertaking these steps is estimated to cost around $140+ per month[^1]. However, this is an estimate and not a guaranteed figure. It is your responsible to manage the AWS cost. Instead of deleting every resource on AWS Console by your own, you can simply delete the cluster with eksctl command, and it will handle for you. You must double check if there any left overs that can cost you.
 
-[^1]: EKS 55% + EC2 (ALB) 35% + Tax 10%
+[^1]: EKS 55% + EC2 (ALB) 35% + Tax 10% (Aug 2023)
 
 ## Tips
 
@@ -100,7 +104,20 @@ eksctl get cluster
 ```
 
 # Delete Cluster
-Deleting a cluster takes about 5+ minutes
+Deleting a cluster takes about 5+ minutes.
+
+Every service and its ingress must be deleted, before you delete the cluster itself.
+
+If you do not follow, sometimes the eksctl delete cluster command will fail and you will have to manually delete the cluster on AWS Console.
+
+## Delete ingress
+
+## Delete Services
+
+## Delete Everything
+
+## Finally, delete the cluster
+
 ```sh
 eksctl delete cluster --name <your-cluster-name>
 ```

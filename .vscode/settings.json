@@ -1,0 +1,27 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#ffbb33",
+    "activityBar.background": "#ffbb33",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#009f6a",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#15202b99",
+    "sash.hoverBorder": "#ffbb33",
+    "statusBar.background": "#ffaa00",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#cc8800",
+    "statusBarItem.remoteBackground": "#ffaa00",
+    "statusBarItem.remoteForeground": "#15202b",
+    "titleBar.activeBackground": "#ffaa00",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#ffaa0099",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#ffaa00",
+  "cSpell.words": [
+    "ajktown",
+    "ASAT",
+    "Plantuml"
+  ]
+}
