@@ -57,7 +57,7 @@ Organize source directories for consistency
 - Responsible to have default data, data validity, type so that the rest of components can use it with trust inside of the API.
 
 ### Factories
-- Factories are the list of functions to convert [DTO](#dto) proven data into Database (MongoDB)
+- Factories are the list of functions to convert [DTO](#dto) proven data into Database (MongoDB) query.
 - Never use plain or raw data. Always use DTO as params.
 
 
