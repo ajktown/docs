@@ -5,6 +5,7 @@
 - [Domain Driven Design](#domain-driven-design)
   - [Overview](#overview)
   - [Constructor](#constructor)
+    - [withDefault](#withdefault)
     - [build~Constructor Method](#buildconstructor-method)
     - [Private Constructor](#private-constructor)
     - [get functions](#get-functions)
@@ -35,13 +36,18 @@ Always make sure that the order of methods follow exactly the same as the order 
 
 ## Constructor
 
+
+### withDefault
+Returns the domain with default values, with given props.
+Always used by the private constructor.
+
 ### build~Constructor Method
 
 To maintain consistency, privateConstructor may have its own methods to create the domain.
 
 i.e buildIdConstructor => builds id for the domain inside the constructor.
 
-And this method is private / non-static 
+And this method is private / non-static
 
 ### Private Constructor
 ```ts
