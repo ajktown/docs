@@ -25,6 +25,9 @@
 
 ### Modify DTO
 
+Delete does not exist as many times delete only requires deleting id.
+The permission is checked by the requester identity attached on http headers.
+
 #### POST
 
 #### GET
