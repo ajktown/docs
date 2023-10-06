@@ -17,7 +17,7 @@
 
 Envoy is L7 proxy and communication bus designed for large modern service oriented architectures.
 
-We will test server mesh by doing 
+We will test server mesh by doing
 
 
 ## Steps
