@@ -4,8 +4,9 @@
 
 - [Add new field](#add-new-field)
   - [Overview](#overview)
-    - [Modify Schema](#modify-schema)
-    - [Modify Interface](#modify-interface)
+    - [Create Schema](#create-schema)
+    - [Create Interface under domains directory](#create-interface-under-domains-directory)
+    - [Create Domain](#create-domain)
     - [Modify DTO](#modify-dto)
       - [POST](#post)
       - [GET](#get)
@@ -18,12 +19,15 @@
 
 ## Overview
 
-### Modify Schema
+### Create Schema
 
 Simply copy from others and change the name only!
 If you cannot come up with a name, you can ask ChatGPT for help.
 
-### Modify Interface
+### Create Interface under domains directory
+Before create domain, create the interface for the domain.
+
+### Create Domain
 
 
 ### Modify DTO
