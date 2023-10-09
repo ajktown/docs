@@ -11,6 +11,7 @@
       - [PUT](#put)
     - [Create Interface under domains directory](#create-interface-under-domains-directory)
     - [Create Domain](#create-domain)
+      - [constructor](#constructor-function Object() { [native code] }1)
       - [fromMdb](#frommdb)
       - [post()](#post)
     - [Modify Word Domain](#modify-word-domain)
@@ -49,6 +50,9 @@ Before create domain, create the interface for the domain.
 
 ### Create Domain
 Copy from others and comment it out. And implement step by step
+
+#### constructor
+create constructor
 
 #### fromMdb
 
