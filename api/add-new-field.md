@@ -5,12 +5,12 @@
 - [Add new field](#add-new-field)
   - [Overview](#overview)
     - [Create Schema](#create-schema)
-    - [Create Interface under domains directory](#create-interface-under-domains-directory)
-    - [Create Domain](#create-domain)
-    - [Modify DTO](#modify-dto)
+    - [Create DTO](#create-dto)
       - [POST](#post)
       - [GET](#get)
       - [PUT](#put)
+    - [Create Interface under domains directory](#create-interface-under-domains-directory)
+    - [Create Domain](#create-domain)
     - [Modify Word Domain](#modify-word-domain)
       - [Modify Default if required](#modify-default-if-required)
     - [Modify Factory](#modify-factory)
@@ -25,13 +25,7 @@ When you create a new schema field, you need to modify the following files.
 Simply copy from others and change the name only!
 If you cannot come up with a name, you can ask ChatGPT for help.
 
-### Create Interface under domains directory
-Before create domain, create the interface for the domain.
-
-### Create Domain
-
-
-### Modify DTO
+### Create DTO
 
 Delete does not exist as many times delete only requires deleting id.
 The permission is checked by the requester identity attached on http headers.
@@ -41,6 +35,12 @@ The permission is checked by the requester identity attached on http headers.
 #### GET
 
 #### PUT
+
+### Create Interface under domains directory
+Before create domain, create the interface for the domain.
+
+### Create Domain
+
 
 ### Modify Word Domain
 
