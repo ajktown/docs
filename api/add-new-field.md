@@ -11,6 +11,8 @@
       - [PUT](#put)
     - [Create Interface under domains directory](#create-interface-under-domains-directory)
     - [Create Domain](#create-domain)
+      - [fromMdb](#frommdb)
+      - [post()](#post)
     - [Modify Word Domain](#modify-word-domain)
       - [Modify Default if required](#modify-default-if-required)
     - [Modify Factory](#modify-factory)
@@ -46,6 +48,11 @@ You can still have the query for fine-grained GET request. (Like getting words)
 Before create domain, create the interface for the domain.
 
 ### Create Domain
+Copy from others and comment it out. And implement step by step
+
+#### fromMdb
+
+#### post()
 
 
 ### Modify Word Domain
