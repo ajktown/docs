@@ -20,6 +20,9 @@
 
 ### Modify Schema
 
+Simply copy from others and change the name only!
+If you cannot come up with a name, you can ask ChatGPT for help.
+
 ### Modify Interface
 
 
