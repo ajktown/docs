@@ -18,6 +18,7 @@
 <!-- /TOC -->
 
 ## Overview
+When you create a new schema field, you need to modify the following files.
 
 ### Create Schema
 
