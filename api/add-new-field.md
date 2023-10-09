@@ -5,7 +5,6 @@
 - [Add new field](#add-new-field)
   - [Overview](#overview)
     - [Create Schema](#create-schema)
-    - [Create Query for GET](#create-query-for-get)
     - [Create DTO](#create-dto)
       - [POST](#post)
       - [GET](#get)
@@ -26,18 +25,20 @@ When you create a new schema field, you need to modify the following files.
 Simply copy from others and change the name only!
 If you cannot come up with a name, you can ask ChatGPT for help.
 
-
-### Create Query for GET
-Queries are used for fine-grained request like words.
-
 ### Create DTO
 
 Delete does not exist as many times delete only requires deleting id.
 The permission is checked by the requester identity attached on http headers.
 
+
+Delete does not exist as the DTO, but as the query.
+Query still stays as the DTO though.
+
 #### POST
 
+
 #### GET
+You can still have the query for fine-grained GET request. (Like getting words)
 
 #### PUT
 
