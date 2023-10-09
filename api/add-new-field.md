@@ -5,11 +5,13 @@
 - [Add new field](#add-new-field)
   - [Overview](#overview)
     - [Create Schema](#create-schema)
+    - [Create Interface under domains directory](#create-interface-under-domains-directory)
+    - [Create Response](#create-response)
     - [Create DTO](#create-dto)
+    - [Create Factory](#create-factory)
       - [POST](#post)
       - [GET](#get)
       - [PUT](#put)
-    - [Create Interface under domains directory](#create-interface-under-domains-directory)
     - [Create Domain](#create-domain)
       - [constructor](#constructor-function Object() { [native code] }1)
       - [fromMdb](#frommdb)
@@ -28,6 +30,12 @@ When you create a new schema field, you need to modify the following files.
 Simply copy from others and change the name only!
 If you cannot come up with a name, you can ask ChatGPT for help.
 
+### Create Interface under domains directory
+Interface is used among domains, responses so must be created in earlier phase.
+
+### Create Response
+
+
 ### Create DTO
 
 Delete does not exist as many times delete only requires deleting id.
@@ -37,6 +45,9 @@ The permission is checked by the requester identity attached on http headers.
 Delete does not exist as the DTO, but as the query.
 Query still stays as the DTO though.
 
+
+### Create Factory
+
 #### POST
 
 
@@ -44,9 +55,6 @@ Query still stays as the DTO though.
 You can still have the query for fine-grained GET request. (Like getting words)
 
 #### PUT
-
-### Create Interface under domains directory
-Before create domain, create the interface for the domain.
 
 ### Create Domain
 Copy from others and comment it out. And implement step by step
