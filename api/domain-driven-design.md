@@ -13,12 +13,10 @@
     - [underDevEnv()](#underdevenv)
     - [getDefault()](#getdefault)
     - [fromRawDangerously()](#fromrawdangerously)
-    - [fromPostDto() PRIVATE](#frompostdto-private)
     - [fromMdbByAtd()](#frommdbbyatd)
     - [fromMdb()](#frommdb)
   - [Non-Static](#non-static)
     - [post()](#post)
-    - [toDoc() PRIVATE](#todoc-private)
     - [toResDTO()](#toresdto)
     - [insert~()](#insert)
     - [updateWith~()](#updatewith)
@@ -81,12 +79,6 @@ Deprecated method that is usually used by the test.
 Try to delete it as much as possible.
 
 
-### fromPostDto() PRIVATE
-
-Return Domain with given DTO (atd is required to write who created the domain)
-
-It is usually private because it is directly called by post() method.
-
 ### fromMdbByAtd()
 
 Some of the resources like `support` or `preference` are automatically created by the system.
@@ -111,15 +103,25 @@ this can be also `fromPersistence()` but then `fromMdb()` was chosen for its sho
 
 ### post()
 
-Returns WordDomain after saving into persistence.
+Returns Domain after saving into persistence with given atd, dto and model.
 
 It uses `fromPostDto()` and `toDocument()` methods to save into persistence.
 
-### toDoc() PRIVATE
-
-Returns doc type data that can be saved into persistence.
-
-It is usually private because it is directly called by post() method.
+```ts
+async post(
+  atd: AccessTokenDomain,
+  dto: PostSharedResourceDTO,
+  model: SharedResourceModel,
+): Promise<SharedResourceDomain> {
+  return SharedResourceDomain.fromMdb(
+    await new model({
+      ownerId: atd.userId,
+      expireInSecs: dto.expireInSecs,
+      wordId: dto.wordId,
+    }).save(),
+  )
+}
+```
 
 
 ### toResDTO()
