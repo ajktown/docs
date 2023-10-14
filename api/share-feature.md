@@ -63,7 +63,11 @@ activate user
             domain <- db: Returns the result
           deactivate db
         end break
-        api <- domain: TODO: Write me
+        domain -> db: Creates a new shared-resource domain.post()
+        activate db
+          domain <- db: Returns the result
+        deactivate db
+        api <- domain: Returns SharedResourceDomain
       deactivate domain
       fe <- api: TODO: Do something
     deactivate api
