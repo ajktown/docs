@@ -5,7 +5,8 @@
 
 - [Share Feature](#share-feature)
   - [Overview](#overview)
-  - [General Flow](#general-flow)
+  - [POST shared-resource](#post-shared-resource)
+  - [GET shared-resource](#get-shared-resource)
 
 <!-- /TOC -->
 
@@ -14,13 +15,13 @@
 Share feature is basically share your word card with others by generating SharedResourceDomain.
 
 
-## General Flow
+## POST shared-resource
 
 ```plantuml
 
 @startuml
 
-title Share Word Id Flow
+title POST shared-resource
 
 participant "End User" as user
 participant "FE" as fe
@@ -73,13 +74,36 @@ activate user
         deactivate db
         api <- domain: Returns SharedResourceDomain
       deactivate domain
-      fe <- api: TODO: Do something
+      fe <- api: SharedResourceDomain.toResDTO()
     deactivate api
   fe -> fe: Copies the generated URL to clipboard of the end user.
   fe -> fe: The loading indicator disappears
   user <- fe: Tells the user that the URL is copied to clipboard
   deactivate fe
   user -> user: User has the link that can be shared with others
+deactivate user
+
+
+```
+
+## GET shared-resource
+
+```plantuml
+
+@startuml
+
+title GET shared-resource
+
+participant "End User" as user
+participant "FE" as fe
+box "API" #Lightgreen
+  participant "API" as api
+  participant "SharedResourceDomain" as domain
+box
+database "MongoDB" as db
+
+activate user
+  user -> fe: User opens a shared link
 deactivate user
 
 
