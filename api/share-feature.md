@@ -52,6 +52,10 @@ activate user
           end note
           fe <- api: Returns 400
           user <- fe: Tells the user that it is a bad request
+          note right
+            By default FE should never allow the situation
+            that shows the error message to the end user.
+          end note
         end break
         domain -> db: Checks if the same shared-resource domain exists
         activate db
