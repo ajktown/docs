@@ -104,6 +104,20 @@ database "MongoDB" as db
 
 activate user
   user -> fe: User opens a shared link
+  activate fe
+    fe -> fe: Opens A dialog with loading indicator
+    fe -> api: Sends API Request GET /api/v1/shared-resource
+    activate api
+      api -> domain: Asks SharedResourceDomain to be created
+      activate domain
+        api <- domain: TODO: Write
+      deactivate domain
+      fe <- api: TODO: Write
+    deactivate api
+  fe -> fe: The loading indicator disappears
+  user <- fe: Shows the shared resource
+  deactivate fe
+  user -> user: User has the link shared resourced from others (or oneself)
 deactivate user
 
 
