@@ -110,6 +110,15 @@ activate user
     activate api
       api -> domain: Asks SharedResourceDomain to be created
       activate domain
+        domain -> db: Requests shared resource doc
+        activate db
+          domain <- db: Returns resource doc
+        deactivate db
+        break if it is already expired
+        api <- domain: Returns 206
+        fe <- api: TODO
+        user <- fe: TODO
+        end break
         api <- domain: TODO: Write
       deactivate domain
       fe <- api: TODO: Write
