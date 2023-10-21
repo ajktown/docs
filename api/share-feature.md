@@ -37,7 +37,7 @@ activate user
     fe -> fe: Opens A dialog with loading indicator
     fe -> api: Sends API Request POST /api/v1/shared-resource
     activate api
-      api -> domain: Asks SharedResourceDomain to be created
+      api -> domain: Requests SharedResourceDomain to be created
       activate domain
         domain -> db: Requests resource information
         activate db
@@ -108,7 +108,7 @@ activate user
     fe -> fe: Opens A dialog with loading indicator
     fe -> api: Sends API Request GET /api/v1/shared-resource
     activate api
-      api -> domain: Asks SharedResourceDomain to be created
+      api -> domain: Requests SharedResourceDomain to be created
       activate domain
         domain -> db: Requests shared resource doc
         activate db
@@ -116,18 +116,26 @@ activate user
         deactivate db
         api <- domain: Returns SharedResourceDomain
         deactivate domain
-        fe <- api: SharedResourceDomain.toResDTO()
-        note left
-          The response dto will contain whether
-          the resource is expired or not.
-          The FE will use the information
-          to show the message to the end user.
-        end note
+        api -> domain: Requests SharedResourceDomain.toResDTO()
+          activate domain
+            break if the resource is expired
+              api <- domain: Returns SharedResourceDomain.toResDTO()
+              fe <- api: Returns the response DTO
+              note left
+                The expired shared resource won't contain
+                any resource information.
+              end note
+              user <- fe : Shows the message that the resource is expired
+            end break
+            domain -> db: Requests resource information
+            activate db
+              domain <- db: Returns resource information
+            deactivate db
+            api <- domain: Returns SharedResourceDomain.toResDTO()
+          deactivate domain
+        fe <- api: Returns the response DTO
     deactivate api
   fe -> fe: The loading indicator disappears
-  break if the resource is expired
-    user <- fe : Shows the message that the resource is expired
-  end break
   user <- fe: Shows the shared resource
   deactivate fe
   user -> user: User has the link shared resourced from others (or oneself)
