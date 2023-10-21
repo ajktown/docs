@@ -87,6 +87,7 @@ deactivate user
 ```
 
 ## GET shared-resource
+At present, the shared resource can be attainable by anyone including non-signed in users.
 
 ```plantuml
 
