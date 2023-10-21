@@ -114,16 +114,20 @@ activate user
         activate db
           domain <- db: Returns resource doc
         deactivate db
-        break if it is already expired
-        api <- domain: Returns 206
-        fe <- api: TODO
-        user <- fe: TODO
-        end break
-        api <- domain: TODO: Write
-      deactivate domain
-      fe <- api: TODO: Write
+        api <- domain: Returns SharedResourceDomain
+        deactivate domain
+        fe <- api: SharedResourceDomain.toResDTO()
+        note left
+          The response dto will contain whether
+          the resource is expired or not.
+          The FE will use the information
+          to show the message to the end user.
+        end note
     deactivate api
   fe -> fe: The loading indicator disappears
+  break if the resource is expired
+    user <- fe : Shows the message that the resource is expired
+  end break
   user <- fe: Shows the shared resource
   deactivate fe
   user -> user: User has the link shared resourced from others (or oneself)
