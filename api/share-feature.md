@@ -138,6 +138,7 @@ activate user
     deactivate api
   fe -> fe: The loading indicator disappears
   user <- fe: Shows the shared resource
+  user <- fe: Shows the post word button, if the user is signed in
   deactivate fe
   user -> user: User has the link shared resourced from others (or oneself)
 deactivate user
