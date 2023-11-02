@@ -47,9 +47,10 @@ activate user
         break if the resource is not owned by the user
           api <- domain: Returns 400
           note right
-            It simply returns 400 due to hide the existence of the resource.
-            - Either the resource does not exist
-            - Or the resource is not owned by the user
+            It simply throws an error NotExistOrNoPermissionError
+              - NotExistOrNoPermissionError:
+                - Either the resource does not exist
+                - Or the resource is not owned by the user
           end note
           fe <- api: Returns 400
           user <- fe: Tells the user that it is a bad request
