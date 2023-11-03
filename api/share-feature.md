@@ -37,6 +37,18 @@ activate user
     fe -> fe: Opens A dialog with loading indicator
     fe -> api: Sends API Request POST /api/v1/shared-resource
     activate api
+      break if dto does not contain which resource the requester is asking for
+        fe <- api: throw BadRequestError 400 error
+        note left
+          Note that as DTO requires only one of the resource id, it cannot be
+          automatically detected.
+        end note
+        user <- fe: Tells the user that it is a bad request
+        note right
+          By default FE should never allow the situation
+          that shows the error message to the end user.
+        end note
+      end break
       api -> domain: Requests SharedResourceDomain to be created
       activate domain
         domain -> db: Requests resource information
