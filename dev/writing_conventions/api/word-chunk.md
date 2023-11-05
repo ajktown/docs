@@ -1,5 +1,12 @@
 # Word Chunk
 
+<!-- TOC -->
+
+- [Word Chunk](#word-chunk)
+  - [Overview](#overview)
+
+<!-- /TOC -->
+
 ## Overview
 
 Wordy v1 used to save `dateAdded` as a number into the DB and sorted it with the help of `sem` (semester).
