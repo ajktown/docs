@@ -6,9 +6,7 @@
   - [Overview](#overview)
   - [Purpose](#purpose)
     - [Install docker](#install-docker)
-    - [Choose your password for your mongo db server](#choose-your-password-for-your-mongo-db-server)
-    - [Run the new container with the downloaded image](#run-the-new-container-with-the-downloaded-image)
-    - [Creae a directory for ajktown project](#creae-a-directory-for-ajktown-project)
+    - [Create a directory for ajktown project](#create-a-directory-for-ajktown-project)
     - [Clone Projects](#clone-projects)
 
 <!-- /TOC -->
@@ -28,29 +26,7 @@ Go https://www.docker.com
 And install docker
 
 
-### Choose your password for your mongo db server
-
-This instruction will build mongodb run on your local machine, and mongodb requires password to connect.
-You need to choose your password for your mongodb server.
-
-```sh
-# i.e) MDB_PASSWORD="local_root_put_your_password_here"
-MDB_PASSWORD="local_root_XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-echo "SAVED_MDB_PASSWORD: $MDB_PASSWORD"
-```
-
-### Run the new container with the downloaded image
-
-This will pull image mongodb from docker hub and run it on your local machine, with the password you set above. (or `MDB_PASSWORD`)
-
-```sh
-docker run -d --name mongodb -p 57017:27017 \
--e MONGO_INITDB_ROOT_USERNAME=root \
--e MONGO_INITDB_ROOT_PASSWORD="${MDB_PASSWORD}" \
-mongo 
-```
-
-### Creae a directory for ajktown project
+### Create a directory for ajktown project
 
 ```sh
 mkdir ~/ajktown

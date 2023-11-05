@@ -1,9 +1,10 @@
-# About Logos
+# Obtain AJK Town Logo
 
 <!-- TOC -->
 
-- [About Logos](#about-logos)
+- [Obtain AJK Town Logo](#obtain-ajk-town-logo)
   - [Overview](#overview)
+  - [Steps](#steps)
   - [Background Color and Font Family](#background-color-and-font-family)
 
 <!-- /TOC -->
@@ -11,6 +12,9 @@
 ## Overview
 
 How to obtain AJK Town's official logo
+
+
+## Steps
 
 1. Visit the following [website](https://favicon.io/favicon-generator/)
 1. Select the following attribute

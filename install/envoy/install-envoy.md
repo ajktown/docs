@@ -1,11 +1,12 @@
-# Prepare Envoy
+# Install Envoy
 
 <!-- TOC -->
 
-- [Prepare Envoy](#prepare-envoy)
+- [Install Envoy](#install-envoy)
   - [Overview](#overview)
+  - [Prerequisites](#prerequisites)
   - [Steps](#steps)
-    - [Prerequisites](#prerequisites)
+    - [Prerequisites](#prerequisites-1)
     - [Test routing](#test-routing)
     - [Modify scripts like the below:](#modify-scripts-like-the-below)
     - [Test](#test)
@@ -14,10 +15,12 @@
 <!-- /TOC -->
 
 ## Overview
+How to install Envoy and test
 
-Envoy is L7 proxy and communication bus designed for large modern service oriented architectures.
+## Prerequisites
 
-We will test server mesh by doing
+- What is Envoy?
+  - Envoy is L7 proxy and communication bus designed for large modern service oriented architectures.
 
 
 ## Steps
