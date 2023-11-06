@@ -1,8 +1,8 @@
-# Commits Naming
+# Commit Name Prefix
 
 <!-- TOC -->
 
-- [Commits Naming](#commits-naming)
+- [Commit Name Prefix](#commit-name-prefix)
   - [Overview](#overview)
 
 <!-- /TOC -->
