@@ -1,5 +1,21 @@
+# Click Refresh Button
 
+<!-- TOC -->
 
+- [Click Refresh Button](#click-refresh-button)
+  - [Overview](#overview)
+    - [Most Detailed Ones](#most-detailed-ones)
+    - [Second Most Detailed](#second-most-detailed)
+    - [Simplest](#simplest)
+
+<!-- /TOC -->
+
+## Overview
+This is a basic activity diagram for the onClickRefresh() function in the FE.
+
+![refresh_button](./assets/refresh_button.png)
+
+### Most Detailed Ones
 ```plantuml
 
 @startuml
@@ -47,7 +63,7 @@ deactivate user
 ```
 
 
-# Simple one
+### Second Most Detailed
 ```plantuml
 
 @startuml
@@ -89,10 +105,7 @@ deactivate user
 ```
 
 
-
-
-
-# Simple one
+### Simplest
 ```plantuml
 
 @startuml
