@@ -1,9 +1,9 @@
-# Share Feature
+# Shared resource
 
 
 <!-- TOC -->
 
-- [Share Feature](#share-feature)
+- [Shared resource](#shared-resource)
   - [Overview](#overview)
   - [POST shared-resource](#post-shared-resource)
   - [GET shared-resource](#get-shared-resource)
@@ -12,7 +12,7 @@
 
 ## Overview
 
-Share feature is basically share your word card with others by generating SharedResourceDomain.
+`Shared resource` is is a feature that you can share your own resource with others using `SharedResourceDomain`.
 
 
 ## POST shared-resource
