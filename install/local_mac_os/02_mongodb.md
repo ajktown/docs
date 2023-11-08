@@ -1,32 +1,18 @@
-# Env Setup: Clone Projects
+# Prepare MongoDB
 
 <!-- TOC -->
 
-- [Env Setup: Clone Projects](#env-setup-clone-projects)
+- [Prepare MongoDB](#prepare-mongodb)
   - [Overview](#overview)
-  - [Purpose](#purpose)
-    - [Install docker](#install-docker)
     - [Choose your password for your mongo db server](#choose-your-password-for-your-mongo-db-server)
     - [Run the new container with the downloaded image](#run-the-new-container-with-the-downloaded-image)
-    - [Creae a directory for ajktown project](#creae-a-directory-for-ajktown-project)
-    - [Clone Projects](#clone-projects)
+    - [See if container is created](#see-if-container-is-created)
+    - [Install `Mongo DB Compass`](#install-mongo-db-compass)
 
 <!-- /TOC -->
 
 ## Overview
-This is a step by step tutorial to set up the environment for ajktown project.
-You will be cloning projects, installing packages, set environment variables, and run ajktown applications on your local machine.
-
-## Purpose
-Although every step might be possibly wrong as the time passes, it gives a general idea of how to set up the environment.
-
-
-### Install docker
-
-Go https://www.docker.com
-
-And install docker
-
+Install MongoDB on your local machine
 
 ### Choose your password for your mongo db server
 
@@ -50,18 +36,19 @@ docker run -d --name mongodb -p 57017:27017 \
 mongo 
 ```
 
-### Creae a directory for ajktown project
-
+### See if container is created
 ```sh
-mkdir ~/ajktown
+docker container ls | grep mongo
 ```
 
-### Clone Projects
+### Install `Mongo DB Compass`
+
+Mongo DB Compass is a UI integrated application for the connections to the `prod` or `dev` DB env.
+
+Visit the website [here](https://www.mongodb.com/try/download/compass) and get the latest version
 
 
-```sh
-cd ~/ajktown
-git clone https://github.com/ajktown/docs.git
-git clone https://github.com/ajktown/wordnote.git
-git clone https://github.com/ajktown/api.git
-```
+
+
+
+
