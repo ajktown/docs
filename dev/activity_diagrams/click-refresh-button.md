@@ -47,17 +47,28 @@ activate user
       fe <- hook: return semesters
     deactivate hook
   break if latestSemester is undefined
-    fe -> fe: Ends Process
+    user <- fe: End Process with Loading Ends.
   end break
-    fe -> api: getWords()
-    activate api
-      fe <- api: return words
-    deactivate api
-    fe -> api: getPreference()
-    activate api
-      fe <- api: return preference
-    deactivate api
-  user <- fe: Shows refreshed words
+    fe -> hook: getWords()
+    activate hook
+      hook -> api: getWordsApi()
+      activate api
+        hook <- api: return words
+      deactivate api
+      hook -> recoil: set(wordsFamily(word.id), word)
+      hook -> recoil: set(wordIdsState, apiResponse.wordIds)
+      fe <- hook: Returns nothing
+    deactivate hook
+    fe -> hook: getPreference()
+    activate hook
+      hook -> api: getPreferenceApi()
+      activate api
+        hook <- api: return preference
+      deactivate api
+      hook -> recoil: set(preferenceState, data)
+      fe <- hook: Returns nothing
+    deactivate hook
+  user <- fe: End Process with Loading Ends.
   deactivate fe
 deactivate user
 ```
