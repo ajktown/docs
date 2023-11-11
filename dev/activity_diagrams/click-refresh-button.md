@@ -17,6 +17,7 @@ This is a basic activity diagram for the onClickRefresh() function in the FE.
 
 ### Most Detailed Ones
 ![on_click_refresh_activity_diagram](./assets/on_click_refresh_activity_diagram.png)
+
 <details><summary >plantuml code</summary>
 
 ```plantuml
@@ -78,9 +79,10 @@ deactivate user
 </details>
 
 ### Second Most Detailed
+![on_click_refresh_button_second_most_detailed](./assets/on_click_refresh_button_second_most_detailed.png)
+<details><summary >plantuml code</summary>
+
 ```plantuml
-
-
 @startuml
 
 title onClickRefresh()
@@ -118,9 +120,12 @@ activate user
   deactivate fe
 deactivate user
 ```
-
+</details>
 
 ### Simplest
+![on_click_refresh_simplest_activity_diagram](./assets/on_click_refresh_simplest_activity_diagram.png)
+<details><summary >plantuml code</summary>
+
 ```plantuml
 
 @startuml
@@ -158,3 +163,4 @@ activate user
   deactivate fe
 deactivate user
 ```
+</details>
