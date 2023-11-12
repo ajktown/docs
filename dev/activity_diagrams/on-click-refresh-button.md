@@ -1,8 +1,8 @@
-# Click Refresh Button
+# On Click Refresh Button
 
 <!-- TOC -->
 
-- [Click Refresh Button](#click-refresh-button)
+- [On Click Refresh Button](#on-click-refresh-button)
   - [Overview](#overview)
     - [Most Detailed Ones](#most-detailed-ones)
     - [Second Most Detailed](#second-most-detailed)
