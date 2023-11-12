@@ -13,8 +13,10 @@
     - [Run plantuml docker image locally](#run-plantuml-docker-image-locally)
     - [Set local setting](#set-local-setting)
     - [Enable loading content over http served from localhost](#enable-loading-content-over-http-served-from-localhost)
+    - [Done](#done)
   - [Run Remotely](#run-remotely)
     - [Set remote setting](#set-remote-setting)
+    - [Done](#done-1)
 
 <!-- /TOC -->
 
@@ -81,6 +83,8 @@ command + shift + p
 ### Enable loading content over http served from localhost
 ![enable_loading_content_over_localhost](./assets/enable_loading_content_over_localhost.png)
 
+### Done
+You can test it as explained in [Sample Plantuml Code](#sample-plantuml-code)
 
 ## Run Remotely
 Pros
@@ -100,3 +104,6 @@ command + shift + v
 
 **set remote plantuml setting**
 ![set_remote_plantuml_server](./assets/set_remote_plantuml_server.png)
+
+### Done
+You can test it as explained in [Sample Plantuml Code](#sample-plantuml-code)
