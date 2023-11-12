@@ -69,7 +69,7 @@ docker run -d -p 12000:8080 plantuml/plantuml-server:jetty
 ### Set local setting
 **open setting**
 ```
-command + shift + v
+command + shift + p
 ```
 ![open_setting](./assets/open_setting.png)
 
@@ -80,7 +80,6 @@ command + shift + v
 
 ### Enable loading content over http served from localhost
 ![enable_loading_content_over_localhost](./assets/enable_loading_content_over_localhost.png)
-
 
 
 ## Run Remotely
