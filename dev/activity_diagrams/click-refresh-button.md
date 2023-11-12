@@ -16,9 +16,6 @@ This is a basic activity diagram for the onClickRefresh() function in the FE.
 ![refresh_button](./assets/refresh_button.png)
 
 ### Most Detailed Ones
-![on_click_refresh_activity_diagram](./assets/on_click_refresh_activity_diagram.png)
-
-<details><summary >plantuml code</summary>
 
 ```plantuml
 
@@ -29,7 +26,7 @@ title onClickRefresh()
 participant "End User" as user
 
 box "FE" #Lightblue
-  participant "FE" as fe
+  participant "Component" as fe
   participant "Hook" as hook
   participant "Recoil" as recoil
 box
@@ -76,12 +73,8 @@ activate user
   deactivate fe
 deactivate user
 ```
-</details>
 
 ### Second Most Detailed
-![on_click_refresh_button_second_most_detailed](./assets/on_click_refresh_button_second_most_detailed.png)
-<details><summary >plantuml code</summary>
-
 ```plantuml
 @startuml
 
@@ -120,12 +113,9 @@ activate user
   deactivate fe
 deactivate user
 ```
-</details>
+
 
 ### Simplest
-![on_click_refresh_simplest_activity_diagram](./assets/on_click_refresh_simplest_activity_diagram.png)
-<details><summary >plantuml code</summary>
-
 ```plantuml
 
 @startuml
@@ -163,4 +153,3 @@ activate user
   deactivate fe
 deactivate user
 ```
-</details>
