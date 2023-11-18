@@ -50,8 +50,6 @@ activate user
        hook -> recoil: set(wordsFamily(postedWord.id), postedWord)
        hook -> recoil: set(semestersState, semesters.semesters)
       deactivate recoil
-      hook -> fe: usePostWordFromUndo
-      hook -> useState: setLoading(false)
       fe -> user: show wordcards
       activate useState
         useState -> useState: Sets isLoading to false
