@@ -36,29 +36,29 @@ activate user
        end break
       hook -> api: postWordApi(word)
       activate api
-        hook <- api: return repost word
+        hook <- api: return posted (created) word
       deactivate api
       hook -> recoil: getPromise(wordIdsState)
       activate recoil
        hook -> recoil: wordIdsState
       hook <- recoil: wordIdsState
-      break wordIds
+      break
        hook -> hook: id -> postedWord.id //if wordId === undoing wordId
-      hook -> hook: id //上記条件が満たされない場合は、そのままの値を保持
-       end break
+      hook -> hook: id //If the above conditions are not met, the value is retained as is
        hook -> recoil: set(wordIdsState, wordIds)
        hook -> recoil: set(wordsFamily(postedWord.id), postedWord)
        hook -> recoil: set(semestersState, semesters.semesters)
       deactivate recoil
-      hook -> fe: usePostWordFromUndo
-      hook -> useState: setLoading(false)
+       end break
       fe -> user: show wordcards
       activate useState
         useState -> useState: Sets isLoading to false
         hook <- useState: Done
       deactivate useState
       fe <- hook: Returns undefined
-    deactivate hook
     user <- fe: Returns nothing
+    fe <- hook: usePostWordFromUndo
+    hook -> useState: setLoading(false)
+    deactivate hook
   deactivate fe
 deactivate user
