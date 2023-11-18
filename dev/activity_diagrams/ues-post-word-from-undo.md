@@ -36,7 +36,7 @@ activate user
        end break
       hook -> api: postWordApi(word)
       activate api
-        hook <- api: return repost word
+        hook <- api: return posted (created) word
       deactivate api
       hook -> recoil: getPromise(wordIdsState)
       activate recoil
