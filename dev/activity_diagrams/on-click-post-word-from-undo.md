@@ -2,7 +2,7 @@
 
 @startuml
 
-title usePostWordFromUndo()
+title onClickPostWordFromUndo()
 
 participant "End User" as user
 
