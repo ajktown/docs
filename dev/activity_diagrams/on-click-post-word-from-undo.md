@@ -1,3 +1,17 @@
+# On Click Post Word From Undo
+
+<!-- TOC -->
+
+- [On Click Post Word From Undo](#on-click-post-word-from-undo)
+  - [Overview](#overview)
+  - [Sequence Diagram](#sequence-diagram)
+
+<!-- /TOC -->
+
+## Overview
+This is a sequence diagram for the onClickPostWordFromUndo() function in the FE.
+
+## Sequence Diagram
 ```plantuml
 
 @startuml
