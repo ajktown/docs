@@ -40,8 +40,8 @@ activate user
       deactivate api
       hook -> recoil: getPromise(wordIdsState)
       activate recoil
-       hook -> recoil: wordIdsState
-      hook <- recoil: wordIdsState
+        hook <- recoil: wordIdsState
+      deactivate recoil
        hook -> hook: id -> postedWord.id //if wordId === undoing wordId
       hook -> hook: id //If the above conditions are not met, the value is retained as is
         hook -> recoil: set(wordIdsState, wordIds)
