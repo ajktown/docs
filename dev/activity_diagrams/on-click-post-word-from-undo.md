@@ -31,7 +31,7 @@ activate user
       activate recoil
         hook <- recoil: Return word data
       deactivate recoil
-      break if word data is undifined
+      break if word data is undefined
        user <- hook: show nothing / failed to re-post word
        end break
       hook -> api: postWordApi(word)
