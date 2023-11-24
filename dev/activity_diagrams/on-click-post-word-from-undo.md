@@ -42,7 +42,6 @@ activate user
       activate recoil
        hook -> recoil: wordIdsState
       hook <- recoil: wordIdsState
-      break
        hook -> hook: id -> postedWord.id //if wordId === undoing wordId
       hook -> hook: id //If the above conditions are not met, the value is retained as is
         hook -> recoil: set(wordIdsState, wordIds)
