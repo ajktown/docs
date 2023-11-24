@@ -45,9 +45,9 @@ activate user
       break
        hook -> hook: id -> postedWord.id //if wordId === undoing wordId
       hook -> hook: id //If the above conditions are not met, the value is retained as is
-       hook -> recoil: set(wordIdsState, wordIds)
-       hook -> recoil: set(wordsFamily(postedWord.id), postedWord)
-       hook -> recoil: set(semestersState, semesters.semesters)
+        hook -> recoil: set(wordIdsState, wordIds)
+        hook -> recoil: set(wordsFamily(postedWord.id), postedWord)
+        hook -> recoil: set(semestersState, semesters.semesters)
       deactivate recoil
        end break
       fe -> user: show wordcards
