@@ -70,7 +70,6 @@ activate user
       deactivate useState
       fe <- hook: Returns undefined
     user <- fe: Returns nothing
-    fe <- hook: usePostWordFromUndo
     deactivate hook
   deactivate fe
 deactivate user
