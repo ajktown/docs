@@ -63,6 +63,7 @@ activate user
         hook -> recoil: set(semestersState, semesters.semesters)
       deactivate recoil
       fe -> user: show wordcards
+      hook -> useState: setLoading(false)
       activate useState
         useState -> useState: Sets isLoading to false
         hook <- useState: Done
