@@ -71,7 +71,6 @@ activate user
       fe <- hook: Returns undefined
     user <- fe: Returns nothing
     fe <- hook: usePostWordFromUndo
-    hook -> useState: setLoading(false)
     deactivate hook
   deactivate fe
 deactivate user
