@@ -46,8 +46,8 @@ activate user
         hook <- recoil: Return word data
       deactivate recoil
       break if word data is undefined
-       user <- hook: show nothing / failed to re-post word
-       end break
+        user <- hook: show nothing / failed to re-post word
+      end break
       hook -> api: postWordApi(word)
       activate api
         hook <- api: return posted (created) word
@@ -56,13 +56,11 @@ activate user
       activate recoil
         hook <- recoil: wordIdsState
       deactivate recoil
-       hook -> hook: id -> postedWord.id //if wordId === undoing wordId
-      hook -> hook: id //If the above conditions are not met, the value is retained as is
-        hook -> recoil: set(wordIdsState, wordIds)
-        hook -> recoil: set(wordsFamily(postedWord.id), postedWord)
-        hook -> recoil: set(semestersState, semesters.semesters)
+      hook -> hook: Replace the deleted word id with newly posted word id in the wordIds
+      hook -> recoil: set(wordIdsState, wordIds)
+      hook -> recoil: set(wordsFamily(postedWord.id), postedWord)
+      hook -> recoil: set(semestersState, semesters.semesters)
       deactivate recoil
-      fe -> user: show wordcards
       hook -> useState: setLoading(false)
       activate useState
         useState -> useState: Sets isLoading to false
