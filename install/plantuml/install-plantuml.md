@@ -7,9 +7,16 @@
   - [Overview](#overview)
   - [Prerequisites](#prerequisites)
     - [Sample Plantuml Code](#sample-plantuml-code)
-    - [Two ways to render plantuml code](#two-ways-to-render-plantuml-code)
-      - [Run locally](#run-locally)
-      - [Run remotely](#run-remotely)
+  - [Basic installs](#basic-installs)
+    - [Install PlantUML extension if not installed](#install-plantuml-extension-if-not-installed)
+  - [Run Locally](#run-locally)
+    - [Run plantuml docker image locally](#run-plantuml-docker-image-locally)
+    - [Set local setting](#set-local-setting)
+    - [Enable loading content over http served from localhost](#enable-loading-content-over-http-served-from-localhost)
+    - [Done](#done)
+  - [Run Remotely](#run-remotely)
+    - [Set remote setting](#set-remote-setting)
+    - [Done](#done-1)
 
 <!-- /TOC -->
 
@@ -20,6 +27,7 @@ How to install plantuml and test
 ## Prerequisites
 - What is Plantuml?
   - `Plantuml` is a component that allows you to quickly write: Sequence diagram · Usecase diagram · Class diagram · Object diagram · Activity diagram (Detailed information [here](https://plantuml.com/))
+  - You can run it locally, or remotely
 
 
 ### Sample Plantuml Code
@@ -41,26 +49,44 @@ activate fe
 deactivate fe
 
 ```
-### Two ways to render plantuml code
-1. Run it locally with local docker image
-1. Run it remotely with the provided plantuml server
 
-#### Run locally
+## Basic installs
+Basic installs contain the shared install for both local and remote
 
+### Install PlantUML extension if not installed
+![install_vscode_plantuml](./assets/install_vscode_plantuml.png)
+
+## Run Locally
 Pros
 - You can secure your plantuml code by not sending it to 3rd party remote server
 
 Cons
-- Requires docker to be run 9
+- Requires docker to be running
+
+### Run plantuml docker image locally
 ```
 docker run -d -p 12000:8080 plantuml/plantuml-server:jetty
 ```
 
-- Requires local setting below
+### Set local setting
+**open setting**
+```
+command + shift + p
+```
+![open_setting](./assets/open_setting.png)
+
+
+**set local plantuml setting**
 ![setting](./assets/plantuml-server-setting.png)
 
-#### Run remotely
 
+### Enable loading content over http served from localhost
+![enable_loading_content_over_localhost](./assets/enable_loading_content_over_localhost.png)
+
+### Done
+You can test it as explained in [Sample Plantuml Code](#sample-plantuml-code)
+
+## Run Remotely
 Pros
 - Does not require remote server
 
@@ -68,3 +94,16 @@ Cons
 - Requires internet connection
 - Your data will be sent to plantuml
 - Generally slower
+
+### Set remote setting
+**open setting**
+```
+command + shift + v
+```
+![open_setting](./assets/open_setting.png)
+
+**set remote plantuml setting**
+![set_remote_plantuml_server](./assets/set_remote_plantuml_server.png)
+
+### Done
+You can test it as explained in [Sample Plantuml Code](#sample-plantuml-code)
