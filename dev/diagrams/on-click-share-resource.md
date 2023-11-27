@@ -71,15 +71,12 @@ activate user
             that shows the error message to the end user.
           end note
         end break
-        domain -> db: Checks if the same shared-resource domain exists
+        domain -> db: Checks if the same shared-resource domain exists. Always try to get the latest one
         activate db
           domain <- db: Returns stored data
         deactivate db
-        break if more than two exists, it deletes the old ones and leave the latest one
-          domain -> db: Deletes the old ones
-          activate db
-            domain <- db: Returns the result
-          deactivate db
+        break if doc exists
+          api <- domain: Returns SharedResourceDomain with the existing doc
         end break
         domain -> db: Creates a new shared-resource domain.post()
         activate db
