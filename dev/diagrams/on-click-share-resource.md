@@ -1,9 +1,9 @@
-# Shared resource
+# On Click Share Resource
 
 
 <!-- TOC -->
 
-- [Shared resource](#shared-resource)
+- [On Click Share Resource](#on-click-share-resource)
   - [Overview](#overview)
   - [POST shared-resource](#post-shared-resource)
   - [GET shared-resource](#get-shared-resource)
@@ -21,7 +21,7 @@
 
 @startuml
 
-title POST shared-resource
+title onClickShareResource()
 
 participant "End User" as user
 participant "FE" as fe
