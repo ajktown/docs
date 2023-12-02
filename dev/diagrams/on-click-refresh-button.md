@@ -33,6 +33,8 @@ box
 
 activate user
   user -> fe: Click refresh button
+  Par Click refresh
+  Par GetWordsWithSemesters
   activate fe
   fe -> hook: getSemesters()
     activate hook
@@ -56,6 +58,7 @@ activate user
       hook -> recoil: set(wordIdsState, apiResponse.wordIds)
       fe <- hook: Returns nothing
     deactivate hook
+  end par
     fe -> hook: getPreference()
     activate hook
       hook -> api: getPreferenceApi()
@@ -64,6 +67,7 @@ activate user
       deactivate api
       hook -> recoil: set(preferenceState, data)
       fe <- hook: Returns nothing
+  end par
     deactivate hook
   user <- fe: End Process with Loading Ends.
   deactivate fe
