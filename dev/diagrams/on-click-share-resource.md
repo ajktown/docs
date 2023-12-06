@@ -67,9 +67,9 @@ activate user
       end break
       api -> domain: Requests SharedResourceDomain
       activate domain
-        domain -> db: Requests resource information
+        domain -> db: Requests sharing resource doc
         activate db
-          domain <- db: Returns resource information
+          domain <- db: Returns sharing resource od
         deactivate db
         domain -> domain: Checks if the resource is actually owned by the user.
         break if the resource is not owned by the user
