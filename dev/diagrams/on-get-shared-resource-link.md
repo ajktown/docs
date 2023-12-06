@@ -42,19 +42,36 @@ activate user
         activate db
           domain <- db: Returns resource doc
         deactivate db
+        break if the resource (does not exist) || (is expired && not owned by the user)
+          api <- domain: NotExistOrNoPermissionError
+          note left
+            If the resource is expired, it is considered as
+            the owner of the resource no longer wishes to share to others
+            and therefore should throw NotExistOrNoPermissionError
+          end note
+          fe <- api: Throws NotExistOrNoPermissionError
+          user <- fe : Shows the resource is expired, not exist or no permission
+        end break
         api <- domain: Returns SharedResourceDomain
         deactivate domain
         api -> domain: Requests SharedResourceDomain.toResDTO()
           activate domain
-            break if the resource is expired or does not exist
-              api <- domain: Throws NotExistOrNoPermissionError
-              fe <- api: Throws NotExistOrNoPermissionError
-              user <- fe : Shows the resource is expired, not exist or no permission
-            end break
             domain -> db: Requests resource information
             activate db
               domain <- db: Returns resource information
             deactivate db
+            break if the resource does not exist
+              domain -> db: Delete the shared resource
+              api <- domain: NotExistOrNoPermissionError
+              note left
+                Since the resource does not exist at all,
+              end note
+              fe <- api: Throws NotExistOrNoPermissionError
+              user <- fe : Shows the resource is expired, not exist or no permission
+              note right
+                The visuals should be identical to the owners & non-owners
+              end note
+            end break
             api <- domain: Returns SharedResourceDomain.toResDTO()
           deactivate domain
         fe <- api: Returns the response DTO
