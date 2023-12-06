@@ -20,7 +20,7 @@ At present, the shared resource can be attainable by anyone including non-signed
 
 @startuml
 
-title Use Shared Resource Link
+title GET Use Shared Resource Link
 
 participant "End User" as user
 participant "FE" as fe

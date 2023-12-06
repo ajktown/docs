@@ -7,7 +7,6 @@
   - [Overview](#overview)
   - [Security](#security)
   - [POST shared-resource](#post-shared-resource)
-  - [GET shared-resource](#get-shared-resource)
 
 <!-- /TOC -->
 
@@ -29,7 +28,7 @@
 
 @startuml
 
-title onClickShareResource()
+title POST onClickShareResource()
 
 participant "End User" as user
 participant "FE" as fe
