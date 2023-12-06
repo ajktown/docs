@@ -42,7 +42,7 @@ activate user
         activate db
           domain <- db: Returns resource doc
         deactivate db
-        break if the resource (does not exist) || (is expired && not owned by the user)
+        break if the shared-resource (does not exist) || (is expired && not owned by the user)
           api <- domain: NotExistOrNoPermissionError
           note left
             If the resource is expired, it is considered as
