@@ -36,7 +36,7 @@ activate user
     fe -> fe: Opens A dialog with loading indicator
     fe -> api: Sends API Request GET /api/v1/shared-resource
     activate api
-      api -> domain: Requests SharedResourceDomain to be created
+      api -> domain: Requests SharedResourceDomain
       activate domain
         domain -> db: Requests shared resource doc
         activate db
