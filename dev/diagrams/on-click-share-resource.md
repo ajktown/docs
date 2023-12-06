@@ -6,6 +6,7 @@
 - [On Click Share Resource](#on-click-share-resource)
   - [Overview](#overview)
   - [Security](#security)
+  - [Data Security](#data-security)
   - [POST shared-resource](#post-shared-resource)
 
 <!-- /TOC -->
@@ -20,6 +21,14 @@
   - The resource does not exist
   - The resource is not owned by the user
   - The resource is expired
+
+
+## Data Security
+- When end user posts SharedResource, it makes sure the following:
+  - The shared resource does not exist
+    - If already exists, it simply returns `SharedResourceDomain.fromMdb().toSharedRes()`
+  - The sharing resource actually exists
+  - The sharing resource is actually owned by the requester
 
 
 ## POST shared-resource
