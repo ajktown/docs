@@ -1,9 +1,9 @@
-# On Click Share Resource
+# On Create Shared Resource
 
 
 <!-- TOC -->
 
-- [On Click Share Resource](#on-click-share-resource)
+- [On Create Shared Resource](#on-create-shared-resource)
   - [Overview](#overview)
   - [Security](#security)
   - [Data Security](#data-security)
