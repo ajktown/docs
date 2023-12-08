@@ -1,15 +1,18 @@
-# Shared Resource Link
+# Shared Resource By URL
 
 <!-- TOC -->
 
-- [Shared Resource Link](#shared-resource-link)
+- [Shared Resource By URL](#shared-resource-by-url)
   - [Overview](#overview)
-  - [Shared Resource Link](#shared-resource-link-1)
+  - [Shared Resource Link](#shared-resource-link)
 
 <!-- /TOC -->
 
 ## Overview
 Explains how shared resource link works with ajkapi server.
+
+- The link contains the base64 encoded string of the resource id
+  - And therefore the FE can use the ID directly.
 
 - Post Shared resource details [here](./on-click-share-resource.md)
 
@@ -20,7 +23,7 @@ At present, the shared resource can be attainable by anyone including non-signed
 
 @startuml
 
-title GET Use Shared Resource Link
+title GET Use Shared Resource by URL
 
 participant "End User" as user
 participant "FE" as fe
