@@ -1,9 +1,9 @@
-# On Create Shared Resource
+# On Post Shared Resource
 
 
 <!-- TOC -->
 
-- [On Create Shared Resource](#on-create-shared-resource)
+- [On Post Shared Resource](#on-post-shared-resource)
   - [Overview](#overview)
   - [Security](#security)
   - [Data Security](#data-security)
@@ -37,7 +37,7 @@
 
 @startuml
 
-title POST onClickShareResource()
+title POST shared resource()
 
 participant "End User" as user
 participant "FE" as fe
