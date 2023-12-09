@@ -5,6 +5,8 @@
 - [Shared Resource By URL](#shared-resource-by-url)
   - [Overview](#overview)
   - [Shared Resource Link](#shared-resource-link)
+  - [GetSharedResourcesQueryDTO](#getsharedresourcesquerydto)
+  - [Diagram](#diagram)
 
 <!-- /TOC -->
 
@@ -19,11 +21,34 @@ Explains how shared resource link works with ajkapi server.
 ## Shared Resource Link
 At present, the shared resource can be attainable by anyone including non-signed in users.
 
+## GetSharedResourcesQueryDTO
+The GET /api/v1/shared-resource/{id} endpoint receives the following DTO.
+If one of them are not present, the endpoint should throw an error.
+
+
+```ts
+/**
+ * Order in a priority queue.
+ * If both id and wordID given, id will be used.
+ */
+export class GetSharedResourcesQueryDTO {
+  @IsOptional()
+  id: string
+
+  @IsOptional()
+  wordId: string
+}
+
+```
+
+
+## Diagram 
+
 ```plantuml
 
 @startuml
 
-title GET Use Shared Resource by URL
+title GET Use Shared Resource
 
 participant "End User" as user
 participant "FE" as fe
