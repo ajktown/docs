@@ -62,7 +62,7 @@ activate user
   user -> fe: User opens a shared link
   activate fe
     fe -> fe: Opens A dialog with loading indicator
-    fe -> api: Sends API Request GET /api/v1/shared-resource/{id}
+    fe -> api: Sends API Request GET /api/v1/shared-resource
     activate api
       api -> domain: Requests SharedResourceDomain
       activate domain
