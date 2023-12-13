@@ -42,7 +42,7 @@ export class GetSharedResourcesQueryDTO {
 ```
 
 
-## Diagram 
+## Diagram
 
 ```plantuml
 
@@ -105,6 +105,7 @@ activate user
         fe <- api: Returns the response DTO
     deactivate api
   fe -> fe: The loading indicator disappears
+  fe -> fe: Runs a setTimeout that sets the sharedResource to null after expiry.
   user <- fe: Shows the shared resource
   user <- fe: Shows the post word button, if the user is signed in
   deactivate fe
