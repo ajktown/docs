@@ -2,7 +2,7 @@
 
 <!-- TOC -->
 
-- [Use Post Word With String Hook](#use-post-word-with-string-hook)
+- [On Post Word With String Hook](#on-post-word-with-string-hook)
   - [Overview](#overview)
 
 <!-- /TOC -->
