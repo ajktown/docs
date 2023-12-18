@@ -37,7 +37,7 @@ activate user
 			hook -> authPrep: onGetAuthPrep
 			activate authPrep
 				break if there is no auth prep or the user is not signed in
-					hook <- authPrep: throw new Error('Not Singed In')
+					hook <- authPrep: throw new Error('Not Signed In')
 					fe <- hook: router.push(DEFAULT_MAIN_APP_PAGE)
 				end break
 				hook <- authPrep: handleSignOutApp()
