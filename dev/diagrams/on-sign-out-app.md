@@ -35,11 +35,11 @@ activate user
     activate hook
       hook -> api: postSignOut
       activate api
-        hook -> recoil: Resets wordIdsState
-        activate recoil
-          hook -> recoil: Resets preferenceState
-          hook <- api: Sign-out successful
-        deactivate api
+        hook <- api: Sign-out successful
+      deactivate api
+      hook -> recoil: Resets wordIdsState
+      activate recoil
+        hook -> recoil: Resets preferenceState
         recoil -> recoil: Resets Recoil states
         hook <- recoil: Return nothing
       deactivate recoil
