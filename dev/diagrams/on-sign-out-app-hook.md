@@ -1,4 +1,4 @@
-# On Sign Out App Hook
+# On Sign Out App
 
 <!-- TOC -->
 
