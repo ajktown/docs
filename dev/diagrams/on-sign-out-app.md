@@ -38,11 +38,7 @@ activate user
         hook <- api: Sign-out successful
       deactivate api
       hook -> recoil: Resets wordIdsState
-      activate recoil
-        hook -> recoil: Resets preferenceState
-        recoil -> recoil: Resets Recoil states
-        hook <- recoil: Return nothing
-      deactivate recoil
+      hook -> recoil: Resets preferenceState
       fe <- hook: Redirects to Welcome page
     deactivate hook
     user <- fe: Shows Welcome page
