@@ -21,7 +21,7 @@ participant "End User" as user
 
 box "FE" #Lightblue
   participant "Component" as fe
-  participant "Hook: onSignOutApp" as hook
+  participant "Hook: useSignOutApp" as hook
   participant "Recoil" as recoil
 box
 box "API" #Lightgreen
