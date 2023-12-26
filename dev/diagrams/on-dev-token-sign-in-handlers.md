@@ -38,25 +38,25 @@ activate user
         hook <- api: Successful authentication with a developer token
         hook -> authPrep: onGetAuthPrep()
         activate authPrep
-			    authPrep -> api: onGetAuthPrep
-				  break Returns null
-					  authPrep <- api: Return null
-					  end break
-				    authPrep <- api: Return data
-				  deactivate api
-          hook <- authPrep: Return undefined
-        deactivate authPrep
-        hook <- hook: router.push(DEFAULT_MAIN_APP_PAGE)
+          authPrep -> api: onGetAuthPrep
+          break Returns null
+            authPrep <- api: Return null
+          end break
+          authPrep <- api: Return data
+        deactivate api
+        hook <- authPrep: Return undefined
+      deactivate authPrep
+      hook <- hook: router.push(DEFAULT_MAIN_APP_PAGE)
+      fe <- hook: Returns nothing
+      break if an error occurs
+        hook <- hook: throw new Error(`something went wrong`)
+        hook <- hook: onError console.log(`onError; ContinueWithDevToken`)
         fe <- hook: Returns nothing
-        break if an error occurs
-          hook <- hook: throw new Error(`something went wrong`)
-          hook <- hook: onError console.log(`onError; ContinueWithDevToken`)
-          fe <- hook: Returns nothing
-        end break
-      deactivate hook
-      user <- fe: Returns nothing
-    deactivate fe
-  deactivate user
+      end break
+    deactivate hook
+    user <- fe: Returns nothing
+  deactivate fe
+deactivate user
 
 
       
