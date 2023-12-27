@@ -17,8 +17,13 @@
 title Continue with Google
 
 participant "End User" as user
-participant "FE" as fe
-participant "API" as api
+
+box "FE" #Lightblue
+  participant "FE" as fe
+box
+box "API" #Lightgreen
+  participant "API" as api
+box
 database "MongoDB" as db
 participant "Google Server" as google
 
