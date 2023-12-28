@@ -36,9 +36,11 @@ activate user
       hook -> api: postAuthByDevTokenApi()
       activate api
         hook <- api: Successful authentication with a developer token
-        hook -> authPrep: onGetAuthPrep()
-        activate authPrep
-          authPrep -> api: onGetAuthPrep
+      deactivate api
+      hook -> authPrep: onGetAuthPrep()
+      activate authPrep
+        authPrep -> api: onGetAuthPrep
+        activate api
           break Returns null
             authPrep <- api: Return null
           end break
