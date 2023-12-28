@@ -41,7 +41,7 @@ activate user
       activate authPrep
         authPrep -> api: onGetAuthPrep
         activate api
-          break Returns null
+          break if there is no auth prep
             authPrep <- api: Return null
           end break
           authPrep <- api: Return data
