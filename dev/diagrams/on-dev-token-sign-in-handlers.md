@@ -43,7 +43,7 @@ activate user
         hook <- hook2: Returns nothing
       deactivate hook2
       hook -> hook: router.push(DEFAULT_MAIN_APP_PAGE)
-      note right
+      note left
         User can now see the default app page
       end note
       fe <- hook: Returns nothing
