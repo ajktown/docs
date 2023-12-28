@@ -49,12 +49,12 @@ activate user
         hook <- authPrep: Return undefined
       deactivate authPrep
       hook <- hook: router.push(DEFAULT_MAIN_APP_PAGE)
-      fe <- hook: Returns nothing
       break if an error occurs
         hook <- hook: throw new Error(`something went wrong`)
         hook <- hook: onError console.log(`onError; ContinueWithDevToken`)
         fe <- hook: Returns nothing
       end break
+      fe <- hook: Returns nothing
     deactivate hook
     user <- fe: Returns nothing
   deactivate fe
