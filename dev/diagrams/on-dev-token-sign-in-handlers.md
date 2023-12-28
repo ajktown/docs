@@ -29,7 +29,7 @@ box "API" #Lightgreen
 box
 
 activate user
-  user -> fe: onClick `Continue with Developer Token`
+  user -> fe: User clicks `Continue with Developer Token`
   activate fe
     fe -> hook: useDevTokenSignInHandlers()
     activate hook
