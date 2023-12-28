@@ -22,7 +22,7 @@ participant "End User" as user
 box "FE" #Lightblue
   participant "Component" as fe
   participant "Hook: useDevTokenSignInHandlers" as hook
-  participant "Hook: UseAuthPrep" as authPrep
+  participant "Hook: UseAuthPrep" as hook2
 box
 box "API" #Lightgreen
   participant "API" as api
@@ -37,30 +37,17 @@ activate user
       activate api
         hook <- api: Successful authentication with a developer token
       deactivate api
-      hook -> authPrep: onGetAuthPrep()
-      activate authPrep
-        authPrep -> api: onGetAuthPrep
-        activate api
-          break if there is no auth prep
-            authPrep <- api: Return null
-          end break
-          authPrep <- api: Return data
-        deactivate api
-        hook <- authPrep: Return undefined
-      deactivate authPrep
-      hook <- hook: router.push(DEFAULT_MAIN_APP_PAGE)
-      break if an error occurs
-        hook <- hook: throw new Error(`something went wrong`)
-        hook <- hook: onError console.log(`onError; ContinueWithDevToken`)
-        fe <- hook: Returns nothing
-      end break
+      hook -> hook2: useAuthPrep()
+      activate hook2
+        hook2 -> hook2: Prepare auth data
+        hook <- hook2: Returns nothing
+      deactivate hook2
+      hook -> hook: router.push(DEFAULT_MAIN_APP_PAGE)
+      note right
+        User can now see the default app page
+      end note
       fe <- hook: Returns nothing
     deactivate hook
     user <- fe: Returns nothing
   deactivate fe
 deactivate user
-
-
-      
-        
-
