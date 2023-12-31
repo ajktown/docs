@@ -29,8 +29,8 @@ activate user
   activate fe
     fe -> hook: useIsAppBooted
     activate hook
-      hook <- hook: handleSignOutApp()
-      hook <- hook: router.push(DEFAULT_MAIN_APP_PAGE)
+      hook -> hook: handleSignOutApp()
+      hook -> hook: router.push(DEFAULT_MAIN_APP_PAGE)
       fe <- hook: Returns nothing
     deactivate hook
     user <- fe: Returns nothing
