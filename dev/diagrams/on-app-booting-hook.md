@@ -31,6 +31,7 @@ activate user
     activate hook
       break if there is no authPrep or the user is not signed in
         hook -> hook: handleSignOutApp()
+        fe <- hook: Returns nothing
       end break
       hook -> hook: router.push(DEFAULT_MAIN_APP_PAGE)
       fe <- hook: Returns nothing
