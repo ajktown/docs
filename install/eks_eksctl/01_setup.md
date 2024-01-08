@@ -99,8 +99,8 @@ eksctl create cluster \
 ```sh
 eksctl get cluster
 # $ eksctl get cluster
-# NAME			          REGION		      EKSCTL CREATED
-# ajktown-cluster-arm	ap-northeast-1	True
+# NAME                 REGION          EKSCTL CREATED
+# ajktown-cluster-arm  ap-northeast-1  True
 ```
 
 # Delete Cluster
