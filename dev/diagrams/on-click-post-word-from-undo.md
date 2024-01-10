@@ -60,6 +60,9 @@ activate user
       hook -> recoil: set(wordIdsState, wordIds)
       hook -> recoil: set(wordsFamily(postedWord.id), postedWord)
       hook -> recoil: set(semestersState, semesters.semesters)
+      break if selectedWordIdForDialogState is not null
+        hook -> recoil: set(selectedWordIdForDialogState, postedWord.id)
+      end break
       deactivate recoil
       hook -> useState: setLoading(false)
       activate useState
