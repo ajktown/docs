@@ -27,7 +27,7 @@ Hooks should return callback with on~ prefix, but should never be onClick.
 
 ## Components
 
-Components are allowed to define a callback simply named `onClick()`. If you have to define multiple `onClick()`, you should either create separate hooks or separate components
+Components are allowed to define a callback simply named `onClick()`. If you have to define multiple `onClick()`, you should either create separate hooks or separate components.
 
 
 ## Style Components
