@@ -16,7 +16,13 @@ When you develop a React application, you will face a situation where you need t
 
 ## Hooks
 
-Hooks should return callback with on~ prefix, but should never be onClick
+Hooks should return callback with on~ prefix, but should never be onClick.
+
+- Samples
+  - onPostWords
+  - onGetWords
+  - onPutWordTagDeleted
+  - onDeleteWord
 
 
 ## Components
