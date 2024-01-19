@@ -30,6 +30,9 @@ Hooks should return callback with on~ prefix, but should never be onClick.
 Components are allowed to define a callback simply named `onClick()`. If you have to define multiple `onClick()`, you should either create separate hooks or separate components.
 
 
+The reason behind this is that component does only one job. If you have to define multiple `onClick()`, it means that your component is doing multiple jobs. And it is not a good practice.
+
+
 ## Style Components
 
 Style Components should receive a callback function as `onClick()` props. If internal function is required, it should be named `handleClick()`.
