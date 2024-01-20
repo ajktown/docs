@@ -36,7 +36,7 @@ box "API" #Lightgreen
 box
 
   activate fe
-  fe -> hook: getSemesters()
+  fe -> hook: onGetWordsWithSemesters()
     activate hook
       hook -> api: getSemestersApi()
       activate api
