@@ -96,9 +96,9 @@ activate user
       deactivate domain
       fe <- api: SharedResourceDomain.toResDTO()
     deactivate api
-  fe -> fe: Copies the generated URL to clipboard of the end user.
-  fe -> fe: The loading indicator disappears
-  user <- fe: Tells the user that the URL is copied to clipboard
+    fe -> fe: Copies the generated URL to clipboard of the end user.
+    fe -> fe: The loading indicator disappears
+    user <- fe: Tells the user that the URL is copied to clipboard
   deactivate fe
   user -> user: User has the link that can be shared with others
 deactivate user
