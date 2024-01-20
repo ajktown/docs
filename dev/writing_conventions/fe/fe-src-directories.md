@@ -13,7 +13,7 @@
 
 Organize source directories for consistency of Frontend of Wordnote
 
-## Source directory 
+## Source directory
 
 - Please organize in alphabetical order
   - i.e) Controllers, Domains, DTO, ...
