@@ -14,7 +14,7 @@
 
 ## Overview
 
-`Localhost Port` is a feature that you can use to access your local server from the internet.
+This is the list of ports used in the localhost for development of AJK Town projects.
 
 
 ## Tables
