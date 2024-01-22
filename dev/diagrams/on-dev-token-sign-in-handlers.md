@@ -21,7 +21,7 @@ participant "End User" as user
 
 box "FE" #Lightblue
   participant "Component" as fe
-  participant "Hook: useDevTokenSignInHandlers" as hook
+  participant "Hook: useDevSignIn" as hook
   participant "Hook: UseAuthPrep" as hook2
 box
 box "API" #Lightgreen
@@ -31,13 +31,13 @@ box
 activate user
   user -> fe: User clicks `Continue with Developer Token`
   activate fe
-    fe -> hook: useDevTokenSignInHandlers()
+    fe -> hook: onDevSignIn()
     activate hook
       hook -> api: postAuthByDevTokenApi()
       activate api
         hook <- api: Successful authentication with a developer token
       deactivate api
-      hook -> hook2: useAuthPrep()
+      hook -> hook2: onGetAuthPrep()
       activate hook2
         hook2 -> hook2: Prepare auth data
         hook <- hook2: Returns nothing
