@@ -36,7 +36,7 @@ box "API" #Lightgreen
 box
 
   activate fe
-  fe -> hook: onGetWordsWithSemesters()
+  fe -> hook: onGetSemesters()
     activate hook
       hook -> api: getSemestersApi()
       activate api
@@ -47,7 +47,7 @@ box
     deactivate hook
   break if latestSemester is undefined
   end break
-    fe -> hook: getWords()
+    fe -> hook: onGetWords()
     activate hook
       hook -> api: getWordsApi()
       activate api
@@ -78,7 +78,7 @@ box
 
 
   activate fe
-    fe -> hook: getPreference()
+    fe -> hook: onGetPreference()
     activate hook
       hook -> api: getPreferenceApi()
       activate api
