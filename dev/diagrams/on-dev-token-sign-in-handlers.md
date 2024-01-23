@@ -1,21 +1,21 @@
-# On Dev Token Sign In Handlers
+# On Dev Sign In
 
 <!-- TOC -->
 
-- [On Dev Token Sign In Handlers](#on-dev-token-sign-in-handlers)
+- [On Dev Sign In](#on-dev-sign-in)
   - [Overview](#overview)
 
 <!-- /TOC -->
 
 ## Overview
-This is a basic activity diagram for the useDevTokenSignInHandlers.
+This is a basic activity diagram for the useDevSignIn.
 
 
 ```plantuml
 
 @startuml
 
-title useDevTokenSignInHandlers()
+title useDevSignIn()
 
 participant "End User" as user
 
