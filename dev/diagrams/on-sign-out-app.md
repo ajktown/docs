@@ -31,7 +31,7 @@ box
 activate user
   user -> fe: SignOutApp
   activate fe
-    fe -> hook: onSignOutAppHook
+    fe -> hook: onSignOutApp
     activate hook
       hook -> api: postSignOut
       activate api
