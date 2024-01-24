@@ -22,7 +22,7 @@ participant "End User" as user
 box "FE" #Lightblue
   participant "Component" as fe
   participant "Hook: useDevSignIn" as hook
-  participant "Hook: UseAuthPrep" as hook2
+  participant "Hook: useAuthPrep" as hook2
 box
 box "API" #Lightgreen
   participant "API" as api
