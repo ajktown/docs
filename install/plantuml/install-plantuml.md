@@ -54,7 +54,7 @@ deactivate fe
 Basic installs contain the shared install for both local and remote
 
 ### Install PlantUML extension if not installed
-![install_vscode_plantuml](./assets/install_vscode_plantuml.png)
+Install [here](/install/vs_code_extensions/install-ajktown-recommended-extensions.md#plantuml)
 
 ## Run Locally
 Pros
