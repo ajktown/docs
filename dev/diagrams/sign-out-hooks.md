@@ -7,7 +7,7 @@
   - [Hooks](#hooks)
     - [useOnSignOutApp](#useonsignoutapp)
     - [useIsAppBooted](#useisappbooted)
-    - [useApiError](#useapierror)
+    - [useHandleApiError](#usehandleapierror)
 
 <!-- /TOC -->
 

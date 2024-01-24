@@ -2,7 +2,7 @@
 
 <!-- TOC -->
 
-- [On Sign Out App Hook](#on-sign-out-app-hook)
+- [On Sign Out App](#on-sign-out-app)
   - [Overview](#overview)
 
 <!-- /TOC -->
