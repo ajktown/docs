@@ -7,7 +7,7 @@
   - [Hooks](#hooks)
     - [useOnSignOutApp](#useonsignoutapp)
     - [useIsAppBooted](#useisappbooted)
-    - [useApiErrorHook](#useapierrorhook)
+    - [useHandleApiError](#usehandleapierror)
 
 <!-- /TOC -->
 
@@ -39,16 +39,16 @@ Runs only when sign out is confirmed
   - Env Data
   - Is end user signed in
 
-1. Calls [useOnClickSignOutApp](#useonclicksignoutapp) only if not signed in
+1. Calls [useOnSignOutApp](#useOnSignOutApp) only if not signed in
 
 1. Redirects to home page, if signed in.
 
 
-### useApiErrorHook
+### useHandleApiError
 
 Catches every error of every api call of AJK Town Frontend applications.
 
-1. If Error is related to authentication, runs [useOnClickSignOutApp](#useonclicksignoutapp).
+1. If Error is related to authentication, runs [useOnSignOutApp](#useOnSignOutApp).
 
 
 <!-- Footnote -->
