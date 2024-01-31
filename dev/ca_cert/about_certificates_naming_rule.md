@@ -1,6 +1,12 @@
 # Certificates Directory
 
+<!-- TOC -->
 
+- [Certificates Directory](#certificates-directory)
+  - [TODO](#todo)
+  - [Overview](#overview)
+
+<!-- /TOC -->
 ## TODO
 - This certificate folder should be eventually moved and managed later all together with other environment variable etc.
 
