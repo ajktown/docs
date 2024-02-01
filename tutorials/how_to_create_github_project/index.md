@@ -42,6 +42,8 @@ The following is the rule
 
 
 #### AppName
+- GitHub
+  - Any GitHub settings or usage related project
 - WordnoteGPT
 - ConsistencyGPT
 
