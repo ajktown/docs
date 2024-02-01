@@ -7,7 +7,7 @@
     - [Choose your password for your mongo db server](#choose-your-password-for-your-mongo-db-server)
     - [Run the new container with the downloaded image](#run-the-new-container-with-the-downloaded-image)
     - [See if container is created](#see-if-container-is-created)
-    - [Install `Mongo DB Compass`](#install-mongo-db-compass)
+    - [Install Mongo DB Compass](#install-mongo-db-compass)
 
 <!-- /TOC -->
 

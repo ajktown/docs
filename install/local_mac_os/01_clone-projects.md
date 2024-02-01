@@ -10,6 +10,7 @@
     - [Clone Projects](#clone-projects)
 
 <!-- /TOC -->
+<!-- /TOC -->
 
 ## Overview
 This is a step by step tutorial to set up the environment for ajktown project.

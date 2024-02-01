@@ -6,7 +6,7 @@
 
 - [DNS Setup](#dns-setup)
   - [Overview](#overview)
-  - [How to set up (Google Domain)](#how-to-set-up-google-domain)
+  - [How to set up Google Domain](#how-to-set-up-google-domain)
   - [Check if DNS is successfully pointed](#check-if-dns-is-successfully-pointed)
 
 <!-- /TOC -->

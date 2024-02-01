@@ -1,12 +1,11 @@
 # Install Kubectl
 
-
 <!-- TOC -->
 
 - [Install Kubectl](#install-kubectl)
   - [Overview](#overview)
   - [Run as sudo](#run-as-sudo)
-  - [Install Kubectl](#install-kubectl-1)
+  - [Install Kubectl](#install-kubectl)
   - [Check installed kubectl](#check-installed-kubectl)
   - [Reference](#reference)
 
