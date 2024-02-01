@@ -11,6 +11,8 @@
     - [Create Project with appropriate name](#create-project-with-appropriate-name)
       - [Naming rule](#naming-rule)
       - [AppName](#appname)
+    - [Write a short description of this project](#write-a-short-description-of-this-project)
+    - [Make it public](#make-it-public)
     - [Done](#done)
 
 <!-- /TOC -->
@@ -49,6 +51,20 @@ The following is the rule
 
 *api or documentation is not included in the project name*
 *Only apps that is directly related to the user is considered as AppName*
+
+
+### Write a short description of this project
+![write_short_description](./assets/write_short_description.png)
+
+
+### Make it public
+Once created, make it public (if it is okay)
+
+*Go setting*
+![select_setting](./assets/select_setting.png)
+
+*Scroll down to the bottom and make it public*
+![select_public](./assets/select_public.png)
 
 ### Done
 Associate your related PRs with the project you just created.
