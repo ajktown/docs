@@ -1,6 +1,5 @@
 # Install Kubectl
 
-
 <!-- TOC -->
 
 - [Install Kubectl](#install-kubectl)

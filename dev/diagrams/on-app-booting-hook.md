@@ -2,7 +2,7 @@
 
 <!-- TOC -->
 
-- [Use Is App Booted Hook](#use-is-app-booted-hook)
+- [On App Booting Hook](#on-app-booting-hook)
   - [Overview](#overview)
 
 <!-- /TOC -->
