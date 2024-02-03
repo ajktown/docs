@@ -1,16 +1,10 @@
-
 # Secret Yaml Setup
+
 <!-- TOC -->
 
 - [Secret Yaml Setup](#secret-yaml-setup)
   - [Overview](#overview)
   - [Template is managed here](#template-is-managed-here)
-  - [Create empty secret.yaml file](#create-empty-secretyaml-file)
-    - [How to store?](#how-to-store)
-    - [Sample Result](#sample-result)
-    - [How to decode the encoded value](#how-to-decode-the-encoded-value)
-
-<!-- /TOC --> is managed here](#template-is-managed-here)
   - [Create empty secret.yaml file](#create-empty-secretyaml-file)
     - [How to store?](#how-to-store)
     - [Sample Result](#sample-result)

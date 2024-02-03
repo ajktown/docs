@@ -6,7 +6,7 @@
   - [Overview](#overview)
   - [Prerequisites](#prerequisites)
   - [Steps](#steps)
-    - [Prerequisites](#prerequisites)
+    - [Prerequisites](#prerequisites-1)
     - [Test routing](#test-routing)
     - [Modify scripts like the below:](#modify-scripts-like-the-below)
     - [Test](#test)
