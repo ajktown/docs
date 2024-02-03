@@ -17,7 +17,7 @@ This doc is to install the recommended extensions for AJK Town for your VS Code
 
 ### TOC
 
-- https://marketplace.visualstudio.com/items?itemName=huntertran.auto-markdown-toc
+- https://marketplace.visualstudio.com/items?itemName=CharlesWan.markdown-toc
 
 
 ### indent-rainbow
