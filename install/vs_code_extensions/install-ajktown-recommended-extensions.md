@@ -4,6 +4,7 @@
 
 - [Install AJK Town Recommended Extensions](#install-ajk-town-recommended-extensions)
   - [Overview](#overview)
+    - [Code Spell Checker](#code-spell-checker)
     - [TOC](#toc)
     - [indent-rainbow](#indent-rainbow)
     - [PlantUML](#plantuml)
@@ -13,6 +14,11 @@
 ## Overview
 
 This doc is to install the recommended extensions for AJK Town for your VS Code
+
+
+### Code Spell Checker
+
+- https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
 
 
 ### TOC
