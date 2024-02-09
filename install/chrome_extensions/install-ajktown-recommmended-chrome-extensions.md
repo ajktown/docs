@@ -10,7 +10,7 @@
 
 ## Overview
 
-This doc is to install the recommended extensions for their chrome to see json data from API server
+This doc is to install the recommended extensions for AJK Town for your Chrome browser
 
 
 ### JSON formatter
