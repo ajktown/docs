@@ -10,7 +10,7 @@
 
 ## Overview
 
-This doc is to install the recommended extensions for AJK Town for your Chrome browser
+This doc is to install the recommended extensions from AJK Town for your Chrome browser
 
 
 ### JSON formatter
