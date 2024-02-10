@@ -15,7 +15,6 @@
     - [Set local setting](#set-local-setting)
     - [Enable loading content over http served from localhost](#enable-loading-content-over-http-served-from-localhost)
     - [Done](#done)
-    - [Done](#done-1)
 
 <!-- /TOC -->
 
