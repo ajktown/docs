@@ -1,8 +1,8 @@
-# Use REmote Plantuml Server
+# Use Remote Plantuml Server
 
 <!-- TOC -->
 
-- [Use REmote Plantuml Server](#use-remote-plantuml-server)
+- [Use Remote Plantuml Server](#use-remote-plantuml-server)
   - [Overview](#overview)
   - [Run Remotely](#run-remotely)
     - [Set remote setting](#set-remote-setting)
