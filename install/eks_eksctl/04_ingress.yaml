@@ -44,3 +44,13 @@ spec:
                 name: ajktown-api-svc
                 port:
                   number: 80
+    - host: consistency.ajktown.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ajktown-consistency-svc
+                port:
+                  number: 80
