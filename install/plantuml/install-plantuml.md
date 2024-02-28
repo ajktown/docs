@@ -9,14 +9,12 @@
     - [Sample Plantuml Code](#sample-plantuml-code)
   - [Basic installs](#basic-installs)
     - [Install PlantUML extension if not installed](#install-plantuml-extension-if-not-installed)
+  - [Decide whether to run locally or remotely](#decide-whether-to-run-locally-or-remotely)
   - [Run Locally](#run-locally)
     - [Run plantuml docker image locally](#run-plantuml-docker-image-locally)
     - [Set local setting](#set-local-setting)
     - [Enable loading content over http served from localhost](#enable-loading-content-over-http-served-from-localhost)
     - [Done](#done)
-  - [Run Remotely](#run-remotely)
-    - [Set remote setting](#set-remote-setting)
-    - [Done](#done-1)
 
 <!-- /TOC -->
 
@@ -56,12 +54,18 @@ Basic installs contain the shared install for both local and remote
 ### Install PlantUML extension if not installed
 Install [here](/install/vs_code_extensions/install-ajktown-recommended-extensions.md#plantuml)
 
-## Run Locally
-Pros
-- You can secure your plantuml code by not sending it to 3rd party remote server
 
-Cons
-- Requires docker to be running
+## Decide whether to run locally or remotely
+
+- If you would like to run plantuml locally, you can follow the steps below.
+  - Else, check out this [doc](./use-remote-plantuml-server.md)
+
+
+## Run Locally
+
+|                     Pros                     |             Cons              |
+|:--------------------------------------------:|:-----------------------------:|
+| Your data is not sent to the plantuml server | Requires docker to be running |
 
 ### Run plantuml docker image locally
 ```
@@ -82,28 +86,6 @@ command + shift + p
 
 ### Enable loading content over http served from localhost
 ![enable_loading_content_over_localhost](./assets/enable_loading_content_over_localhost.png)
-
-### Done
-You can test it as explained in [Sample Plantuml Code](#sample-plantuml-code)
-
-## Run Remotely
-Pros
-- Does not require remote server
-
-Cons
-- Requires internet connection
-- Your data will be sent to plantuml
-- Generally slower
-
-### Set remote setting
-**open setting**
-```
-command + shift + v
-```
-![open_setting](./assets/open_setting.png)
-
-**set remote plantuml setting**
-![set_remote_plantuml_server](./assets/set_remote_plantuml_server.png)
 
 ### Done
 You can test it as explained in [Sample Plantuml Code](#sample-plantuml-code)
