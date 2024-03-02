@@ -30,7 +30,8 @@ Just like a great engineer, it takes years of focused practice to become a `grea
 ### install
 - how to install AJK Town application or its related ones
 
-
-
+<!-- Footnote -->
 
 [^1]: https://developers.google.com/tech-writing/one#learning_objectives
+
+<!-- Footnote -->
