@@ -31,9 +31,9 @@ box
 activate user
   user -> fe: User commits into consistency as an action
   activate fe
-    fe -> api: POST /api/v1/action
+    fe -> api: POST /api/v1/action-groups/:id/actions
     note right
-      - id: id of the action group (must)
+      Action is managed by action group all the time
     end note
     activate api
       api -> db: Get Action Group Docs
@@ -56,6 +56,7 @@ activate user
       deactivate db
       fe <- api: Return ActionGroupDomain.toRes()
     deactivate api
+    user <- fe: Shows created action wrapped by action group
   deactivate fe
 deactivate user
 ```
