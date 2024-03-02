@@ -39,7 +39,7 @@ activate user
       api -> db: Create Action Group
       note right
         The same name is permitted for the same user.
-        - Time standard: UTC
+        - Time standard: Seoul
         - Number of allowed commits: 1
       end note
       activate db
