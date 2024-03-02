@@ -25,6 +25,7 @@ box "FE" #Lightblue
 box
 box "API" #Lightgreen
   participant "API" as api
+  participant "User Service" as user_service
 box
 
 activate user
@@ -41,19 +42,24 @@ activate user
         As Mar 2, 2024, the ritual is not yet managed in the DB and has only default ritual.
         And therefore the current api simply gets all action groups and group them into the default ritual.
       end note
-      api -> db: Get User by nickname
-      activate db
-        api <- db: Return user
-      deactivate db
-      break if user not found with such nickname OR user has not made their rituals public
-        fe <- api: Returns 404
-        note right
-          For the privacy sake, you should not tell the details and just return 404
-          The error message should be
-          "No such user or the user has not make their rituals public."
-        end note
-        user <- fe: Tells user that there is no such user or not public
-      end break
+      api -> user_service: Get User by nickname
+      activate user_service
+        user_service -> db: Search user by nickname
+        activate db
+          user_service <- db : Return user
+        deactivate db
+        api <- user_service: Return user domain
+        break if user not found with such nickname OR user has not made their rituals public
+          api <- user_service: Throw NotExistOrNoPermissionError
+          fe <- api: Pass NotExistOrNoPermissionError
+          note right
+            For the privacy sake, you should not tell the details and just return 404
+            The error message should be
+            "No such user or the user has not make their rituals public."
+          end note
+          user <- fe: Tells user that there is no such user or not public
+        end break
+      deactivate user_service
       api -> db: Get Action Group Docs
       activate db
         api <- db: Return action group docs
