@@ -45,7 +45,9 @@ activate user
       activate db
         api <- db: Return action group
       deactivate db
+      fe <- api: Return created action group
     deactivate api
+    user <- fe: Shows created action group
   deactivate fe
 deactivate user
 ```
