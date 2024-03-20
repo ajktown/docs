@@ -1,8 +1,8 @@
-# On Get Action Groups
+# On Get Rituals
 
 <!-- TOC -->
 
-- [On Get Action Groups](#on-get-action-groups)
+- [On Get Rituals](#on-get-rituals)
   - [Overview](#overview)
 
 <!-- /TOC -->
