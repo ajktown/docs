@@ -21,7 +21,7 @@ sequenceDiagram
 title: onGetRituals() for the first time user
 
 actor user as User
-box Blue React - AJK Town
+box SkyBlue React - AJK Town
   participant fe as FE
 end
 box Green API - AJK Town
