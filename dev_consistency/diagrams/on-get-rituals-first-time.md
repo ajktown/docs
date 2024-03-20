@@ -28,7 +28,7 @@ box Green API - AJK Town
   participant api as API
   participant domain as RitualGroupDomain
 end
-box Red mongodb - AJK Town
+box BurntSienna mongodb - AJK Town
   participant db as DB
 end
 
