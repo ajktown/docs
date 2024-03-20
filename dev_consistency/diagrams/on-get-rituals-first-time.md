@@ -38,17 +38,24 @@ activate user
   activate fe
     fe ->> api: GET /api/v1/rituals
     activate api
-      api ->> domain: Runs RitualGroupDomain.fromReq()
+      api ->> domain: Runs RitualGroupDomain.fromMdb()
       activate domain
-        domain ->> db: Requests "action group docs" of the requester
+        domain ->> db: Requests "ritual" docs of the requester
         activate db
-          db ->> domain: Returns empty list of "action group docs"
+          db ->> domain: Returns empty list of "ritual" docs
         deactivate db
         domain ->> domain: Considers it as a new user of ConsistencyGPT
         domain ->> db: Creates a default ritual named "Unassociated Ritual"
+        Note right of domain: Calls RitualGroupDomain.fromMdb() recursively
+        domain ->> db: Requests "ritual" docs of the requester
         activate db
-          db ->> domain: Returns the newly created default ritual
+          db ->> domain: Returns the just created ritual
         deactivate db
+        domain ->> db: Requests "action group" docs of the requester
+        activate db
+          db ->> domain: Returns "action group" docs
+        deactivate db
+        domain ->> domain: Stores the action groups under the default ritual
         domain ->> api: Returns itself
       deactivate domain
       api ->> fe: Returns RitualGroupDomain.toRes(actionGroupModel)
