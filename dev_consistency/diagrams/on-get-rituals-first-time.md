@@ -58,7 +58,7 @@ activate user
         domain ->> domain: Stores the action groups under the default ritual
         domain ->> api: Returns itself
       deactivate domain
-      api ->> fe: Returns RitualGroupDomain.toRes(actionGroupModel)
+      api ->> fe: Returns RitualGroupDomain.toRes()
     deactivate api
     fe ->> user: Shows nothing as there is no action group under the default ritual
   deactivate fe
