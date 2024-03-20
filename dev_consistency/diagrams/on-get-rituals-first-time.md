@@ -61,6 +61,7 @@ activate user
       api ->> fe: Returns RitualGroupDomain.toRes()
     deactivate api
     fe ->> user: Shows nothing as there is no action group under the default ritual
+    Note right of user: Users before "Rituals" schema (Before Mar 20, 2024) <br/>will have the newly created ritual with their original action groups
   deactivate fe
 deactivate user
 ```
