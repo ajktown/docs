@@ -8,6 +8,7 @@
     - [TOC](#toc)
     - [indent-rainbow](#indent-rainbow)
     - [PlantUML](#plantuml)
+    - [Mermaid Tools](#mermaid-tools)
 
 <!-- /TOC -->
 
@@ -36,3 +37,9 @@ This doc is to install the recommended extensions for AJK Town for your VS Code
 - VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
 - VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=well-ar.plantuml
 - VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+
+
+### Mermaid Tools
+
+- https://marketplace.visualstudio.com/items?itemName=bpruitt-goddard.mermaid-markdown-syntax-highlighting
+- https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid
