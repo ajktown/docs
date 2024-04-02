@@ -36,7 +36,6 @@ This doc is to install the recommended extensions for AJK Town for your VS Code
 
 - VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
 - VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=well-ar.plantuml
-- VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
 
 
 ### Mermaid Tools
