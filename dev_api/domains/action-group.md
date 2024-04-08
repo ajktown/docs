@@ -6,7 +6,7 @@
 - [Action Group](#action-group)
   - [Overview](#overview)
   - [Action Group Level](#action-group-level)
-  - [Activity Diagram for Level Decision](#activity-diagram-for-level-decision)
+  - [Sequence Diagram for Level Decision](#sequence-diagram-for-level-decision)
 
 <!-- /TOC -->
 
@@ -22,8 +22,8 @@ Action Group determines the level dynamically based on the following attributes:
 - `Action`'s `isPerformed` (not yet implemented in April 2024)
 
 
-## Activity Diagram for Level Decision
-This is a basic activity diagram for how level is determined:
+## Sequence Diagram for Level Decision
+This is a basic sequence diagram for how level is determined:
 ```plantuml
 @startuml
 

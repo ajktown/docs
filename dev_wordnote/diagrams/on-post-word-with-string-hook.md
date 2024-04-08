@@ -8,7 +8,7 @@
 <!-- /TOC -->
 
 ## Overview
-This is a basic activity diagram for the usePostWordWithStingHook.
+This is a basic sequence diagram for the usePostWordWithStingHook.
 
 
 ```plantuml

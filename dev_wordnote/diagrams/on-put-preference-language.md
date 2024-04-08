@@ -8,7 +8,7 @@
 <!-- /TOC -->
 
 ## Overview
-This is a basic activity diagram for the onPutPreferenceLanguage() function in the FE.
+This is a basic sequence diagram for the onPutPreferenceLanguage() function in the FE.
 
 
 ```plantuml
