@@ -10,7 +10,7 @@
 <!-- /TOC -->
 
 ## Overview
-This is a basic activity diagram for the onClickRefresh() function in the FE.
+This is a basic sequence diagram for the onClickRefresh() function in the FE.
 
 In the onClickRefresh() function, the following hooks are processed simultaneously.
 　
