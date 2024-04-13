@@ -38,8 +38,7 @@ end
 activate user
   user ->> fe: Changes order of ActionGroups
   activate fe
-    fe ->> api: Requests PATCH /api/v1/rituals/:id
-    Note right of fe: Body contains action_group_ids
+    fe ->> api: Requests GET /api/v1/rituals
     activate api
       api ->> domain: Runs RitualGroupDomain.fromMdb()
       activate domain

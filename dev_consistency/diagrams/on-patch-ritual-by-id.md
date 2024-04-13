@@ -46,15 +46,11 @@ end
 activate user
   user ->> fe: Changes order of ActionGroups
   activate fe
-    fe ->> api: Requests PATCH /api/v1/rituals/:id
-    Note right of fe: Body contains action_group_ids
+    fe ->> api: Requests PATCH /api/v1/rituals/default
+    Note right of fe: DTO contains action_group_ids
     activate api
-      api ->> domain: Runs RitualGroupDomain.fromMdb()
+      api ->> domain: Runs RitualGroupDomain.patch(dto)
       activate domain
-        domain ->> db: Requests "ritual" docs of the requester based on id
-        activate db
-          db ->> domain: Returns ritual (As of Apr 2024, we only support one ritual per user, so only return defualt)
-        deactivate db
         domain ->> db: Requests update the default ritual based on given PatchRitualGroupBodyDTO
         activate db
           db ->> domain: Updates and returns the updated ritual doc
