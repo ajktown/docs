@@ -36,7 +36,7 @@ end
 
 
 activate user
-  user ->> fe: Changes order of ActionGroups
+  user ->> fe: Get rituals of the user
   activate fe
     fe ->> api: Requests GET /api/v1/rituals
     activate api
