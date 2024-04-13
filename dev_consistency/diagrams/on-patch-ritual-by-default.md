@@ -10,9 +10,9 @@
 <!-- /TOC -->
 
 ## Overview
-Sequence diagram for patching properties of the ritual by its id.
+Sequence diagram for patching properties of the default `default ritual`.
 
-However, the id is currently fixed as `default` as of Apr 2024.
+Only `default ritual` exists as of Apr 2024.
 
 This is due to the fact that we only support one ritual per user.
 
