@@ -27,7 +27,7 @@ As of Apr 2024, the only modifiable attribute is `orderedActionGroupIds`.
 ```mermaid
 
 sequenceDiagram
-title: onPatchRitualById()
+title: onPatchRitualByDefaultId()
 
 actor user as User
 box SkyBlue React - AJK Town
@@ -44,13 +44,18 @@ end
 
 
 activate user
-  user ->> fe: Changes order of ActionGroups
+  user ->> fe: Changes order of ActionGroups for the default ritual id
   activate fe
     fe ->> api: Requests PATCH /api/v1/rituals/default
     Note right of fe: DTO contains action_group_ids
     activate api
       api ->> domain: Runs RitualGroupDomain.patch(dto)
       activate domain
+        domain ->> db: Requests "ritual" docs of the requester
+        activate db
+          db ->> domain: Returns ritual (As of Apr 2024, we only support one ritual per user)
+        deactivate db
+        domain ->> domain: Knows the default ritual id
         domain ->> db: Requests update the default ritual based on given PatchRitualGroupBodyDTO
         activate db
           db ->> domain: Updates and returns the updated ritual doc
