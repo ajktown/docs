@@ -4,6 +4,7 @@
 
 - [On Get Rituals](#on-get-rituals)
   - [Overview](#overview)
+  - [Diagram](#diagram)
 
 <!-- /TOC -->
 
@@ -11,39 +12,52 @@
 
 Ritual contains action groups and each action group manages its own actions.
 
+RitualGroupDomain will smartly create a new default ritual if the user does not have any rituals yet.
 
-```plantuml
 
-@startuml
+## Diagram
+```mermaid
 
-title onGetRituals()
+sequenceDiagram
+title: onPatchRitualById()
 
-participant "End User" as user
+actor user as User
+box SkyBlue React - AJK Town
+  participant fe as FE
+end
+box Green API - AJK Town
+  participant api as API
+  participant domain as RitualGroupDomain
+  participant ritual_domain as RitualDomain
+end
+box Crimson mongodb - AJK Town
+  participant db as DB
+end
 
-box "FE" #Lightblue
-  participant "FE" as fe
-box
-box "API" #Lightgreen
-  participant "API" as api
-box
 
 activate user
-  user -> fe: User wants to see rituals
+  user ->> fe: Get rituals of the user
   activate fe
-    fe -> api: GET /api/v1/rituals
+    fe ->> api: Requests GET /api/v1/rituals
     activate api
-      note right
-        As Mar 2, 2024, the ritual is not yet managed in the DB and has only default ritual.
-        And therefore the current api simply gets all action groups and group them into the default ritual.
-      end note
-      api -> db: Get Action Group Docs
-      activate db
-        api <- db: Return action group docs
-      deactivate db
-      api -> api: Wrap every action group under the default ritual named "Unassociated Ritual"
-      fe <- api: Return Ritual.toRes() of every ritual
+      api ->> domain: Runs RitualGroupDomain.fromMdb()
+      activate domain
+        domain ->> db: Requests "ritual" docs of the requester
+        activate db
+          db ->> domain: Returns ritual (As of Apr 2024, we only support one ritual per user)
+        deactivate db
+        domain ->> db: Requests "action group" docs of the requester
+        activate db
+          db ->> domain: Returns "action group" docs
+        deactivate db
+        domain ->> domain: Stores the action groups under the default ritual
+        domain ->> domain: Sorts action groups based on the orderedActionGroupIds of RitualDomain props
+        domain ->> api: Returns itself
+      deactivate domain
+      api ->> fe: Returns RitualGroupDomain.toRes()
     deactivate api
-    user <- fe: Shows action groups under the rituals
+    fe ->> user: Shows nothing as there is no action group under the default ritual
+    Note right of user: Users before "Rituals" schema (Before Mar 20, 2024) <br/>will have the newly created ritual with their original action groups
   deactivate fe
 deactivate user
 ```
