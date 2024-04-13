@@ -4,6 +4,7 @@
 
 - [On Patch Ritual By Id](#on-patch-ritual-by-id)
   - [Overview](#overview)
+  - [Modifiable Attributes](#modifiable-attributes)
   - [Diagram](#diagram)
 
 <!-- /TOC -->
@@ -11,6 +12,15 @@
 ## Overview
 Sequence diagram for patching properties of the ritual by its id.
 
+However, the id is currently fixed as `default` as of Apr 2024.
+
+This is due to the fact that we only support one ritual per user.
+
+`"PATCH  /api/v1/rituals/default"` only.
+
+## Modifiable Attributes
+
+As of Apr 2024, the only modifiable attribute is `orderedActionGroupIds`.
 
 ## Diagram
 
@@ -41,28 +51,21 @@ activate user
     activate api
       api ->> domain: Runs RitualGroupDomain.fromMdb()
       activate domain
-        domain ->> db: Requests "ritual" docs of the requester
+        domain ->> db: Requests "ritual" docs of the requester based on id
         activate db
-          db ->> domain: Returns empty list of "ritual" docs
+          db ->> domain: Returns ritual (As of Apr 2024, we only support one ritual per user, so only return defualt)
         deactivate db
-        domain ->> domain: Considers it as a new user of ConsistencyGPT
-        domain ->> db: Creates a default ritual named "Unassociated Ritual"
-        Note right of domain: Calls RitualGroupDomain.fromMdb() recursively
-        domain ->> db: Requests "ritual" docs of the requester
+        domain ->> db: Requests update the default ritual based on given PatchRitualGroupBodyDTO
         activate db
-          db ->> domain: Returns the just created ritual
-        deactivate db
-        domain ->> db: Requests "action group" docs of the requester
-        activate db
-          db ->> domain: Returns "action group" docs
+          db ->> domain: Updates and returns the updated ritual doc
         deactivate db
         domain ->> domain: Stores the action groups under the default ritual
+        domain ->> domain: Sorts action groups based on the orderedActionGroupIds of RitualDomain props
         domain ->> api: Returns itself
       deactivate domain
       api ->> fe: Returns RitualGroupDomain.toRes()
     deactivate api
-    fe ->> user: Shows nothing as there is no action group under the default ritual
-    Note right of user: Users before "Rituals" schema (Before Mar 20, 2024) <br/>will have the newly created ritual with their original action groups
+    fe ->> user: Shows modified order of the action groups, as the ritual's `orderedActionGroupIds` is updated
   deactivate fe
 deactivate user
 ```
