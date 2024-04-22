@@ -28,7 +28,10 @@ box "FE" #Lightblue
 box
 box "API" #Lightgreen
   participant "API" as api
+  participant "WordDomain" as domain
+  participant "PreferenceDomain" as pd
 box
+database "MongoDB" as db
 
 activate user
   user -> fe: User enters some words
@@ -47,7 +50,22 @@ activate user
       activate hook2
         hook2 -> api: postWordApi()
         activate api
-          hook2 <- api: Return the posted word
+          api -> domain:Requests WordDomain
+          activate domain
+            domain -> db: Requests new word doc
+            activate db
+            break if tags are found, modify tags
+              domain -> pd: updateWithNewTags()
+              activate pd
+                pd -> db: Requests to update preference data
+                pd<- db:  Returns stored data
+                api <- pd: Returns PreferenceDomain
+              deactivate pd
+            end break
+            domain <- db: Returns the posted word
+            deactivate db
+            api <- domain: Returns the posted word
+          hook2 <- api: Returns the posted word
         deactivate api
         hook2 -> recoil: set(wordIdsState,[postedWord.id,...wordIds])
         hook2 -> recoil: set(wordsFamily(postedWord.id),postedWord)
