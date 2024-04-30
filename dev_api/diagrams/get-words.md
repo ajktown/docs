@@ -20,7 +20,7 @@ Sequence diagram for `AJK Town API` endpoint: `GET /api/v1/words`
 
 title GET /api/v1/words
 
-participant "End User" as user
+participant "Requester" as user
 
 box "API" #Lightgreen
   participant "API" as api
@@ -32,6 +32,9 @@ activate user
   user -> api: Request `GET /api/v1/words`
   activate api
     api -> api: Check authentication
+    break if no authentication provided
+      user <- api: Return 401 error (UnidentifiedUserError)
+    end break
     api -> domain: Request list of WordDomains
     activate domain
       domain -> db: Request list of WordDocs
@@ -46,7 +49,7 @@ activate user
       end break
       api <- domain: Return itself (WordChunkDomain)
     deactivate domain
-    user <- api: Return WordChunkDomain
+    user <- api: Return WordChunkDomain.toResDTO()
   deactivate api
 deactivate user
 ```
