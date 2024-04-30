@@ -14,25 +14,39 @@ Sequence diagram for `AJK Town API` endpoint: `GET /api/v1/words`
 
 ## Diagram
 
-```mermaid
+```plantuml
 
-sequenceDiagram
-title: GET /api/v1/words
+@startuml
 
-actor user as User
-box Green API - AJK Town
-  participant api as API
-  participant domain as RitualGroupDomain
-  participant ritual_domain as RitualDomain
-end
-box Crimson mongodb - AJK Town
-  participant db as DB
-end
+title GET /api/v1/words
 
+participant "End User" as user
+
+box "API" #Lightgreen
+  participant "API" as api
+  participant "WordChunkDomain" as domain
+box
+database "MongoDB" as db
 
 activate user
-  user ->> api: Requests `GET /api/v1/words`
+  user -> api: Request `GET /api/v1/words`
   activate api
+    api -> api: Check authentication
+    api -> domain: Request list of WordDomains
+    activate domain
+      domain -> db: Request list of WordDocs
+      activate db
+        domain <- db: Return WordDocs
+      deactivate db
+      break if no WordDocs when requester's request only contains semester
+        domain -> db: Deletes requester's semester from Supports.sems
+        activate db
+          domain <- db: Return OK
+        deactivate db
+      end break
+      api <- domain: Return itself (WordChunkDomain)
+    deactivate domain
+    user <- api: Return WordChunkDomain
   deactivate api
 deactivate user
 ```
