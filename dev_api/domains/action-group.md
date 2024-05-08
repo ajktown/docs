@@ -23,7 +23,7 @@ For FEs to easily understand the current state before commitment, AJK Town API o
 - `isLateCommittable`
 - `isDeletable`
 
-These values are derived from the `Action Group State`.
+These values are derived from the `Action Group State`. FEs should create an issue in API if they want to add more derived states. FEs should not use the `Action Group State` directly.
 
 ## Action Group State
 `Action Group State` is the action group's current state for the current date (today). There is only one action group state per one action group.
