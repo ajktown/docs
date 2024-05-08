@@ -34,7 +34,7 @@ start
     :Level is 0;
     stop
   else (yes)
-    if (Is Action isPerformed==true) then (no)
+    if (Is Action isDummy==false) then (no)
       :Level is 1;
       stop
     else (yes)
