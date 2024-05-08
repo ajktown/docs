@@ -32,40 +32,7 @@ These values are derived from the `Action Group State`.
 - Early, OnTime, Late
 - Committed, DummyCommitted, NotCommitted
 
-For example, if it is commiteted on time, the state will be `OnTimeCommitted`
-
-| Time | isCommitted |
-|:--:|:--:|
-| Early | Committed
-| Early | 
-| On Time |
-
-```plantuml
-@startuml
-
-title Action Group State
-
-start
-  if (Has time passed yet?) then (no)
-    :Level is 0;
-    stop
-  else (yes)
-    if (Is Action isDummy==false) then (no)
-      :Level is 1;
-      stop
-    else (yes)
-      if (Is Action createdAt in time (or not late)?) then (no)
-        :Level is 2;
-        stop
-      else (yes)
-      endif
-    endif
-  endif
-  :Level is 4;
-stop
-@enduml
-```
-
+For example, if it is committed on time, the state will be `OnTimeCommitted`
 
 ## Action Group Level
 
