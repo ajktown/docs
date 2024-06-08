@@ -4,12 +4,25 @@
 
 - [On Get Rituals by Nickname](#on-get-rituals-by-nickname)
   - [Overview](#overview)
+  - [GetRitualsQueryDTO](#getritualsquerydto)
+    - [isArchived: boolean](#isarchived-boolean)
+  - [Diagram](#diagram)
 
 <!-- /TOC -->
 
 ## Overview
 
 Unlike `onGetRituals`, this sequence (`onGetRitualsByNickname`) includes public api that anyone can access to get rituals by nickname.
+
+## GetRitualsQueryDTO
+
+### isArchived: boolean
+  - If true, it will return only archived action groups
+  - If false, it will return only non-archived action groups
+  - If undefined, it will return all action groups whether archived or not
+
+
+## Diagram
 
 
 ```plantuml
@@ -64,7 +77,12 @@ activate user
       activate db
         api <- db: Return action group docs
       deactivate db
-      api -> api: Wrap every action group under the default ritual named "Unassociated Ritual"
+      api -> db: Gets ArchivedActionGroups Docs
+      activate db
+        api <- db: Returns ArchivedActionGroups docs
+      deactivate db
+      api -> api: Filters out action group docs based on the ArchivedActionGroups
+      api -> api: Wraps filtered action group under the default ritual named "Default Ritual"
       fe <- api: Return Ritual.toResShared() of every ritual
       note right
         This will filter out hidden action groups
