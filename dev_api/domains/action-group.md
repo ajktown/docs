@@ -34,6 +34,17 @@ These values are derived from the `Action Group State`. FEs should create an iss
 
 For example, if it is committed on time, the state will be `OnTimeCommitted`
 
+The followings are the available states:
+- EarlyCommitted
+- EarlyDummyCommitted
+- EarlyNotCommitted
+- OnTimeCommitted
+- OnTimeDummyCommitted
+- OnTimeNotCommitted
+- LateCommitted
+- LateDummyCommitted
+- LateNotCommitted
+
 ## Action Group Level
 
 Action Group determines the level dynamically based on the following attributes:
