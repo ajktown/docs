@@ -4,6 +4,8 @@
 
 - [On Get Rituals](#on-get-rituals)
   - [Overview](#overview)
+  - [GetRitualsQueryDTO](#getritualsquerydto)
+    - [isArchived: boolean](#isarchived-boolean)
   - [Diagram](#diagram)
 
 <!-- /TOC -->
@@ -14,6 +16,12 @@ Ritual contains action groups and each action group manages its own actions.
 
 RitualGroupDomain will smartly create a new default ritual if the user does not have any rituals yet.
 
+## GetRitualsQueryDTO
+
+### isArchived: boolean
+  - If true, it will return only archived action groups
+  - If false, it will return only non-archived action groups
+  - If undefined, it will return all action groups whether archived or not
 
 ## Diagram
 ```mermaid
@@ -46,11 +54,16 @@ activate user
         activate db
           db ->> domain: Returns ritual (As of Apr 2024, we only support one ritual per user)
         deactivate db
+        domain ->> db: Requests "archived_action_groups" docs of the requester
+        activate db
+          db ->> domain: Returns archived_action_groups
+        deactivate db
         domain ->> db: Requests "action group" docs of the requester
         activate db
           db ->> domain: Returns "action group" docs
         deactivate db
         domain ->> domain: Stores the action groups under the default ritual
+        Note right of domain: action groups under archived_action_groups are filtered out
         domain ->> domain: Sorts action groups based on the orderedActionGroupIds of RitualDomain props
         domain ->> api: Returns itself
       deactivate domain

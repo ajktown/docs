@@ -4,6 +4,7 @@
 
 - [Domain Driven Design](#domain-driven-design)
   - [Overview](#overview)
+  - [Target Audience](#target-audience)
   - [Constructor](#constructor)
     - [withDefault](#withdefault)
     - [build~Constructor Method](#buildconstructor-method)
@@ -30,6 +31,9 @@
 How AJK Town defines `Domain Driven Design`.
 
 Always make sure that the order of methods follow exactly the same as the order below.
+
+## Target Audience
+If you develop domain in AJK Town API, you should understand and follow the conventions below.
 
 
 ## Constructor
