@@ -4,10 +4,6 @@
 
 - [Post Words](#post-words)
   - [Overview](#overview)
-  - [Automatically updated filed](#automatically-updated-filed)
-  - [PostArchivedActionGroupBodyDTO](#postarchivedactiongroupbodydto)
-    - [actionGroupId: string](#actiongroupid-string)
-    - [message: string](#message-string)
   - [Diagram](#diagram)
 
 <!-- /TOC -->
@@ -16,21 +12,7 @@
 ## Overview
 Endpoint `POST /api/v1/words` is used to post a new word to the database. The user sends a request to the API with the word to be posted. The API then creates a new word document in the database and returns the created word document to the user.
 
-
-## Automatically updated filed
-
-
-
-## PostArchivedActionGroupBodyDTO
-
-### actionGroupId: string
-The id of the action group to be archived
-
-### message: string
-The reason why the user is archiving the action group
-
 ## Diagram
-
 
 ```plantuml
 
