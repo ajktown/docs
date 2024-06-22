@@ -33,7 +33,7 @@ box "DB" #Crimson
 box
 
 activate user
-  user -> api: POST /api/v1/action-groups/:id/archive
+  user -> api: POST /api/v1/words
   activate api
     break if request body does not include languageCode
       note right
