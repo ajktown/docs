@@ -7,6 +7,7 @@
   - [For technical writers of AJK Town Docs](#for-technical-writers-of-ajk-town-docs)
   - [For documentation](#for-documentation)
     - [About folder structure for this documentation](#about-folder-structure-for-this-documentation)
+    - [About the style guide of the documentation](#about-the-style-guide-of-the-documentation)
     - [dev](#dev)
     - [install](#install)
 
@@ -21,8 +22,8 @@ Just like a great engineer, it takes years of focused practice to become a `grea
 
 - Google's free technical writing courses
   - https://developers.google.com/tech-writing/overview
- 
-## For documentation 
+
+## For documentation
 
 ### About folder structure for this documentation
 We follow the same folder structure as [the GitLab](https://docs.gitlab.com/ee/development/documentation/site_architecture/folder_structure.html)
