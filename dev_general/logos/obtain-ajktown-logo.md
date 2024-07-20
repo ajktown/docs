@@ -28,7 +28,8 @@ How to obtain AJK Town's official logo
 
 ## Background Color and Font Family
 
-| Service Name | Font Family        | Color    | Color Code | Font Size |
-|:-------------|:-------------------|:---------|:-----------|:----------|
-| Wordy        | Cormorant Garamond | Green    | #0A0       | 65        |
-| Homepage     | Lancelot           | Red/Pink | #F55       | 70        |
+| Service Name | Font Family        | Font Color | Background Color | Font Size |
+|:-------------|:-------------------|:-----------|:-----------------|:----------|
+| Wordy        | Cormorant Garamond | Green      | #0A0             | 65        |
+| Golf         | Cormorant Garamond | #f55       | #000             | 65        |
+| Homepage     | Lancelot           | Red/Pink   | #F55             | 70        |
