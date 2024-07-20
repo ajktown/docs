@@ -52,3 +52,13 @@ spec:
                 name: ajktown-consistency-svc
                 port:
                   number: 80
+    - host: golf.ajktown.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ajktown-golf-svc
+                port:
+                  number: 80

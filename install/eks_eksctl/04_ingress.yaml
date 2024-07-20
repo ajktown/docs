@@ -3,18 +3,26 @@ kind: Ingress
 metadata:
   name: ajktown-ingress
   namespace: ajktown
-  annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-1:671093793941:certificate/9fb9c2a8-46c7-4cfa-96db-a54aa932c05f
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/ssl-redirect: '443'
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/tags: Environment=production,Owner=ajktown,App=ajktown
   labels:
     app: my-app
 spec:
+  defaultBackend:
+    service:
+      name: ajktown-api-svc
+      port:
+        number: 80
   rules:
     - host: www.ajktown.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ajktown-api-svc
+                port:
+                  number: 80
+    - host: api.ajktown.com
       http:
         paths:
           - path: /
@@ -34,16 +42,6 @@ spec:
                 name: ajktown-wordnote-svc
                 port:
                   number: 80
-    - host: api.ajktown.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: ajktown-api-svc
-                port:
-                  number: 80
     - host: consistency.ajktown.com
       http:
         paths:
@@ -52,5 +50,15 @@ spec:
             backend:
               service:
                 name: ajktown-consistency-svc
+                port:
+                  number: 80
+    - host: golf.ajktown.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ajktown-golf-svc
                 port:
                   number: 80
