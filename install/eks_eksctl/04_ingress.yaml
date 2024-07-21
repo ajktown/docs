@@ -3,8 +3,6 @@ kind: Ingress
 metadata:
   name: ajktown-ingress
   namespace: ajktown
-  labels:
-    app: my-app
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-1:671093793941:certificate/9fb9c2a8-46c7-4cfa-96db-a54aa932c05f
@@ -12,6 +10,8 @@ metadata:
     alb.ingress.kubernetes.io/ssl-redirect: '443'
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/tags: Environment=production,Owner=ajktown,App=ajktown
+  labels:
+    app: my-app
 spec:
   defaultBackend:
     service:
