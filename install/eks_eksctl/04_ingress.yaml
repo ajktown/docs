@@ -13,8 +13,23 @@ metadata:
   labels:
     app: my-app
 spec:
+  defaultBackend:
+    service:
+      name: ajktown-api-svc
+      port:
+        number: 80
   rules:
     - host: www.ajktown.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ajktown-api-svc
+                port:
+                  number: 80
+    - host: api.ajktown.com
       http:
         paths:
           - path: /
@@ -34,16 +49,6 @@ spec:
                 name: ajktown-wordnote-svc
                 port:
                   number: 80
-    - host: api.ajktown.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: ajktown-api-svc
-                port:
-                  number: 80
     - host: consistency.ajktown.com
       http:
         paths:
@@ -52,5 +57,15 @@ spec:
             backend:
               service:
                 name: ajktown-consistency-svc
+                port:
+                  number: 80
+    - host: golf.ajktown.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ajktown-golf-svc
                 port:
                   number: 80
