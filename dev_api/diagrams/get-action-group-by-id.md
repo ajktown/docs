@@ -10,7 +10,6 @@
 
 ## Overview
 Endpoint `GET /api/v1/action-groups/{id}` is used to get the details of an action group with the id.
-ㅁ
 
 ## Diagram
 
