@@ -31,6 +31,9 @@ These values are derived from the `Action Group State`. FEs should create an iss
 
 - Early, OnTime, Late
 - Committed, DummyCommitted, NotCommitted
+  - Committed: Action has been committed with the stored data in DB
+  - DummyCommitted: Action has been confirmed not done with the stored data in DB
+  - NotCommitted: Action has not been committed yet; no data stored in DB
 
 For example, if it is committed on time, the state will be `OnTimeCommitted`
 
