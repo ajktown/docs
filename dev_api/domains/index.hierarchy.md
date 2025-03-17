@@ -21,7 +21,13 @@ title Domain Hierarchy
 
 start
 switch ( DomainRoot )
-case ( action )
+case ()
+  switch ( TODO:TITLE )
+  case ()
+    stop
+  case ()
+    stop
+  endswitch
   :ActionGroup;
   :Action;
   stop
@@ -37,27 +43,55 @@ case ()
     :AuthPrepDomain;
     stop
   endswitch
-case ( preference )
-  :Text 4;
-  stop
-case ( ritual )
-  :Text 5;
-  stop
-case ( semester )
-  :Text 5;
-  stop
-case ( shared-resource )
-  :Text 5;
-  stop
-case ( support )
-  :Text 5;
-  stop
-case ( user )
-  :Text 5;
-  stop
-case ( word )
-  :Text 5;
-  stop
+case ()
+  switch ( prefernce )
+  case ()
+    stop
+  case ()
+    stop
+  endswitch
+case ()
+  switch ( ritual )
+  case ()
+    stop
+  case ()
+    stop
+  endswitch
+case ()
+  switch ( semester )
+  case ()
+    stop
+  case ()
+    stop
+  endswitch
+case ()
+  switch ( shared-resource )
+  case ()
+    stop
+  case ()
+    stop
+  endswitch
+case ()
+  switch ( support )
+  case ()
+    stop
+  case ()
+    stop
+  endswitch
+case ()
+  switch ( user )
+  case ()
+    stop
+  case ()
+    stop
+  endswitch
+case ()
+  switch ( word )
+  case ()
+    stop
+  case ()
+    stop
+  endswitch
 endswitch
 
 @enduml
