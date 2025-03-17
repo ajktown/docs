@@ -29,7 +29,7 @@ case ()
     stop
   endswitch
 case ( archive )
-  :Archive;
+  :ArchiveDomain;
   stop
 case ()
   switch ( auth )
