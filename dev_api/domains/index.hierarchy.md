@@ -20,7 +20,7 @@ Domains are not created equal. Some domains manage other domains. But the proble
 title Domain Hierarchy
 
 start
-switch (DomainRoot)
+switch ( DomainRoot )
 case ( action )
   :ActionGroup;
   :Action;
@@ -28,12 +28,12 @@ case ( action )
 case ( archive )
   :Archive;
   stop
-case (  )
+case ()
   switch ( auth )
-  case ( )
+  case ()
     :AccessTokenDomain;
     stop
-  case ( )
+  case ()
     :AuthPrepDomain;
     stop
   endswitch
