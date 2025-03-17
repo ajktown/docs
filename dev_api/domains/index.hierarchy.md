@@ -28,7 +28,7 @@ case ()
     :ActionDomain;
     stop
   endswitch
-case ( archive )
+case ()
   :ArchiveDomain;
   stop
 case ()
