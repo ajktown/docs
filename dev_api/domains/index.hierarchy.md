@@ -22,15 +22,12 @@ title Domain Hierarchy
 start
 switch ( DomainRoot )
 case ()
-  switch ( TODO:TITLE )
+  switch ( action )
   case ()
-    stop
-  case ()
+    :ActionGroupDomain;
+    :ActionDomain;
     stop
   endswitch
-  :ActionGroup;
-  :Action;
-  stop
 case ( archive )
   :Archive;
   stop
@@ -46,50 +43,49 @@ case ()
 case ()
   switch ( prefernce )
   case ()
-    stop
-  case ()
+    :PreferenceDomain;
+    :PreferenceDicDomain;
     stop
   endswitch
 case ()
   switch ( ritual )
   case ()
-    stop
-  case ()
+    :RitualGroupDomain;
+    :ParentRitualDomain;
+    :RitualDomain;
     stop
   endswitch
 case ()
   switch ( semester )
   case ()
-    stop
-  case ()
+    :SemesterChunkDomain;
+    :SemesterDomain;
+    :SemesterDetailsDomain;
     stop
   endswitch
 case ()
   switch ( shared-resource )
   case ()
-    stop
-  case ()
+    :SharedResourceDomain;
     stop
   endswitch
 case ()
   switch ( support )
   case ()
-    stop
-  case ()
+    :SupportDomain;
     stop
   endswitch
 case ()
   switch ( user )
   case ()
-    stop
-  case ()
+    :UserDomain;
     stop
   endswitch
 case ()
   switch ( word )
   case ()
-    stop
-  case ()
+    :WordChunkDomain;
+    :WordDomain;
     stop
   endswitch
 endswitch
