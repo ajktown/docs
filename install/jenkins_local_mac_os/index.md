@@ -10,6 +10,8 @@
     - [Obtain Access Token For](#obtain-access-token-for)
     - [Install Necessary Plugins](#install-necessary-plugins)
       - [File System SCM](#file-system-scm)
+    - [Install Optional Plugins](#install-optional-plugins)
+      - [OpenID Connect Provider (OIDC Provider)](#openid-connect-provider-oidc-provider)
 
 <!-- /TOC -->
 
@@ -36,3 +38,8 @@ Install the following plugins to Jenkins.
 
 #### File System SCM
 ![install_plugin_file_system_scm](./assets/install_plugin_file_system_scm.png)
+
+
+### Install Optional Plugins
+#### OpenID Connect Provider (OIDC Provider)
+https://plugins.jenkins.io/oidc-provider/
