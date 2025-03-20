@@ -1,0 +1,97 @@
+pipeline {
+  agent any
+  environment {
+    GIT_REPO_URL="https://github.com/ajktown/wordnote.git"
+    CLONED_REPO_DIR_NAME="cloned_repo_dir"
+    BUILDING_IMAGE_NAME="ajktown/wordnote:latest"
+    // DOCKER_HUB_PUSHER_ACCESS_TOKEN = credentials("LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN") // Corrected credential syntax
+    JWT_CREDENTIAL_ID = '141ad962-6926-46af-9c32-4fe9ec500dbe'  // Replace with your actual Credential ID
+    JWKS_URL = 'http://localhost:8080/manage/descriptorByName/io.jenkins.plugins.oidc_provider.IdTokenStringCredentials/jwks?id=141ad962-6926-46af-9c32-4fe9ec500dbe&issuer=https://localhost:18080/oidc'
+  }
+  stages {
+    stage('Retrieve and Print JWT') {
+      steps {
+        script {
+          withCredentials([string(credentialsId: env.JWT_CREDENTIAL_ID, variable: 'JWT')]) {
+            echo "JWT Retrieved Successfully!"
+            sh 'echo $JWT > /tmp/jwt_debug.jwt'
+          }
+          sh 'cat /tmp/jwt_debug.jwt'  // This will print the JWT without masking!
+        }
+      }
+    }
+    // stage('Retrieve Public Key and Convert to PEM') {
+    //     steps {
+    //       script {
+    //         sh '''
+    //         # Fetch the JWKS Public Key
+    //         curl -s $JWKS_URL | jq -r '.keys[0].n' | base64 --decode > /tmp/jwt_pubkey.raw
+
+    //         # Convert it to PEM format
+    //         echo "-----BEGIN PUBLIC KEY-----" > /tmp/jwt_pubkey.pem
+    //         cat /tmp/jwt_pubkey.raw >> /tmp/jwt_pubkey.pem
+    //         echo "-----END PUBLIC KEY-----" >> /tmp/jwt_pubkey.pem
+
+    //         # Print the PEM key for debugging
+    //         cat /tmp/jwt_pubkey.pem
+    //         '''
+    //       }
+    //     }
+    //   }
+
+    // stage('Check if environment [LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN] is available') {
+    //   steps {
+    //     script {
+    //       if (env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == null || env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == "") {
+    //         error("DockerHub Access Token is missing. Please add it to the Jenkins Credential Store.")
+    //       }
+    //     }
+    //   }
+    // }
+    // stage('Clean Up') {
+    //   steps {
+    //     echo 'Cleaning up ...'
+    //     deleteDir()
+    //   }
+    // }
+    // stage("Clone GitHub Repo") {
+    //   steps {
+    //     echo "Cloning the GitHub repository ..."
+    //     sh "git clone ${env.GIT_REPO_URL} ${env.CLONED_REPO_DIR_NAME}"
+    //   }
+    // }
+    // stage('Inspect (Test) cloned repository before building') {
+    //   steps {
+    //     echo 'Inspecting ...'
+    //     dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
+    //       sh "yarn"
+    //       sh "yarn test"
+    //       sh "yarn inspect"
+    //     }
+    //   }
+    // }
+    // stage("Build with Docker") {
+    //   steps {
+    //     echo "Building the Docker image ..."
+    //     dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
+    //       sh "docker build -t ${env.BUILDING_IMAGE_NAME} ."
+    //     }
+    //   }
+    // }
+    // stage('Push to DockerHub Registry') {
+    //   steps {
+    //     echo 'Pushing image ...'
+    //     dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
+    //       sh "echo '${env.DOCKER_HUB_PUSHER_ACCESS_TOKEN}' | docker login -u ajktown --password-stdin" // More secure
+    //       sh "docker push ${env.BUILDING_IMAGE_NAME}"
+    //     }
+    //   }
+    // }
+    // stage('Restart EC2 Instance') {
+    //   steps {
+    //     echo 'Restarting EC2 instance (This will indirectly restart the pods running on the EC2 instance) ...'
+    //     echo 'TODO: Not implemented yet'
+    //   }
+    // } // Fixed missing closing bracket
+  }
+}
