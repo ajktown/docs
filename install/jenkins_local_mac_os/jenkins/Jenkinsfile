@@ -10,74 +10,88 @@ pipeline {
     AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN = credentials("AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN") // Corrected credential syntax
     JWT_CREDENTIAL_ID = '141ad962-6926-46af-9c32-4fe9ec500dbe'  // Replace with your actual Credential ID
     JWKS_URL = 'http://localhost:8080/manage/descriptorByName/io.jenkins.plugins.oidc_provider.IdTokenStringCredentials/jwks?id=141ad962-6926-46af-9c32-4fe9ec500dbe&issuer=https://localhost:18080/oidc'
+    // AWS:
+    AWS_REGION = "ap-northeast-1"  // Tokyo region
+    INSTANCE_ID = "i-0ebe1d5ea7495f70d"
   }
-  stages {
-    stage('Clean Up') {
-      steps {
-        echo 'Cleaning up ...'
-        deleteDir()
-      }
-    }
+  // stages {
+  //   stage('Clean Up') {
+  //     steps {
+  //       echo 'Cleaning up ...'
+  //       deleteDir()
+  //     }
+  //   }
 
-    stage('Retrieve and Print JWT') {
-      steps {
-        script {
-          withCredentials([string(credentialsId: env.JWT_CREDENTIAL_ID, variable: 'JWT')]) {
-            echo "JWT Retrieved Successfully!"
-            sh 'echo $JWT > /tmp/jwt_debug.jwt'
+  //   stage('Retrieve and Print JWT') {
+  //     steps {
+  //       script {
+  //         withCredentials([string(credentialsId: env.JWT_CREDENTIAL_ID, variable: 'JWT')]) {
+  //           echo "JWT Retrieved Successfully!"
+  //           sh 'echo $JWT > /tmp/jwt_debug.jwt'
+  //         }
+  //         sh 'cat /tmp/jwt_debug.jwt'  // This will print the JWT without masking!
+  //       }
+  //     }
+  //   }
+
+  //   stage('Check if environment [LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN] is available') {
+  //     steps {
+  //       script {
+  //         if (env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == null || env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == "") {
+  //           error("Failed to proceed: Required environment variable [DOCKER_HUB_PUSHER_ACCESS_TOKEN] is missing. Please add it to the Jenkins Credential Store.")
+  //         }
+  //       }
+  //     }
+  //   }
+  //   stage("Clone GitHub Repo") {
+  //     steps {
+  //       echo "Cloning the GitHub repository ..."
+  //       sh "git clone ${env.GIT_REPO_URL} ${env.CLONED_REPO_DIR_NAME}"
+  //       sh "ls -al ${env.CLONED_REPO_DIR_NAME}"
+  //     }
+  //   }
+  //   stage('Inspect (Test) cloned repository before building') {
+  //     steps {
+  //       echo 'Inspecting ...'
+  //       dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
+  //         sh '''
+  //         PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn --version
+  //         PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn install
+  //         # PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn test
+  //         # PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn inspect
+  //         '''
+  //       }
+  //     }
+  //   }
+
+  //   stage('Push to DockerHub Registry') {
+  //     steps {
+  //       echo 'Login and Pushing image ...'
+  //       dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
+  //         sh '''
+  //         echo ${DOCKER_HUB_PUSHER_ACCESS_TOKEN} | ${DOCKER_INSTALLED_PATH}/docker login --username ajktown --password-stdin
+  //         ${DOCKER_INSTALLED_PATH}/docker build -t ${BUILDING_IMAGE_NAME} .
+  //         ${DOCKER_INSTALLED_PATH}/docker push ${BUILDING_IMAGE_NAME}
+  //         '''
+  //       }
+  //     }
+  //   }
+
+    stage('Restart EC2 Instance') {
+        steps {
+          script {
+            withCredentials([
+              string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID'),
+              string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')
+            ]) {
+              sh '''
+              export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+              export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+              ${DOCKER_INSTALLED_PATH}/aws ec2 reboot-instances --instance-ids $INSTANCE_ID --region $AWS_REGION
+              '''
+            }
           }
-          sh 'cat /tmp/jwt_debug.jwt'  // This will print the JWT without masking!
         }
       }
-    }
-
-    stage('Check if environment [LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN] is available') {
-      steps {
-        script {
-          if (env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == null || env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == "") {
-            error("Failed to proceed: Required environment variable [DOCKER_HUB_PUSHER_ACCESS_TOKEN] is missing. Please add it to the Jenkins Credential Store.")
-          }
-        }
-      }
-    }
-    stage("Clone GitHub Repo") {
-      steps {
-        echo "Cloning the GitHub repository ..."
-        sh "git clone ${env.GIT_REPO_URL} ${env.CLONED_REPO_DIR_NAME}"
-        sh "ls -al ${env.CLONED_REPO_DIR_NAME}"
-      }
-    }
-    stage('Inspect (Test) cloned repository before building') {
-      steps {
-        echo 'Inspecting ...'
-        dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
-          sh '''
-          PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn --version
-          PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn install
-          # PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn test
-          # PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn inspect
-          '''
-        }
-      }
-    }
-
-    stage('Push to DockerHub Registry') {
-      steps {
-        echo 'Login and Pushing image ...'
-        dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
-          sh '''
-          echo ${DOCKER_HUB_PUSHER_ACCESS_TOKEN} | ${DOCKER_INSTALLED_PATH}/docker login --username ajktown --password-stdin
-          ${DOCKER_INSTALLED_PATH}/docker build -t ${BUILDING_IMAGE_NAME} .
-          ${DOCKER_INSTALLED_PATH}/docker push ${BUILDING_IMAGE_NAME}
-          '''
-        }
-      }
-    }
-    // stage('Restart EC2 Instance') {
-    //   steps {
-    //     echo 'Restarting EC2 instance (This will indirectly restart the pods running on the EC2 instance) ...'
-    //     echo 'TODO: Not implemented yet'
-    //   }
-    // } // Fixed missing closing bracket
   }
 }
