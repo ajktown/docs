@@ -1,20 +1,23 @@
 pipeline {
   agent any
   environment {
-    GIT_REPO_URL="https://github.com/ajktown/wordnote.git"
+    // Binary Paths:
     YARN_INSTALLED_PATH="/opt/homebrew/bin" // Get this from the following command: $ which yarn
     DOCKER_INSTALLED_PATH="/usr/local/bin" // Get this from the following command: $ which docker
+    // Git:
+    GIT_REPO_URL="https://github.com/ajktown/wordnote.git"
     CLONED_REPO_DIR_NAME="cloned_repo_dir"
-    BUILDING_IMAGE_NAME="ajktown/wordnote:latest"
-    DOCKER_HUB_PUSHER_ACCESS_TOKEN = credentials("LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN") // Corrected credential syntax
-    AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN = credentials("AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN") // Corrected credential syntax
+    // ODIC Provider:
     JWT_CREDENTIAL_ID = '141ad962-6926-46af-9c32-4fe9ec500dbe'  // Replace with your actual Credential ID
-    JWKS_URL = 'http://localhost:8080/manage/descriptorByName/io.jenkins.plugins.oidc_provider.IdTokenStringCredentials/jwks?id=141ad962-6926-46af-9c32-4fe9ec500dbe&issuer=https://localhost:18080/oidc'
+    // DockerHub:
+    DOCKER_HUB_PUSHER_ACCESS_TOKEN = credentials("LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN") // Corrected credential syntax
+    BUILDING_IMAGE_NAME="ajktown/wordnote:latest"
     // AWS:
+    AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN = "AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN" // Corrected credential syntax
     AWS_REGION = "ap-northeast-1"  // Tokyo region
     INSTANCE_ID = "i-0ebe1d5ea7495f70d"
   }
-  // stages {
+  stages {
   //   stage('Clean Up') {
   //     steps {
   //       echo 'Cleaning up ...'
@@ -77,21 +80,18 @@ pipeline {
   //     }
   //   }
 
-    stage('Restart EC2 Instance') {
-        steps {
-          script {
-            withCredentials([
-              string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID'),
-              string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')
-            ]) {
+  stage('Restart EC2 Instance') {
+      steps {
+        script {
+          withCredentials([usernamePassword(credentialsId: env.AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN, usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
               sh '''
               export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
               export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
               ${DOCKER_INSTALLED_PATH}/aws ec2 reboot-instances --instance-ids $INSTANCE_ID --region $AWS_REGION
               '''
-            }
           }
         }
       }
+    }
   }
 }
