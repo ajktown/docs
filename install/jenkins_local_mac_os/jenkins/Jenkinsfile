@@ -2,6 +2,7 @@ pipeline {
   agent any
   environment {
     GIT_REPO_URL="https://github.com/ajktown/wordnote.git"
+    YARN_INSTALLED_PATH="/opt/homebrew/bin" // Get this from the following command: $ which yarn
     CLONED_REPO_DIR_NAME="cloned_repo_dir"
     BUILDING_IMAGE_NAME="ajktown/wordnote:latest"
     DOCKER_HUB_PUSHER_ACCESS_TOKEN = credentials("LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN") // Corrected credential syntax
@@ -48,9 +49,12 @@ pipeline {
       steps {
         echo 'Inspecting ...'
         dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
-          sh "yarn"
-          sh "yarn test"
-          sh "yarn inspect"
+          sh '''
+          PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn --version
+          PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn install
+          PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn test
+          PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn inspect
+          '''
         }
       }
     }
