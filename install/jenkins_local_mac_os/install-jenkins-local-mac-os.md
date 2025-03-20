@@ -12,6 +12,7 @@
       - [File System SCM](#file-system-scm)
     - [Install Optional Plugins](#install-optional-plugins)
       - [OpenID Connect Provider (OIDC Provider)](#openid-connect-provider-oidc-provider)
+    - [Create Appropriate Credentials System Domain](#create-appropriate-credentials-system-domain)
 
 <!-- /TOC -->
 
@@ -45,3 +46,8 @@ You can run Jenkins jobs from Jenkinsfile on your local device, instead of GitHu
 ### Install Optional Plugins
 #### OpenID Connect Provider (OIDC Provider)
 https://plugins.jenkins.io/oidc-provider/
+
+
+### Create Appropriate Credentials System Domain
+Creating a separate credentials system domain for Jenkins is a good practice for least privilege access:
+![credentials_system_domain](./assets/credentials_system_domain.png)
