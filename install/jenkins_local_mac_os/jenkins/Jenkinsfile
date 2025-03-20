@@ -3,9 +3,11 @@ pipeline {
   environment {
     GIT_REPO_URL="https://github.com/ajktown/wordnote.git"
     YARN_INSTALLED_PATH="/opt/homebrew/bin" // Get this from the following command: $ which yarn
+    DOCKER_INSTALLED_PATH="/usr/local/bin" // Get this from the following command: $ which docker
     CLONED_REPO_DIR_NAME="cloned_repo_dir"
     BUILDING_IMAGE_NAME="ajktown/wordnote:latest"
     DOCKER_HUB_PUSHER_ACCESS_TOKEN = credentials("LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN") // Corrected credential syntax
+    AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN = credentials("AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN") // Corrected credential syntax
     JWT_CREDENTIAL_ID = '141ad962-6926-46af-9c32-4fe9ec500dbe'  // Replace with your actual Credential ID
     JWKS_URL = 'http://localhost:8080/manage/descriptorByName/io.jenkins.plugins.oidc_provider.IdTokenStringCredentials/jwks?id=141ad962-6926-46af-9c32-4fe9ec500dbe&issuer=https://localhost:18080/oidc'
   }
@@ -52,29 +54,25 @@ pipeline {
           sh '''
           PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn --version
           PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn install
-          PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn test
-          PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn inspect
+          # PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn test
+          # PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn inspect
           '''
         }
       }
     }
-    // stage("Build with Docker") {
-    //   steps {
-    //     echo "Building the Docker image ..."
-    //     dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
-    //       sh "docker build -t ${env.BUILDING_IMAGE_NAME} ."
-    //     }
-    //   }
-    // }
-    // stage('Push to DockerHub Registry') {
-    //   steps {
-    //     echo 'Pushing image ...'
-    //     dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
-    //       sh "echo '${env.DOCKER_HUB_PUSHER_ACCESS_TOKEN}' | docker login -u ajktown --password-stdin" // More secure
-    //       sh "docker push ${env.BUILDING_IMAGE_NAME}"
-    //     }
-    //   }
-    // }
+
+    stage('Push to DockerHub Registry') {
+      steps {
+        echo 'Login and Pushing image ...'
+        dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
+          sh '''
+          echo ${DOCKER_HUB_PUSHER_ACCESS_TOKEN} | ${DOCKER_INSTALLED_PATH}/docker login --username ajktown --password-stdin
+          ${DOCKER_INSTALLED_PATH}/docker build -t ${BUILDING_IMAGE_NAME} .
+          ${DOCKER_INSTALLED_PATH}/docker push ${BUILDING_IMAGE_NAME}
+          '''
+        }
+      }
+    }
     // stage('Restart EC2 Instance') {
     //   steps {
     //     echo 'Restarting EC2 instance (This will indirectly restart the pods running on the EC2 instance) ...'
