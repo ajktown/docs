@@ -9,6 +9,13 @@ pipeline {
     JWKS_URL = 'http://localhost:8080/manage/descriptorByName/io.jenkins.plugins.oidc_provider.IdTokenStringCredentials/jwks?id=141ad962-6926-46af-9c32-4fe9ec500dbe&issuer=https://localhost:18080/oidc'
   }
   stages {
+    stage('Clean Up') {
+      steps {
+        echo 'Cleaning up ...'
+        deleteDir()
+      }
+    }
+
     stage('Retrieve and Print JWT') {
       steps {
         script {
@@ -20,40 +27,16 @@ pipeline {
         }
       }
     }
-    // stage('Retrieve Public Key and Convert to PEM') {
-    //     steps {
-    //       script {
-    //         sh '''
-    //         # Fetch the JWKS Public Key
-    //         curl -s $JWKS_URL | jq -r '.keys[0].n' | base64 --decode > /tmp/jwt_pubkey.raw
 
-    //         # Convert it to PEM format
-    //         echo "-----BEGIN PUBLIC KEY-----" > /tmp/jwt_pubkey.pem
-    //         cat /tmp/jwt_pubkey.raw >> /tmp/jwt_pubkey.pem
-    //         echo "-----END PUBLIC KEY-----" >> /tmp/jwt_pubkey.pem
-
-    //         # Print the PEM key for debugging
-    //         cat /tmp/jwt_pubkey.pem
-    //         '''
-    //       }
-    //     }
-    //   }
-
-    // stage('Check if environment [LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN] is available') {
-    //   steps {
-    //     script {
-    //       if (env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == null || env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == "") {
-    //         error("DockerHub Access Token is missing. Please add it to the Jenkins Credential Store.")
-    //       }
-    //     }
-    //   }
-    // }
-    // stage('Clean Up') {
-    //   steps {
-    //     echo 'Cleaning up ...'
-    //     deleteDir()
-    //   }
-    // }
+    stage('Check if environment [LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN] is available') {
+      steps {
+        script {
+          if (env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == null || env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == "") {
+            error("Failed to proceed: Required environment variable [DOCKER_HUB_PUSHER_ACCESS_TOKEN] is missing. Please add it to the Jenkins Credential Store.")
+          }
+        }
+      }
+    }
     // stage("Clone GitHub Repo") {
     //   steps {
     //     echo "Cloning the GitHub repository ..."
