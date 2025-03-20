@@ -18,67 +18,67 @@ pipeline {
     INSTANCE_ID = "i-0ebe1d5ea7495f70d"
   }
   stages {
-  //   stage('Clean Up') {
-  //     steps {
-  //       echo 'Cleaning up ...'
-  //       deleteDir()
-  //     }
-  //   }
+    stage('Clean Up') {
+      steps {
+        echo 'Cleaning up ...'
+        deleteDir()
+      }
+    }
 
-  //   stage('Retrieve and Print JWT') {
-  //     steps {
-  //       script {
-  //         withCredentials([string(credentialsId: env.JWT_CREDENTIAL_ID, variable: 'JWT')]) {
-  //           echo "JWT Retrieved Successfully!"
-  //           sh 'echo $JWT > /tmp/jwt_debug.jwt'
-  //         }
-  //         sh 'cat /tmp/jwt_debug.jwt'  // This will print the JWT without masking!
-  //       }
-  //     }
-  //   }
+    stage('Retrieve and Print JWT') {
+      steps {
+        script {
+          withCredentials([string(credentialsId: env.JWT_CREDENTIAL_ID, variable: 'JWT')]) {
+            echo "JWT Retrieved Successfully!"
+            sh 'echo $JWT > /tmp/jwt_debug.jwt'
+          }
+          sh 'cat /tmp/jwt_debug.jwt'  // This will print the JWT without masking!
+        }
+      }
+    }
 
-  //   stage('Check if environment [LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN] is available') {
-  //     steps {
-  //       script {
-  //         if (env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == null || env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == "") {
-  //           error("Failed to proceed: Required environment variable [DOCKER_HUB_PUSHER_ACCESS_TOKEN] is missing. Please add it to the Jenkins Credential Store.")
-  //         }
-  //       }
-  //     }
-  //   }
-  //   stage("Clone GitHub Repo") {
-  //     steps {
-  //       echo "Cloning the GitHub repository ..."
-  //       sh "git clone ${env.GIT_REPO_URL} ${env.CLONED_REPO_DIR_NAME}"
-  //       sh "ls -al ${env.CLONED_REPO_DIR_NAME}"
-  //     }
-  //   }
-  //   stage('Inspect (Test) cloned repository before building') {
-  //     steps {
-  //       echo 'Inspecting ...'
-  //       dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
-  //         sh '''
-  //         PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn --version
-  //         PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn install
-  //         # PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn test
-  //         # PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn inspect
-  //         '''
-  //       }
-  //     }
-  //   }
+    stage('Check if environment [LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN] is available') {
+      steps {
+        script {
+          if (env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == null || env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == "") {
+            error("Failed to proceed: Required environment variable [DOCKER_HUB_PUSHER_ACCESS_TOKEN] is missing. Please add it to the Jenkins Credential Store.")
+          }
+        }
+      }
+    }
+    stage("Clone GitHub Repo") {
+      steps {
+        echo "Cloning the GitHub repository ..."
+        sh "git clone ${env.GIT_REPO_URL} ${env.CLONED_REPO_DIR_NAME}"
+        sh "ls -al ${env.CLONED_REPO_DIR_NAME}"
+      }
+    }
+    stage('Inspect (Test) cloned repository before building') {
+      steps {
+        echo 'Inspecting ...'
+        dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
+          sh '''
+          PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn --version
+          PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn install
+          # PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn test
+          # PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn inspect
+          '''
+        }
+      }
+    }
 
-  //   stage('Push to DockerHub Registry') {
-  //     steps {
-  //       echo 'Login and Pushing image ...'
-  //       dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
-  //         sh '''
-  //         echo ${DOCKER_HUB_PUSHER_ACCESS_TOKEN} | ${DOCKER_INSTALLED_PATH}/docker login --username ajktown --password-stdin
-  //         ${DOCKER_INSTALLED_PATH}/docker build -t ${BUILDING_IMAGE_NAME} .
-  //         ${DOCKER_INSTALLED_PATH}/docker push ${BUILDING_IMAGE_NAME}
-  //         '''
-  //       }
-  //     }
-  //   }
+    stage('Push to DockerHub Registry') {
+      steps {
+        echo 'Login and Pushing image ...'
+        dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
+          sh '''
+          echo ${DOCKER_HUB_PUSHER_ACCESS_TOKEN} | ${DOCKER_INSTALLED_PATH}/docker login --username ajktown --password-stdin
+          ${DOCKER_INSTALLED_PATH}/docker build -t ${BUILDING_IMAGE_NAME} .
+          ${DOCKER_INSTALLED_PATH}/docker push ${BUILDING_IMAGE_NAME}
+          '''
+        }
+      }
+    }
 
   stage('Restart EC2 Instance') {
       steps {
