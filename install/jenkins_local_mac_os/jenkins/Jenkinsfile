@@ -4,7 +4,7 @@ pipeline {
     GIT_REPO_URL="https://github.com/ajktown/wordnote.git"
     CLONED_REPO_DIR_NAME="cloned_repo_dir"
     BUILDING_IMAGE_NAME="ajktown/wordnote:latest"
-    // DOCKER_HUB_PUSHER_ACCESS_TOKEN = credentials("LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN") // Corrected credential syntax
+    DOCKER_HUB_PUSHER_ACCESS_TOKEN = credentials("LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN") // Corrected credential syntax
     JWT_CREDENTIAL_ID = '141ad962-6926-46af-9c32-4fe9ec500dbe'  // Replace with your actual Credential ID
     JWKS_URL = 'http://localhost:8080/manage/descriptorByName/io.jenkins.plugins.oidc_provider.IdTokenStringCredentials/jwks?id=141ad962-6926-46af-9c32-4fe9ec500dbe&issuer=https://localhost:18080/oidc'
   }
@@ -37,22 +37,23 @@ pipeline {
         }
       }
     }
-    // stage("Clone GitHub Repo") {
-    //   steps {
-    //     echo "Cloning the GitHub repository ..."
-    //     sh "git clone ${env.GIT_REPO_URL} ${env.CLONED_REPO_DIR_NAME}"
-    //   }
-    // }
-    // stage('Inspect (Test) cloned repository before building') {
-    //   steps {
-    //     echo 'Inspecting ...'
-    //     dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
-    //       sh "yarn"
-    //       sh "yarn test"
-    //       sh "yarn inspect"
-    //     }
-    //   }
-    // }
+    stage("Clone GitHub Repo") {
+      steps {
+        echo "Cloning the GitHub repository ..."
+        sh "git clone ${env.GIT_REPO_URL} ${env.CLONED_REPO_DIR_NAME}"
+        sh "ls -al ${env.CLONED_REPO_DIR_NAME}"
+      }
+    }
+    stage('Inspect (Test) cloned repository before building') {
+      steps {
+        echo 'Inspecting ...'
+        dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
+          sh "yarn"
+          sh "yarn test"
+          sh "yarn inspect"
+        }
+      }
+    }
     // stage("Build with Docker") {
     //   steps {
     //     echo "Building the Docker image ..."
