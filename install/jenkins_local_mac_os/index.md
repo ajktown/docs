@@ -9,6 +9,7 @@
     - [Install Jenkins for Mac OS](#install-jenkins-for-mac-os)
     - [Obtain Access Token For](#obtain-access-token-for)
     - [Install Necessary Plugins](#install-necessary-plugins)
+      - [File System SCM](#file-system-scm)
 
 <!-- /TOC -->
 
@@ -31,6 +32,7 @@ https://www.jenkins.io/doc/book/installing/macos/
 
 
 ### Install Necessary Plugins
+Install the following plugins to Jenkins.
 
-Here are the list of plugins that you need to install:
-- 
+#### File System SCM
+![install_plugin_file_system_scm](./assets/install_plugin_file_system_scm.png)
