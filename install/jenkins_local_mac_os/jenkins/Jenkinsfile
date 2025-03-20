@@ -80,7 +80,7 @@ pipeline {
       }
     }
 
-  stage('Restart EC2 Instance') {
+  stage('Reboot EC2 Instance') {
       steps {
         script {
           withCredentials([usernamePassword(credentialsId: env.AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN, usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
