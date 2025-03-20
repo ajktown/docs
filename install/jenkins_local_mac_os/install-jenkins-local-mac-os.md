@@ -7,12 +7,13 @@
     - [Sub-goal](#sub-goal)
   - [Steps](#steps)
     - [Install Jenkins for Mac OS](#install-jenkins-for-mac-os)
-    - [Obtain Access Token For](#obtain-access-token-for)
     - [Install Necessary Plugins](#install-necessary-plugins)
       - [File System SCM](#file-system-scm)
     - [Install Optional Plugins](#install-optional-plugins)
       - [OpenID Connect Provider (OIDC Provider)](#openid-connect-provider-oidc-provider)
     - [Create Appropriate Credentials System Domain](#create-appropriate-credentials-system-domain)
+    - [Set up appropriate credentials under the correct credentials system](#set-up-appropriate-credentials-under-the-correct-credentials-system)
+      - [ID Naming Rules](#id-naming-rules)
 
 <!-- /TOC -->
 
@@ -29,8 +30,6 @@ The indirect/sub-goal of installing Jenkins is to build/deploy locally and push 
 ### Install Jenkins for Mac OS
 https://www.jenkins.io/doc/book/installing/macos/
 
-
-### Obtain Access Token For
 
 
 
@@ -51,3 +50,11 @@ https://plugins.jenkins.io/oidc-provider/
 ### Create Appropriate Credentials System Domain
 Creating a separate credentials system domain for Jenkins is a good practice for least privilege access:
 ![credentials_system_domain](./assets/credentials_system_domain.png)
+
+
+### Set up appropriate credentials under the correct credentials system
+
+#### ID Naming Rules
+
+`<product_name>_<local_or_cloud>_<name>_<type>`
+
