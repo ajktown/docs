@@ -37,6 +37,8 @@ https://www.jenkins.io/doc/book/installing/macos/
 Install the following plugins to Jenkins.
 
 #### File System SCM
+You can run Jenkins jobs from Jenkinsfile on your local device, instead of GitHub.
+
 ![install_plugin_file_system_scm](./assets/install_plugin_file_system_scm.png)
 
 
