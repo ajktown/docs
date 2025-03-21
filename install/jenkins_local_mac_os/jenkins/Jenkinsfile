@@ -2,6 +2,11 @@ pipeline {
   agent any
   parameters {
     booleanParam(name: 'SKIP_TEST', defaultValue: false, description: 'By enabling this flag, the test will be skipped and pushed to the production server (Not Recommended)')
+    // SKIP_BUILD parameters:
+    // - Related validation named "Validating SKIP_BUILD Parameters ..."
+    booleanParam(name: 'SKIP_BUILD_API', defaultValue: false, description: '🟡 TODO: Not Yet Implemented; By enabling this flag, pipeline will skip the API build and push to the production server')
+    booleanParam(name: 'SKIP_BUILD_WGT', defaultValue: false, description: 'By enabling this flag, pipeline will skip the WGT build and push to the production server')
+    booleanParam(name: 'SKIP_BUILD_CGT', defaultValue: false, description: '🟡 TODO: Not Yet Implemented; By enabling this flag, pipeline will skip the CGT build and push to the production server')
   }
   environment {
     // Binary Paths:
@@ -21,26 +26,30 @@ pipeline {
     INSTANCE_ID = "i-0ebe1d5ea7495f70d"
   }
   stages {
+    // ! ======================================== CLEANING STAGE ======================================== ! //
     stage('Clean Up') {
       steps {
         echo 'Cleaning up ...'
         deleteDir()
       }
     }
+    // ! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ CLEANING STAGE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! //
+    // ! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ CLEANING STAGE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! //
 
-    stage('Retrieve and Print JWT') {
+
+    // ! ======================================== VALIDATION STAGE ======================================== ! //
+    stage('Validating SKIP_BUILD Parameters ...') {
       steps {
         script {
-          withCredentials([string(credentialsId: env.JWT_CREDENTIAL_ID, variable: 'JWT')]) {
-            echo "JWT Retrieved Successfully!"
-            sh 'echo $JWT > /tmp/jwt_debug.jwt'
+          // if everything is true for skip build, throw an error and stop the pipeline with message one of them must be enabled!
+          if (params.SKIP_BUILD_API == true && params.SKIP_BUILD_WGT == true && params.SKIP_BUILD_CGT == true) {
+            error("Failed to proceed: At least one of the parameters [SKIP_BUILD_API, SKIP_BUILD_WGT, SKIP_BUILD_CGT] must be disabled.")
           }
-          sh 'cat /tmp/jwt_debug.jwt'  // This will print the JWT without masking!
         }
       }
     }
 
-    stage('Check if environment [LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN] is available') {
+    stage('Validating environment [LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN] is available') {
       steps {
         script {
           if (env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == null || env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == "") {
@@ -49,13 +58,38 @@ pipeline {
         }
       }
     }
-    stage("Clone GitHub Repo") {
+
+    stage('Validating injected JWT from OIDC Provider ...') {
+      steps {
+        script {
+          withCredentials([string(credentialsId: env.JWT_CREDENTIAL_ID, variable: 'JWT')]) {
+            echo "JWT Retrieved Successfully!"
+            sh 'echo $JWT > /tmp/jwt_debug.jwt'
+          }
+          sh 'cat /tmp/jwt_debug.jwt'  // This will print the JWT without masking!
+
+          if (fileExists('/tmp/jwt_debug.jwt') && fileSize('/tmp/jwt_debug.jwt') == 0) {
+            error("Failed to proceed: JWT is empty. Please check the Jenkins Credential Store.")
+          }
+        }
+      }
+    }
+    // ! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ VALIDATION STAGE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! //
+    // ! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ VALIDATION STAGE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! //
+
+
+    // ! ======================================== PREPARING STAGE ======================================== ! //
+    stage("Cloning GitHub Repo ...") {
       steps {
         echo "Cloning the GitHub repository ..."
         sh "git clone ${env.GIT_REPO_URL} ${env.CLONED_REPO_DIR_NAME}"
         sh "ls -al ${env.CLONED_REPO_DIR_NAME}"
       }
     }
+    // ! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ PREPARING STAGE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! //
+    // ! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ PREPARING STAGE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! //
+
+
     stage('Inspect (Test) cloned repository before building') {
       steps {
         echo 'Inspecting ...'
