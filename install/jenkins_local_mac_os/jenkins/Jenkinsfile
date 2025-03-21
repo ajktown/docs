@@ -13,7 +13,9 @@ pipeline {
     YARN_INSTALLED_PATH="/opt/homebrew/bin" // Get this from the following command: $ which yarn
     DOCKER_INSTALLED_PATH="/usr/local/bin" // Get this from the following command: $ which docker
     // Git:
-    GIT_REPO_URL="https://github.com/ajktown/wordnote.git"
+    GIT_REPO_URL_WGT="https://github.com/ajktown/wordnote.git"
+    GIT_REPO_URL_API="https://github.com/ajktown/api.git"
+    GIT_REPO_URL_CGT="https://github.com/ajktown/ConsistencyGPT.git"
     CLONED_REPO_DIR_NAME="cloned_repo_dir"
     // ODIC Provider:
     JWT_CREDENTIAL_ID = '141ad962-6926-46af-9c32-4fe9ec500dbe'  // Replace with your actual Credential ID
@@ -82,7 +84,7 @@ pipeline {
     stage("Cloning GitHub Repo ...") {
       steps {
         echo "Cloning the GitHub repository ..."
-        sh "git clone ${env.GIT_REPO_URL} ${env.CLONED_REPO_DIR_NAME}"
+        sh "git clone ${env.GIT_REPO_URL_WGT} ${env.CLONED_REPO_DIR_NAME}"
         sh "ls -al ${env.CLONED_REPO_DIR_NAME}"
       }
     }
