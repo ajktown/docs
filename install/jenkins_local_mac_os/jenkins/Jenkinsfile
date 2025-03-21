@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  parameters {
+    booleanParam(name: 'SKIP_TEST', defaultValue: false, description: 'By enabling this flag, the test will be skipped and pushed to the production server (Not Recommended)')
+  }
   environment {
     // Binary Paths:
     YARN_INSTALLED_PATH="/opt/homebrew/bin" // Get this from the following command: $ which yarn
@@ -60,8 +63,16 @@ pipeline {
           sh '''
           PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn --version
           PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn install
-          # PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn test
-          # PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn inspect
+          # test only SKIP_TEST is NOT true
+          if [ "${SKIP_TEST}" = false ]; then
+            PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn test
+            PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn inspect
+          else
+            echo "Skipping the test ..."
+          fi
+
+          # The build must be at least completed to be able to push the image to the DockerHub. So the SKIP_TEST flag is not applied here:
+          PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn build
           '''
         }
       }
