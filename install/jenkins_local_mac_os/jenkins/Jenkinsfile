@@ -43,11 +43,11 @@ def dockerPushScript(dockerPath, accessToken, imageName) {
 pipeline {
   agent any
   parameters {
-    // 
-    booleanParam(name: 'SKIP_REBOOT', defaultValue: true, description: 'By enabling this flag, DockerHub will have the latest image, but running pods in production won\'t restart. This flag is enabled by default so that builders accidentally don\'t restart the production server.')
+    //
+    booleanParam(name: 'SKIP_REBOOT', defaultValue: true, description: 'By enabling this flag, DockerHub (https://hub.docker.com/u/ajktown) will have the latest image, but running pods in production won\'t restart. This flag is enabled by default so that builders accidentally don\'t restart the production server.')
     booleanParam(name: 'SKIP_TEST', defaultValue: true /* 🟡 TODO: Make back to false before merge*/, description: 'By enabling this flag, the test will be skipped and pushed to the production server (Not Recommended)')
     // SKIP_BUILD parameters:
-    // - Related validation named "Validating SKIP_BUILD Parameters ..."
+    // - Related validation named "Validate SKIP_BUILD Parameters ..."
     booleanParam(name: 'SKIP_BUILD_API', defaultValue: false, description: '🟡 TODO: Not Yet Implemented; By enabling this flag, pipeline will skip the API build and push to the production server')
     booleanParam(name: 'SKIP_BUILD_CGT', defaultValue: false, description: '🟡 TODO: Not Yet Implemented; By enabling this flag, pipeline will skip the CGT build and push to the production server')
     booleanParam(name: 'SKIP_BUILD_WGT', defaultValue: false, description: 'By enabling this flag, pipeline will skip the WGT build and push to the production server')
@@ -89,7 +89,7 @@ pipeline {
 
 
     // ! ======================================== VALIDATION STAGE ======================================== ! //
-    stage('Validating SKIP_BUILD Parameters ...') {
+    stage('Validate SKIP_BUILD Parameters ...') {
       steps {
         script {
           // if everything is true for skip build, throw an error and stop the pipeline with message one of them must be enabled!
@@ -100,7 +100,7 @@ pipeline {
       }
     }
 
-    stage('Validating environment [LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN] is available') {
+    stage('Validate environment [LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN] is available') {
       steps {
         script {
           if (env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == null || env.DOCKER_HUB_PUSHER_ACCESS_TOKEN == "") {
@@ -110,7 +110,7 @@ pipeline {
       }
     }
 
-    stage('Validating injected JWT from OIDC Provider ...') {
+    stage('Validate injected JWT from OIDC Provider ...') {
       steps {
         script {
           withCredentials([string(credentialsId: env.JWT_CREDENTIAL_ID, variable: 'JWT')]) {
