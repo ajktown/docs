@@ -1,12 +1,57 @@
+// TODO: 🟡 Comment me
+def cloneScript(repoUrl, dirName) {
+  return """
+    git clone ${repoUrl} ${dirName}
+    ls -al ${dirName}
+  """
+}
+
+// TODO: 🟡 Comment me
+def inspectAndBuildScript(skipTestFlag, yarnPath = "/opt/homebrew/bin") {
+  return """
+    PATH="${yarnPath}:\$PATH" yarn --version
+    PATH="${yarnPath}:\$PATH" yarn install
+
+    # test only SKIP_TEST is NOT true
+    if [ "${skipTestFlag}" = false ]; then
+      PATH="${yarnPath}:\$PATH" yarn test
+      PATH="${yarnPath}:\$PATH" yarn inspect
+    else
+      echo "Skipping the test ..."
+    fi
+
+    # The build must be at least completed to be able to push the image to the DockerHub.
+    # So the SKIP_TEST flag is NOT applied here:
+    PATH="${yarnPath}:\$PATH" yarn build
+  """
+}
+
+// TODO: 🟡 Comment me
+def dockerPushScript(dockerPath, accessToken, imageName) {
+  return """
+    # Login to DockerHub using access token (password-stdin method)
+    echo ${accessToken} | ${dockerPath}/docker login --username ajktown --password-stdin
+
+    # Build Docker image
+    ${dockerPath}/docker build -t ${imageName} .
+
+    # Push image to DockerHub
+    ${dockerPath}/docker push ${imageName}
+  """
+}
+
 pipeline {
   agent any
   parameters {
+    // 
+    booleanParam(name: 'SKIP_REBOOT', defaultValue: true, description: 'By enabling this flag, DockerHub will have the latest image, but running pods in production won\'t restart. This flag is enabled by default so that builders accidentally don\'t restart the production server.')
     booleanParam(name: 'SKIP_TEST', defaultValue: true /* 🟡 TODO: Make back to false before merge*/, description: 'By enabling this flag, the test will be skipped and pushed to the production server (Not Recommended)')
     // SKIP_BUILD parameters:
     // - Related validation named "Validating SKIP_BUILD Parameters ..."
     booleanParam(name: 'SKIP_BUILD_API', defaultValue: false, description: '🟡 TODO: Not Yet Implemented; By enabling this flag, pipeline will skip the API build and push to the production server')
     booleanParam(name: 'SKIP_BUILD_CGT', defaultValue: false, description: '🟡 TODO: Not Yet Implemented; By enabling this flag, pipeline will skip the CGT build and push to the production server')
     booleanParam(name: 'SKIP_BUILD_WGT', defaultValue: false, description: 'By enabling this flag, pipeline will skip the WGT build and push to the production server')
+    // SKIP_REFRESH
   }
   environment {
     // Binary Paths:
@@ -21,9 +66,11 @@ pipeline {
     GIT_REPO_CLONED_DIR_NAME_WGT="cloned_wgt"
     // ODIC Provider:
     JWT_CREDENTIAL_ID = '141ad962-6926-46af-9c32-4fe9ec500dbe'  // Replace with your actual Credential ID
-    // DockerHub:
+    // DockerHub (https://hub.docker.com/u/ajktown):
     DOCKER_HUB_PUSHER_ACCESS_TOKEN = credentials("LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN") // Corrected credential syntax
-    BUILDING_IMAGE_NAME="ajktown/wordnote:latest"
+    BUILDING_IMAGE_NAME_API="ajktown/api:latest"
+    BUILDING_IMAGE_NAME_CGT="ajktown/consistency:latest"
+    BUILDING_IMAGE_NAME_WGT="ajktown/wordnote:latest"
     // AWS:
     AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN = "AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN" // Corrected credential syntax
     AWS_REGION = "ap-northeast-1"  // Tokyo region
@@ -90,8 +137,11 @@ pipeline {
             expression { params.SKIP_BUILD_API != true }
           }
           steps {
-            sh "git clone ${env.GIT_REPO_URL_API} ${env.GIT_REPO_CLONED_DIR_NAME_API}"
-            sh "ls -al ${env.GIT_REPO_CLONED_DIR_NAME_API}"
+            sh cloneScript(env.GIT_REPO_URL_API, env.GIT_REPO_CLONED_DIR_NAME_API)
+            dir("${env.GIT_REPO_CLONED_DIR_NAME_API}") {
+              sh inspectAndBuildScript(params.SKIP_TEST, env.YARN_INSTALLED_PATH)
+              sh dockerPushScript(env.DOCKER_INSTALLED_PATH, env.DOCKER_HUB_PUSHER_ACCESS_TOKEN, env.BUILDING_IMAGE_NAME_API)
+            }
           }
         }
         stage("Cloning CGT GitHub Repo ...") {
@@ -99,8 +149,11 @@ pipeline {
             expression { params.SKIP_BUILD_CGT != true }
           }
           steps {
-            sh "git clone ${env.GIT_REPO_URL_CGT} ${env.GIT_REPO_CLONED_DIR_NAME_CGT}"
-            sh "ls -al ${env.GIT_REPO_CLONED_DIR_NAME_CGT}"
+            sh cloneScript(env.GIT_REPO_URL_CGT, env.GIT_REPO_CLONED_DIR_NAME_CGT)
+            dir("${env.GIT_REPO_CLONED_DIR_NAME_CGT}") {
+              sh inspectAndBuildScript(params.SKIP_TEST, env.YARN_INSTALLED_PATH)
+              sh dockerPushScript(env.DOCKER_INSTALLED_PATH, env.DOCKER_HUB_PUSHER_ACCESS_TOKEN, env.BUILDING_IMAGE_NAME_CGT)
+            }
           }
         }
         stage("Cloning WGT GitHub Repo ...") {
@@ -108,8 +161,11 @@ pipeline {
             expression { params.SKIP_BUILD_WGT != true }
           }
           steps {
-            sh "git clone ${env.GIT_REPO_URL_WGT} ${env.GIT_REPO_CLONED_DIR_NAME_WGT}"
-            sh "ls -al ${env.GIT_REPO_CLONED_DIR_NAME_WGT}"
+            sh cloneScript(env.GIT_REPO_URL_WGT, env.GIT_REPO_CLONED_DIR_NAME_WGT)
+            dir("${env.GIT_REPO_CLONED_DIR_NAME_WGT}") {
+              sh inspectAndBuildScript(params.SKIP_TEST, env.YARN_INSTALLED_PATH)
+              sh dockerPushScript(env.DOCKER_INSTALLED_PATH, env.DOCKER_HUB_PUSHER_ACCESS_TOKEN, env.BUILDING_IMAGE_NAME_WGT)
+            }
           }
         }
       }
@@ -117,55 +173,23 @@ pipeline {
     // ! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ PREPARING STAGE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! //
     // ! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ PREPARING STAGE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! //
 
-
-    stage('Inspect (Test) cloned repository before building') {
+    // ! ======================================== PRODUCTION MODIFYING STAGE ======================================== ! //
+    stage('Reboot EC2 Instance') {
+      when {
+        expression { params.SKIP_REBOOT != true }
+      }
       steps {
-        echo 'Inspecting ...'
-        dir("${env.GIT_REPO_CLONED_DIR_NAME_WGT}") { // Fixed variable usage
-          sh '''
-          PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn --version
-          PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn install
-          # test only SKIP_TEST is NOT true
-          if [ "${SKIP_TEST}" = false ]; then
-            PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn test
-            PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn inspect
-          else
-            echo "Skipping the test ..."
-          fi
-
-          # The build must be at least completed to be able to push the image to the DockerHub. So the SKIP_TEST flag is not applied here:
-          PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn build
-          '''
+        script {
+          withCredentials([usernamePassword(credentialsId: env.AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN, usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+              sh '''
+              AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} ${DOCKER_INSTALLED_PATH}/aws \
+                ec2 reboot-instances \
+                --instance-ids $INSTANCE_ID \
+                --region $AWS_REGION
+              '''
+          }
         }
       }
     }
-
-  //   stage('Push to DockerHub Registry') {
-  //     steps {
-  //       echo 'Login and Pushing image ...'
-  //       dir("${env.GIT_REPO_CLONED_DIR_NAME_WGT}") { // Fixed variable usage
-  //         sh '''
-  //         echo ${DOCKER_HUB_PUSHER_ACCESS_TOKEN} | ${DOCKER_INSTALLED_PATH}/docker login --username ajktown --password-stdin
-  //         ${DOCKER_INSTALLED_PATH}/docker build -t ${BUILDING_IMAGE_NAME} .
-  //         ${DOCKER_INSTALLED_PATH}/docker push ${BUILDING_IMAGE_NAME}
-  //         '''
-  //       }
-  //     }
-  //   }
-
-  // stage('Reboot EC2 Instance') {
-  //     steps {
-  //       script {
-  //         withCredentials([usernamePassword(credentialsId: env.AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN, usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-  //             sh '''
-  //             AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} ${DOCKER_INSTALLED_PATH}/aws \
-  //               ec2 reboot-instances \
-  //               --instance-ids $INSTANCE_ID \
-  //               --region $AWS_REGION
-  //             '''
-  //         }
-  //       }
-  //     }
-  //   }
   }
 }
