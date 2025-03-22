@@ -72,9 +72,9 @@ pipeline {
           }
           sh 'cat /tmp/jwt_debug.jwt'  // This will print the JWT without masking!
 
-          // if (fileExists('/tmp/jwt_debug.jwt') && fileSize('/tmp/jwt_debug.jwt') == 0) {
-          //   error("Failed to proceed: JWT is empty. Please check the Jenkins Credential Store.")
-          // }
+          if (fileExists('/tmp/jwt_debug.jwt')) {
+            error("Failed to proceed: JWT is empty. Please check the Jenkins Credential Store.")
+          }
         }
       }
     }
