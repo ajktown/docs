@@ -130,9 +130,9 @@ pipeline {
 
 
     // ! ======================================== PREPARING STAGE ======================================== ! //
-    stage("Cloning GitHub Repo ...") {
+    stage("Push to DockerHub https://hub.docker.com/u/ajktown") {
       parallel {
-        stage("Cloning API GitHub Repo ...") {
+        stage("Push to ajktown/api:latest") {
           when {
             expression { params.SKIP_BUILD_API != true }
           }
@@ -144,7 +144,7 @@ pipeline {
             }
           }
         }
-        stage("Cloning CGT GitHub Repo ...") {
+        stage("Push to ajktown/consistency:latest") {
           when {
             expression { params.SKIP_BUILD_CGT != true }
           }
@@ -156,7 +156,7 @@ pipeline {
             }
           }
         }
-        stage("Cloning WGT GitHub Repo ...") {
+        stage("Push to ajktown/wordnote:latest") {
           when {
             expression { params.SKIP_BUILD_WGT != true }
           }
