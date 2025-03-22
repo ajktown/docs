@@ -5,20 +5,20 @@ pipeline {
     // SKIP_BUILD parameters:
     // - Related validation named "Validating SKIP_BUILD Parameters ..."
     booleanParam(name: 'SKIP_BUILD_API', defaultValue: false, description: '🟡 TODO: Not Yet Implemented; By enabling this flag, pipeline will skip the API build and push to the production server')
-    booleanParam(name: 'SKIP_BUILD_WGT', defaultValue: false, description: 'By enabling this flag, pipeline will skip the WGT build and push to the production server')
     booleanParam(name: 'SKIP_BUILD_CGT', defaultValue: false, description: '🟡 TODO: Not Yet Implemented; By enabling this flag, pipeline will skip the CGT build and push to the production server')
+    booleanParam(name: 'SKIP_BUILD_WGT', defaultValue: false, description: 'By enabling this flag, pipeline will skip the WGT build and push to the production server')
   }
   environment {
     // Binary Paths:
     YARN_INSTALLED_PATH="/opt/homebrew/bin" // Get this from the following command: $ which yarn
     DOCKER_INSTALLED_PATH="/usr/local/bin" // Get this from the following command: $ which docker
     // Git:
-    GIT_REPO_URL_WGT="https://github.com/ajktown/wordnote.git"
     GIT_REPO_URL_API="https://github.com/ajktown/api.git"
     GIT_REPO_URL_CGT="https://github.com/ajktown/ConsistencyGPT.git"
+    GIT_REPO_URL_WGT="https://github.com/ajktown/wordnote.git"
     GIT_REPO_CLONED_DIR_NAME_API="cloned_api"
-    GIT_REPO_CLONED_DIR_NAME_WGT="cloned_wgt"
     GIT_REPO_CLONED_DIR_NAME_CGT="cloned_cgt"
+    GIT_REPO_CLONED_DIR_NAME_WGT="cloned_wgt"
     // ODIC Provider:
     JWT_CREDENTIAL_ID = '141ad962-6926-46af-9c32-4fe9ec500dbe'  // Replace with your actual Credential ID
     // DockerHub:
