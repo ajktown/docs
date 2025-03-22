@@ -27,7 +27,7 @@ def inspectAndBuildScript(skipTestFlag, yarnPath = "/opt/homebrew/bin") {
 }
 
 // TODO: 🟡 Comment me
-def dockerPushScript(accessToken, imageName, dockerPath = "/usr/local/bin") {
+def dockerPushScript(accessToken, imageName, dockerPath = "/usr/local/bin") { // or get from $ which docker
   return """
     # Login to DockerHub using access token (password-stdin method)
     echo ${accessToken} | ${dockerPath}/docker login --username ajktown --password-stdin
@@ -144,7 +144,7 @@ pipeline {
             sh cloneScript(env.GIT_REPO_URL_API, env.GIT_REPO_CLONED_DIR_NAME_API)
             dir("${env.GIT_REPO_CLONED_DIR_NAME_API}") {
               sh inspectAndBuildScript(params.SKIP_TEST, env.YARN_INSTALLED_PATH)
-              sh dockerPushScript(env.DOCKER_HUB_PUSHER_ACCESS_TOKEN, env.BUILDING_IMAGE_NAME_API, env.DOCKER_INSTALLED_PATH)
+              sh dockerPushScript(env.DOCKER_HUB_PUSHER_ACCESS_TOKEN, env.BUILDING_IMAGE_NAME_API)
             }
           }
         }
@@ -156,7 +156,7 @@ pipeline {
             sh cloneScript(env.GIT_REPO_URL_CGT, env.GIT_REPO_CLONED_DIR_NAME_CGT)
             dir("${env.GIT_REPO_CLONED_DIR_NAME_CGT}") {
               sh inspectAndBuildScript(params.SKIP_TEST, env.YARN_INSTALLED_PATH)
-              sh dockerPushScript(env.DOCKER_HUB_PUSHER_ACCESS_TOKEN, env.BUILDING_IMAGE_NAME_CGT, env.DOCKER_INSTALLED_PATH)
+              sh dockerPushScript(env.DOCKER_HUB_PUSHER_ACCESS_TOKEN, env.BUILDING_IMAGE_NAME_CGT)
             }
           }
         }
@@ -168,7 +168,7 @@ pipeline {
             sh cloneScript(env.GIT_REPO_URL_WGT, env.GIT_REPO_CLONED_DIR_NAME_WGT)
             dir("${env.GIT_REPO_CLONED_DIR_NAME_WGT}") {
               sh inspectAndBuildScript(params.SKIP_TEST, env.YARN_INSTALLED_PATH)
-              sh dockerPushScript(env.DOCKER_HUB_PUSHER_ACCESS_TOKEN, env.BUILDING_IMAGE_NAME_WGT, env.DOCKER_INSTALLED_PATH)
+              sh dockerPushScript(env.DOCKER_HUB_PUSHER_ACCESS_TOKEN, env.BUILDING_IMAGE_NAME_WGT)
             }
           }
         }
