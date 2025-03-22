@@ -1,7 +1,7 @@
 pipeline {
   agent any
   parameters {
-    booleanParam(name: 'SKIP_TEST', defaultValue: false, description: 'By enabling this flag, the test will be skipped and pushed to the production server (Not Recommended)')
+    booleanParam(name: 'SKIP_TEST', defaultValue: true /* 🟡 TODO: Make back to false before merge*/, description: 'By enabling this flag, the test will be skipped and pushed to the production server (Not Recommended)')
     // SKIP_BUILD parameters:
     // - Related validation named "Validating SKIP_BUILD Parameters ..."
     booleanParam(name: 'SKIP_BUILD_API', defaultValue: false, description: '🟡 TODO: Not Yet Implemented; By enabling this flag, pipeline will skip the API build and push to the production server')
@@ -16,7 +16,9 @@ pipeline {
     GIT_REPO_URL_WGT="https://github.com/ajktown/wordnote.git"
     GIT_REPO_URL_API="https://github.com/ajktown/api.git"
     GIT_REPO_URL_CGT="https://github.com/ajktown/ConsistencyGPT.git"
-    CLONED_REPO_DIR_NAME="cloned_repo_dir"
+    GIT_REPO_CLONED_DIR_NAME_API="cloned_api"
+    GIT_REPO_CLONED_DIR_NAME_WGT="cloned_wgt"
+    GIT_REPO_CLONED_DIR_NAME_CGT="cloned_cgt"
     // ODIC Provider:
     JWT_CREDENTIAL_ID = '141ad962-6926-46af-9c32-4fe9ec500dbe'  // Replace with your actual Credential ID
     // DockerHub:
@@ -84,8 +86,8 @@ pipeline {
     stage("Cloning GitHub Repo ...") {
       steps {
         echo "Cloning the GitHub repository ..."
-        sh "git clone ${env.GIT_REPO_URL_WGT} ${env.CLONED_REPO_DIR_NAME}"
-        sh "ls -al ${env.CLONED_REPO_DIR_NAME}"
+        sh "git clone ${env.GIT_REPO_URL_WGT} ${env.GIT_REPO_CLONED_DIR_NAME_WGT}"
+        sh "ls -al ${env.GIT_REPO_CLONED_DIR_NAME_WGT}"
       }
     }
     // ! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ PREPARING STAGE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! //
@@ -95,7 +97,7 @@ pipeline {
     stage('Inspect (Test) cloned repository before building') {
       steps {
         echo 'Inspecting ...'
-        dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
+        dir("${env.GIT_REPO_CLONED_DIR_NAME_WGT}") { // Fixed variable usage
           sh '''
           PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn --version
           PATH="${YARN_INSTALLED_PATH}:${PATH}" yarn install
@@ -117,7 +119,7 @@ pipeline {
   //   stage('Push to DockerHub Registry') {
   //     steps {
   //       echo 'Login and Pushing image ...'
-  //       dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
+  //       dir("${env.GIT_REPO_CLONED_DIR_NAME_WGT}") { // Fixed variable usage
   //         sh '''
   //         echo ${DOCKER_HUB_PUSHER_ACCESS_TOKEN} | ${DOCKER_INSTALLED_PATH}/docker login --username ajktown --password-stdin
   //         ${DOCKER_INSTALLED_PATH}/docker build -t ${BUILDING_IMAGE_NAME} .
