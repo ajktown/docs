@@ -91,7 +91,7 @@ pipeline {
     // ! ======================================== VALIDATION STAGE ======================================== ! //
     stage('Validate preconditions') {
       parallel {
-        stage('Validate SKIP_BUILD Parameters') {
+        stage('Validate parameters SKIP_BUILD_.*') {
           steps {
             script {
               // if everything is true for skip build, throw an error and stop the pipeline with message one of them must be enabled!
