@@ -70,9 +70,9 @@ pipeline {
           }
           sh 'cat /tmp/jwt_debug.jwt'  // This will print the JWT without masking!
 
-          if (fileExists('/tmp/jwt_debug.jwt') && fileSize('/tmp/jwt_debug.jwt') == 0) {
-            error("Failed to proceed: JWT is empty. Please check the Jenkins Credential Store.")
-          }
+          // if (fileExists('/tmp/jwt_debug.jwt') && fileSize('/tmp/jwt_debug.jwt') == 0) {
+          //   error("Failed to proceed: JWT is empty. Please check the Jenkins Credential Store.")
+          // }
         }
       }
     }
@@ -114,32 +114,32 @@ pipeline {
       }
     }
 
-    stage('Push to DockerHub Registry') {
-      steps {
-        echo 'Login and Pushing image ...'
-        dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
-          sh '''
-          echo ${DOCKER_HUB_PUSHER_ACCESS_TOKEN} | ${DOCKER_INSTALLED_PATH}/docker login --username ajktown --password-stdin
-          ${DOCKER_INSTALLED_PATH}/docker build -t ${BUILDING_IMAGE_NAME} .
-          ${DOCKER_INSTALLED_PATH}/docker push ${BUILDING_IMAGE_NAME}
-          '''
-        }
-      }
-    }
+  //   stage('Push to DockerHub Registry') {
+  //     steps {
+  //       echo 'Login and Pushing image ...'
+  //       dir("${env.CLONED_REPO_DIR_NAME}") { // Fixed variable usage
+  //         sh '''
+  //         echo ${DOCKER_HUB_PUSHER_ACCESS_TOKEN} | ${DOCKER_INSTALLED_PATH}/docker login --username ajktown --password-stdin
+  //         ${DOCKER_INSTALLED_PATH}/docker build -t ${BUILDING_IMAGE_NAME} .
+  //         ${DOCKER_INSTALLED_PATH}/docker push ${BUILDING_IMAGE_NAME}
+  //         '''
+  //       }
+  //     }
+  //   }
 
-  stage('Reboot EC2 Instance') {
-      steps {
-        script {
-          withCredentials([usernamePassword(credentialsId: env.AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN, usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-              sh '''
-              AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} ${DOCKER_INSTALLED_PATH}/aws \
-                ec2 reboot-instances \
-                --instance-ids $INSTANCE_ID \
-                --region $AWS_REGION
-              '''
-          }
-        }
-      }
-    }
+  // stage('Reboot EC2 Instance') {
+  //     steps {
+  //       script {
+  //         withCredentials([usernamePassword(credentialsId: env.AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN, usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+  //             sh '''
+  //             AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} ${DOCKER_INSTALLED_PATH}/aws \
+  //               ec2 reboot-instances \
+  //               --instance-ids $INSTANCE_ID \
+  //               --region $AWS_REGION
+  //             '''
+  //         }
+  //       }
+  //     }
+  //   }
   }
 }
