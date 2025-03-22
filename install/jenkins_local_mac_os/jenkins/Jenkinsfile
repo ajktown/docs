@@ -48,8 +48,8 @@ pipeline {
     booleanParam(name: 'SKIP_TEST', defaultValue: true /* 🟡 TODO: Make back to false before merge*/, description: 'By enabling this flag, the test will be skipped and pushed to the production server (Not Recommended)')
     // SKIP_BUILD parameters:
     // - Related validation named "Validate SKIP_BUILD Parameters"
-    booleanParam(name: 'SKIP_BUILD_API', defaultValue: false, description: '🟡 TODO: Not Yet Implemented; By enabling this flag, pipeline will skip the API build and push to the production server')
-    booleanParam(name: 'SKIP_BUILD_CGT', defaultValue: false, description: '🟡 TODO: Not Yet Implemented; By enabling this flag, pipeline will skip the CGT build and push to the production server')
+    booleanParam(name: 'SKIP_BUILD_API', defaultValue: false, description: 'By enabling this flag, pipeline will skip the API build and push to the production server')
+    booleanParam(name: 'SKIP_BUILD_CGT', defaultValue: false, description: 'By enabling this flag, pipeline will skip the CGT build and push to the production server')
     booleanParam(name: 'SKIP_BUILD_WGT', defaultValue: false, description: 'By enabling this flag, pipeline will skip the WGT build and push to the production server')
     // SKIP_REFRESH
   }
