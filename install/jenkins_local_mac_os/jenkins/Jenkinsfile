@@ -72,7 +72,7 @@ pipeline {
     BUILDING_IMAGE_NAME_CGT="ajktown/consistency:latest"
     BUILDING_IMAGE_NAME_WGT="ajktown/wordnote:latest"
     // AWS:
-    AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN = "AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN" // Corrected credential syntax
+    AWS_ACCESS_KEY_ID = "AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN" // Corrected credential syntax
     AWS_REGION = "ap-northeast-1"  // Tokyo region
     INSTANCE_ID = "i-0ebe1d5ea7495f70d"
   }
@@ -185,7 +185,7 @@ pipeline {
       }
       steps {
         script {
-          withCredentials([usernamePassword(credentialsId: env.AWS_LOCAL_AJ_MAC_JENKINS_ACCESS_TOKEN, usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+          withCredentials([usernamePassword(credentialsId: env.AWS_ACCESS_KEY_ID, usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
               sh '''
               AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} ${DOCKER_INSTALLED_PATH}/aws \
                 ec2 reboot-instances \
