@@ -83,39 +83,31 @@ pipeline {
 
 
     // ! ======================================== PREPARING STAGE ======================================== ! //
-    stage("Cloning WGT GitHub Repo ...") {
-      steps {
-        echo "Cloning the WGT GitHub repository ..."
-        sh "git clone ${env.GIT_REPO_URL_WGT} ${env.GIT_REPO_CLONED_DIR_NAME_WGT}"
-        sh "ls -al ${env.GIT_REPO_CLONED_DIR_NAME_WGT}"
+    stage("Cloning GitHub Repo ...") {
+      parallel {
+        stage("Cloning API GitHub Repo ...") {
+          steps {
+            echo "Cloning the API GitHub repository ..."
+            sh "git clone ${env.GIT_REPO_URL_API} ${env.GIT_REPO_CLONED_DIR_NAME_API}"
+            sh "ls -al ${env.GIT_REPO_CLONED_DIR_NAME_API}"
+          }
+        }
+        stage("Cloning CGT GitHub Repo ...") {
+          steps {
+            echo "Cloning the CGT GitHub repository ..."
+            sh "git clone ${env.GIT_REPO_URL_CGT} ${env.GIT_REPO_CLONED_DIR_NAME_CGT}"
+            sh "ls -al ${env.GIT_REPO_CLONED_DIR_NAME_CGT}"
+          }
+        }
+        stage("Cloning WGT GitHub Repo ...") {
+          steps {
+            echo "Cloning the WGT GitHub repository ..."
+            sh "git clone ${env.GIT_REPO_URL_WGT} ${env.GIT_REPO_CLONED_DIR_NAME_WGT}"
+            sh "ls -al ${env.GIT_REPO_CLONED_DIR_NAME_WGT}"
+          }
+        }
       }
     }
-
-    // stage("Cloning GitHub Repo ...") {
-    //   parallel {
-    //     stage("Cloning API GitHub Repo ...") {
-    //       steps {
-    //         echo "Cloning the API GitHub repository ..."
-    //         sh "git clone ${env.GIT_REPO_URL_API} ${env.GIT_REPO_CLONED_DIR_NAME_API}"
-    //         sh "ls -al ${env.GIT_REPO_CLONED_DIR_NAME_API}"
-    //       }
-    //     }
-    //     stage("Cloning CGT GitHub Repo ...") {
-    //       steps {
-    //         echo "Cloning the CGT GitHub repository ..."
-    //         sh "git clone ${env.GIT_REPO_URL_CGT} ${env.GIT_REPO_CLONED_DIR_NAME_CGT}"
-    //         sh "ls -al ${env.GIT_REPO_CLONED_DIR_NAME_CGT}"
-    //       }
-    //     }
-    //     stage("Cloning WGT GitHub Repo ...") {
-    //       steps {
-    //         echo "Cloning the WGT GitHub repository ..."
-    //         sh "git clone ${env.GIT_REPO_URL_WGT} ${env.GIT_REPO_CLONED_DIR_NAME_WGT}"
-    //         sh "ls -al ${env.GIT_REPO_CLONED_DIR_NAME_WGT}"
-    //       }
-    //     }
-    //   }
-    // }
     // ! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ PREPARING STAGE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! //
     // ! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ PREPARING STAGE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! //
 
