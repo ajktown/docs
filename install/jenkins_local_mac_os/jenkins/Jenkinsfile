@@ -3,6 +3,7 @@ pipeline {
   parameters {
     //
     booleanParam(name: 'SKIP_REBOOT', defaultValue: true, description: 'By enabling this flag, DockerHub (https://hub.docker.com/u/ajktown) will have the latest image, but running pods in production won\'t restart. This flag is enabled by default so that builders accidentally don\'t restart the production server. Uncheck this flag to restart the production server.')
+    //
     booleanParam(name: 'SKIP_TEST', defaultValue: true /* 🟡 TODO: Make back to false before merge*/, description: 'By enabling this flag, the test will be skipped and pushed to the production server (Not Recommended)')
     // SKIP_BUILD parameters:
     // - Related validation named "Validate SKIP_BUILD Parameters"
