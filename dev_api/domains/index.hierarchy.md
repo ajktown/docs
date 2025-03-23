@@ -20,13 +20,19 @@ Domains are not created equal. Some domains manage other domains. But the proble
 title Domain Hierarchy
 
 start
-switch ( DomainRoot )
+switch ( RootDomain )
 case ()
-  switch ( action )
-  case ()
-    :ActionGroupDomain;
-    :ActionDomain;
-    stop
+  switch ( RitualActionGroupGroupDomain )
+    case ()
+    switch ( RitualActionGroupDomain )
+      case ()
+        :RitualDomain;
+        stop
+      case ()
+        :ActionGroupDomain;
+        :ActionDomain;
+        stop
+      endswitch
   endswitch
 case ()
   switch ( archive )
@@ -44,18 +50,10 @@ case ()
     stop
   endswitch
 case ()
-  switch ( prefernce )
+  switch ( preference )
   case ()
     :PreferenceDomain;
     :PreferenceDicDomain;
-    stop
-  endswitch
-case ()
-  switch ( ritual )
-  case ()
-    :RitualGroupDomain;
-    :ParentRitualDomain;
-    :RitualDomain;
     stop
   endswitch
 case ()
