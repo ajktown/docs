@@ -1,45 +1,3 @@
-// TODO: 🟡 Comment me
-def cloneScript(repoUrl, dirName) {
-  return """
-    git clone ${repoUrl} ${dirName}
-    ls -al ${dirName}
-  """
-}
-
-// TODO: 🟡 Comment me
-def inspectAndBuildScript(skipTestFlag, yarnPath = "/opt/homebrew/bin") {
-  return """
-    PATH="${yarnPath}:\$PATH" yarn --version
-    PATH="${yarnPath}:\$PATH" yarn install
-
-    # test only SKIP_TEST is NOT true
-    if [ "${skipTestFlag}" = false ]; then
-      PATH="${yarnPath}:\$PATH" yarn test
-      PATH="${yarnPath}:\$PATH" yarn inspect
-    else
-      echo "Skipping the test"
-    fi
-
-    # The build must be at least completed to be able to push the image to the DockerHub.
-    # So the SKIP_TEST flag is NOT applied here:
-    PATH="${yarnPath}:\$PATH" yarn build
-  """
-}
-
-// TODO: 🟡 Comment me
-def dockerPushScript(accessToken, imageName, dockerPath = "/usr/local/bin") { // or get from $ which docker
-  return """
-    # Login to DockerHub using access token (password-stdin method)
-    echo ${accessToken} | ${dockerPath}/docker login --username ajktown --password-stdin
-
-    # Build Docker image
-    ${dockerPath}/docker build -t ${imageName} .
-
-    # Push image to DockerHub
-    ${dockerPath}/docker push ${imageName}
-  """
-}
-
 pipeline {
   agent any
   parameters {
@@ -200,3 +158,48 @@ pipeline {
     // ! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ PRODUCTION IMPACT STAGE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! //
   }
 }
+
+// ======================================== Functions ======================================== //
+// TODO: 🟡 Comment me
+def cloneScript(repoUrl, dirName) {
+  return """
+    git clone ${repoUrl} ${dirName}
+    ls -al ${dirName}
+  """
+}
+
+// TODO: 🟡 Comment me
+def inspectAndBuildScript(skipTestFlag, yarnPath = "/opt/homebrew/bin") {
+  return """
+    PATH="${yarnPath}:\$PATH" yarn --version
+    PATH="${yarnPath}:\$PATH" yarn install
+
+    # test only SKIP_TEST is NOT true
+    if [ "${skipTestFlag}" = false ]; then
+      PATH="${yarnPath}:\$PATH" yarn test
+      PATH="${yarnPath}:\$PATH" yarn inspect
+    else
+      echo "Skipping the test"
+    fi
+
+    # The build must be at least completed to be able to push the image to the DockerHub.
+    # So the SKIP_TEST flag is NOT applied here:
+    PATH="${yarnPath}:\$PATH" yarn build
+  """
+}
+
+// TODO: 🟡 Comment me
+def dockerPushScript(accessToken, imageName, dockerPath = "/usr/local/bin") { // or get from $ which docker
+  return """
+    # Login to DockerHub using access token (password-stdin method)
+    echo ${accessToken} | ${dockerPath}/docker login --username ajktown --password-stdin
+
+    # Build Docker image
+    ${dockerPath}/docker build -t ${imageName} .
+
+    # Push image to DockerHub
+    ${dockerPath}/docker push ${imageName}
+  """
+}
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Functions ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ //
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Functions ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ //
