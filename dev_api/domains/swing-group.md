@@ -50,6 +50,9 @@ And of course, the measurer of the weather must be stay consistent by recommende
 ### Where/How you swing?
 Your swing technique? Name it.
 Your aim for the ball? Are you aiming the center of the ball? Or are you aiming the 9 oclock of the ball? What is your swing?
+What kind of ground condition is it? Are you using? basic matts? 
+What about the number of lane that youa re using in range? I mean why not record it even tho they won't affect so much!
+How much are you doing the swing? of course your full shot and 3/4 shot will be different.
 
 ### Your actual results of swings
 Again, measurer matters. what kind of software are you using? What version it is? Every software may result varies. You need to standardize the software as well as much as possible.
