@@ -28,6 +28,12 @@ TODO: It would be awesome if this model can apply for all:
 - actual iron swing
 - practice swing
 - pracitce grene swing
+- practice in range
+- practice with coach
+
+TODO: It would be awesome to train the machine learning model to apply all the test!
+
+ TODO: It would be awesome to have al lthe version model so that we are not losing any data!
 
 Domain `SwingGroupDomain` contains fine-grained result of every shot (or group of shots). DB stores SwingGroupDomain as `swing-groups` table. But we do not store individual swing because it is too fine-grained. Instead, we store a group of swings as a `swing-group`. This domain is responsible for managing `swing-group` data.
 
@@ -114,6 +120,9 @@ Your aim for the ball? Are you aiming the center of the ball? Or are you aiming 
 What kind of ground condition is it? Are you using? basic matts?
 What about the number of lane that youa re using in range? I mean why not record it even tho they won't affect so much!
 How much are you doing the swing? of course your full shot and 3/4 shot will be different.
+
+- your toe angle?
+- your grip angle?
 
 
 Are you swinging on green? (putterin?)
