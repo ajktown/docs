@@ -33,7 +33,7 @@ TODO: It would be awesome if this model can apply for all:
 
 TODO: It would be awesome to train the machine learning model to apply all the test!
 
- TODO: It would be awesome to have al lthe version model so that we are not losing any data!
+ TODO: It would be awesome to have al lthe version model so that we are not losing any data! And each version is well recorded in API!
 
 Domain `SwingGroupDomain` contains fine-grained result of every shot (or group of shots). DB stores SwingGroupDomain as `swing-groups` table. But we do not store individual swing because it is too fine-grained. Instead, we store a group of swings as a `swing-group`. This domain is responsible for managing `swing-group` data.
 
