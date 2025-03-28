@@ -9,6 +9,8 @@
   - [Here are the factors that indeed affect every single swing:](#here-are-the-factors-that-indeed-affect-every-single-swing)
     - [Your Body](#your-body)
     - [Weather](#weather)
+    - [Where/How you swing?](#wherehow-you-swing)
+    - [Your actual results of swings](#your-actual-results-of-swings)
 
 <!-- /TOC -->
 
@@ -44,3 +46,10 @@ Weather can affect your:
 
 And therefore it is important to measure the weather as well.
 And of course, the measurer of the weather must be stay consistent by recommended, as if you start changing a lot, it will be less accurate for sure.
+
+### Where/How you swing?
+Your swing technique? Name it.
+Your aim for the ball? Are you aiming the center of the ball? Or are you aiming the 9 oclock of the ball? What is your swing?
+
+### Your actual results of swings
+Again, measurer matters. what kind of software are you using? What version it is? Every software may result varies. You need to standardize the software as well as much as possible.
