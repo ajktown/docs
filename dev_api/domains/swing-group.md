@@ -12,6 +12,7 @@
     - [Weather](#weather)
     - [WIth Who?](#with-who)
     - [Your equipment?](#your-equipment)
+    - [Where are you?](#where-are-you)
     - [Where/How you swing?](#wherehow-you-swing)
     - [Your actual results of swings](#your-actual-results-of-swings)
 
@@ -68,6 +69,11 @@ Everything can be measured.
 
 ### Before swing, what have you done?
 
+Did some good practices? 
+Did you do some warm up?
+Any joggings? Stretches?
+ Any basic shots practices?
+
 
 ### Weather
 Weather can affect your:
@@ -113,6 +119,10 @@ And your:
 - hat
 - glasses, are you wearing sunglasses/ What model?
 
+### Where are you?
+What kind of course are you in? which hole? white tee? blue tee?
+What kind of range are you in? What kind of matts are you using?
+
 
 ### Where/How you swing?
 Your swing technique? Name it.
@@ -127,6 +137,9 @@ How much are you doing the swing? of course your full shot and 3/4 shot will be 
 
 Are you swinging on green? (putterin?)
 are you swinging on bunker? stuff?
+
+
+What are your rotuines youare suing? it is good to name it so that you can track your routine and see how it affects your swing.
 
 - are you using second floor ? first floor?
 - how wide you are opening
