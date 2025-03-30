@@ -6,6 +6,7 @@
   - [Overview](#overview)
   - [Procedure](#procedure)
     - [Login in to COMODO SSL Store](#login-in-to-comodo-ssl-store)
+    - [Go to dashboard of orders](#go-to-dashboard-of-orders)
 
 <!-- /TOC -->
 
@@ -19,3 +20,8 @@ Every March, AJK Town receives an `ACTION REQUIRED` email from Comodo, as the fo
 
 ### Login in to COMODO SSL Store
 ![comodo_ssl_store_logged_in](./assets/comodo_ssl_store_logged_in.png)
+
+
+### Go to dashboard of orders
+https://certpanel.com/comodo/dashboard/orders
+![comodo_dashboard](./assets/comodo_dashboard.png)
