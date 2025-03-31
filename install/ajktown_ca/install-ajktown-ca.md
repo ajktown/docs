@@ -56,6 +56,9 @@ You must be aware of:
 - Where your private key is stored
 - Where your CSR created based on the private key above
 
+> [!INFORMATION]
+> CSR does not expire, and therefore you can reuse the CSR you created last year (This has been tested and confirmed).
+
 You can use the following command to see the contents of CSR:
 ```bash
 openssl req -in ajktown.csr -noout -text
