@@ -18,6 +18,8 @@
     - [Rename your directory first](#rename-your-directory-first)
     - [Open certificate manager of AWS](#open-certificate-manager-of-aws)
     - [Click Reimport](#click-reimport)
+    - [Fill out certificate and confirm](#fill-out-certificate-and-confirm)
+    - [Final check](#final-check)
 
 <!-- /TOC -->
 
@@ -100,3 +102,20 @@ AJK Town uses currently-free AWS Certificate Manager (ACM) to manage the SSL cer
 ### Click Reimport
 
 ![aws_acm_click_reimport](./assets/aws_acm_click_reimport.png)
+
+
+### Fill out certificate and confirm
+We do not tell you the location of each file below, but you can download them from secured location:
+- Certificate body: `STAR_ajktown_com.crt`
+- Certificate private key: `private.key`
+- Certificate chain: `SectigoRSADomainValidationSecureServerCA.crt`
+
+And click `Reimport Certificate` button:
+![click_reimport_certificate](./assets/click_reimport_certificate.png)
+
+
+### Final check
+Check the following attributes of the certificate:
+- `Expires in`
+- `Not After`
+![reconfirm_certificate_details](./assets/reconfirm_certificate_details.png)
