@@ -12,7 +12,8 @@
     - [Enter your CSR](#enter-your-csr)
     - [Choose Domain Verification Method](#choose-domain-verification-method)
     - [Use admin@ajktown.com for verification](#use-adminajktowncom-for-verification)
-    - [Wait for Certificate to be issued](#wait-for-certificate-to-be-issued)
+    - [Check the verify email](#check-the-verify-email)
+    - [Confirm verification](#confirm-verification)
 
 <!-- /TOC -->
 
@@ -64,4 +65,11 @@ Simply use email if you are the owner `ajkim@ajktown.com` of the email written i
 ### Use admin@ajktown.com for verification
 ![use_admin_ajktown_dot_com](./assets/use_admin_ajktown_dot_com.png)
 
-### Wait for Certificate to be issued
+### Check the verify email
+The verifying email comes pretty quick, so do so:
+![verifying_email](./assets/verifying_email.png)
+
+Since I myself `ajkim@ajktown.com` is the admin of AJK Town, The email sent for `admin@ajktown.com` will be sent to my `ajkim@ajktown.com` account.
+
+### Confirm verification
+![comodo_email_verified](./assets/comodo_email_verified.png)
