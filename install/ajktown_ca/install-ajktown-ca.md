@@ -84,7 +84,7 @@ They will send you the server certificate immediately after the verification is 
 ### Rename your directory first
 Before installation, make sure to store the downloaded certificate in a safe place.
 Make sure the downloaded/unzipped directory follows the following name: `XXXXXX_given_certificates_data`
-> [!IMPORTANT]
+> [!WARNING]
 > Don't rename given FILES inside the directory (Only the directory name)
 
 ![named_directories](./assets/named_directories.png)
