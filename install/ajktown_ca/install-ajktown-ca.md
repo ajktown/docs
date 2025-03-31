@@ -16,6 +16,8 @@
     - [Confirm verification](#confirm-verification)
     - [Download the certificate](#download-the-certificate)
     - [Rename your directory first](#rename-your-directory-first)
+    - [Open certificate manager of AWS](#open-certificate-manager-of-aws)
+    - [Click Reimport](#click-reimport)
 
 <!-- /TOC -->
 
@@ -88,3 +90,13 @@ Make sure the downloaded/unzipped directory follows the following name: `XXXXXX_
 > Don't rename given FILES inside the directory (Only the directory name)
 
 ![named_directories](./assets/named_directories.png)
+
+
+### Open certificate manager of AWS
+
+AJK Town uses currently-free AWS Certificate Manager (ACM) to manage the SSL certificate. Click [here](https://ap-northeast-1.console.aws.amazon.com/acm/home?region=ap-northeast-1#/certificates/list).
+![aws_acm](./assets/aws_acm.png)
+
+### Click Reimport
+
+![aws_acm_click_reimport](./assets/aws_acm_click_reimport.png)
