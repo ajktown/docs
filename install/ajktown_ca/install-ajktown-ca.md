@@ -19,7 +19,10 @@
     - [Open certificate manager of AWS](#open-certificate-manager-of-aws)
     - [Click Reimport](#click-reimport)
     - [Fill out certificate and confirm](#fill-out-certificate-and-confirm)
-    - [Final check](#final-check)
+    - [Final check in AWS certificate details](#final-check-in-aws-certificate-details)
+    - [Final operation check in actual server](#final-operation-check-in-actual-server)
+    - [Done](#done)
+  - [Reference](#reference)
 
 <!-- /TOC -->
 
@@ -114,8 +117,20 @@ And click `Reimport Certificate` button:
 ![click_reimport_certificate](./assets/click_reimport_certificate.png)
 
 
-### Final check
+### Final check in AWS certificate details
 Check the following attributes of the certificate:
 - `Expires in`
 - `Not After`
 ![reconfirm_certificate_details](./assets/reconfirm_certificate_details.png)
+
+
+### Final operation check in actual server
+Go to any ajktown services, and see the certificate. You will immediately see the new certificate:
+![chrome_certificate_viewer_check](./assets/chrome_certificate_viewer_check.png)
+
+
+### Done
+Congratulations! You have successfully installed the new SSL certificate for AJK Town.
+
+## Reference
+*None*
