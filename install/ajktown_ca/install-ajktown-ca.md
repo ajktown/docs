@@ -15,6 +15,7 @@
     - [Check the verify email](#check-the-verify-email)
     - [Confirm verification](#confirm-verification)
     - [Download the certificate](#download-the-certificate)
+    - [](#)
 
 <!-- /TOC -->
 
@@ -78,3 +79,11 @@ Since I myself `ajkim@ajktown.com` is the admin of AJK Town, The email sent for 
 ### Download the certificate
 They will send you the server certificate immediately after the verification is done:
 ![cert_issued](./assets/cert_issued.png)
+
+
+### 
+Before installation, make sure to store the downloaded certificate in a safe place.
+Make sure the downloaded/unzipped directory follows the following name: `XXXXXX_given_certificates_data`
+
+Make sure the downloaded/unzipped directory follows the following name: `XXXXXX_given_certificates_data`
+![named_directories](./assets/named_directories.png)
