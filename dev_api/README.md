@@ -9,7 +9,7 @@
 <!-- /TOC -->
 
 ## Overview
-This is a collection of documentation for developers of Consistency Web Application.
+This is a collection of documentation for developers of AJK Town API.
 
 
 |                    Folder                    |                    Description                     |
