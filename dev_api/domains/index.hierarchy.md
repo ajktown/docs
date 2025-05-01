@@ -5,6 +5,7 @@
 - [Domain hierarchy](#domain-hierarchy)
   - [Overview](#overview)
   - [Domain hierarchy](#domain-hierarchy-1)
+  - [About Domain File Namings](#about-domain-file-namings)
 
 <!-- /TOC -->
 
@@ -94,3 +95,14 @@ endswitch
 @enduml
 
 ```
+
+## About Domain File Namings
+
+We use some suffixes to indicate the type of domain. The following is a list of suffixes and their meanings:
+- `Chunk`: Domain with this suffix holds a list of other domains. For example, `WordChunkDomain` holds a list of `WordDomain`.
+- `Group`: Domain with this suffix holds a list of other domains. For example, `RitualActionGroupDomain` holds a list of `RitualActionGroupGroupDomain`.
+
+| Suffix  |                                                         Meaning                                                         | ExistsOnDb |
+|:-------:|:-----------------------------------------------------------------------------------------------------------------------:|:----------:|
+| `Chunk` |   Domain with this suffix holds a list of other domains. For example, `WordDomain` holds a list of `WordChunkDomain`.   |     No     |
+| `Group` | Domain with this suffix holds a list of other domains. For example, `ActionGroupDomain` holds a list of `ActionDomain`. |    Yes     |
